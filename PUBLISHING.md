@@ -18,7 +18,7 @@
 ├── WORKSPACE.md                   ← 工作区说明（含公开范围表与待办）
 ├── README.md                      ← ★ 面向外部读者的项目说明（GitHub 首页）
 ├── AGENTS.md                      ← AI 助手上下文入口
-├── LICENSE                        ← 许可指路牌（产品许可证在其目录内）
+├── LICENSE                        ← 标准 MIT（GitHub 徽章识别）；指路牌在 LICENSE.guide.md
 ├── PUBLISHING.md                  ← 本文件
 ├── .gitignore / .gitattributes    ← 忽略规则 / 禁换行转换（后者不能少，见下）
 ├── .github/workflows/gates.yml    ← CI：一键回归 + 凭据泄漏扫描
