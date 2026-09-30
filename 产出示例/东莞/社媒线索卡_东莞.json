@@ -1,0 +1,540 @@
+{
+  "status": "VALID_WITH_WARNINGS",
+  "destination": "东莞",
+  "travel_style": null,
+  "notes": [
+    {
+      "title": "鸦片战争博物馆官网·开放与预约口径",
+      "url": "https://www.ypzz.cn/",
+      "connector_type": "web_search_fallback",
+      "voice": "OFFICIAL",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "鸦片战争博物馆",
+          "text": "周一全天闭馆；实行预约参观制。"
+        },
+        {
+          "name": "海战博物馆",
+          "text": "周二全天闭馆；与威远炮台预约凭证通用。"
+        },
+        {
+          "name": "威远炮台",
+          "text": "与海战博物馆预约凭证通用；按日限流。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "CLOSURE",
+          "text": "鸦片战争博物馆每周一全天闭馆，海战博物馆每周二全天闭馆——排虎门线必须先避开这两天。"
+        },
+        {
+          "type": "QUEUE",
+          "text": "各馆实行预约参观制，须提前预约；海战博物馆与威远炮台的预约凭证可通用，其余各点须分别预约。"
+        },
+        {
+          "type": "QUEUE",
+          "text": "虎门林则徐纪念馆、海战博物馆、沙角炮台、威远炮台分别按日限流，热门日建议早到。"
+        }
+      ]
+    },
+    {
+      "title": "东莞市可园博物馆官网·参观指南与预约",
+      "url": "https://dgkeyuan.org/article/1762.html",
+      "connector_type": "web_search_fallback",
+      "voice": "OFFICIAL",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "可园博物馆",
+          "text": "逢周二闭馆（法定节假日除外）；散客免预约；古建筑区与综合馆区分开管理。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "CLOSURE",
+          "text": "可园逢周二闭馆（国家法定节假日除外）——周二到东莞就别把可园排进去。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "场馆每天在固定时段于集合点提供免费讲解，另可扫官方公众号二维码获取免费语音讲解。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "可园分古建筑区与综合馆区两个馆区，综合馆区全年免费开放，两个馆区体验差别大。"
+        }
+      ]
+    },
+    {
+      "title": "东莞本地宝·南社明清古村落游玩提示",
+      "url": "https://dg.bendibao.com/dglvyou/2026813/ly183142.shtm",
+      "connector_type": "web_search_fallback",
+      "voice": "MEDIA",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "南社明清古村落",
+          "text": "现存祠堂二十余间、古民居两百余间；以长形水塘为中心布局；个别展馆有时段限制。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "EXPERIENCE",
+          "text": "村内现存祠堂二十余间、古民居两百余间，以中间长形水塘为中心布局，慢逛约两到三小时。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "景区内含部分展馆，个别展馆有时段限制，祠堂类点位傍晚前后会关闭。"
+        }
+      ]
+    },
+    {
+      "title": "携程攻略·松山湖环湖骑行动线",
+      "url": "https://gs.ctrip.com/html5/you/sight/qinhuangdao132/145626610.html",
+      "connector_type": "web_search_fallback",
+      "voice": "CREATOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "松湖烟雨",
+          "text": "环湖绿道四十余公里；顺时针骑行下坡居多；湖边蚊虫多。"
+        },
+        {
+          "name": "查理大桥",
+          "text": "可同时拍到湖面与华为欧洲小镇建筑群，出片首选机位。"
+        },
+        {
+          "name": "华为欧洲小镇",
+          "text": "内部仅限员工预约进入，外部可在滨湖西路、康桥公交站外围拍远景。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "EXPERIENCE",
+          "text": "查理大桥视野开阔，可同时拍到湖面远景与华为欧洲小镇建筑群，是出片首选机位。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "华为欧洲小镇内部仅限员工预约进入，外部游客可在滨湖西路、康桥公交站外围免费拍远景——不要试图进园区。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "沿湖顺时针骑行下坡路段居多，路线轻松，环湖绿道四十余公里，全程骑行较费脚力。"
+        }
+      ]
+    },
+    {
+      "title": "携程攻略·松山湖季节与客流",
+      "url": "https://you.ctrip.com/sight/dongguan212/1833792.html",
+      "connector_type": "web_search_fallback",
+      "voice": "CREATOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "松湖烟雨",
+          "text": "秋冬落羽杉成片；清晨常起薄雾；周末人流大、车位紧张；湖边蚊虫多。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "SEASONAL",
+          "text": "秋冬湖畔落羽杉成片，十一月至次年一月湖畔氛围感最好；清晨常有薄雾。"
+        },
+        {
+          "type": "QUEUE",
+          "text": "周末人流量大，车位紧张，建议早出发或优先工作日前往。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "湖边蚊虫较多，需备驱蚊用品；建议下午出发环湖，光线更柔和。"
+        }
+      ]
+    },
+    {
+      "title": "百度百科·松湖烟雨公共交通与配套",
+      "url": "https://baike.baidu.com/item/%E6%9D%BE%E6%B9%96%E7%83%9F%E9%9B%A8/7303926",
+      "connector_type": "web_search_fallback",
+      "voice": "EDITOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "松湖烟雨",
+          "text": "多条公交与环湖文旅专线可达；周末及节假日增开摆渡线路；周边有免费停车场。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "EXPERIENCE",
+          "text": "多条公交与环湖文旅专线可达「松湖烟雨」站，周末及节假日会增开摆渡线路。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "自驾可停松山湖文化艺术街区停车场，节假日大学路入口附近可能允许单排顺行停放。"
+        }
+      ]
+    },
+    {
+      "title": "东莞市人民政府 12345·轨道交通2号线运营口径",
+      "url": "https://www.dongguan.gov.cn/12345/201801/page/km/FAQ/faqDetail.html?klpId=828847&page=1",
+      "connector_type": "web_search_fallback",
+      "voice": "OFFICIAL",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "东莞轨道交通2号线",
+          "text": "全程约四十二分钟；高峰间隔约六分钟、平峰约八分钟、低峰约九分钟；周末运营安排与工作日不同。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "TRAVEL_TIME_HINT",
+          "text": "2号线全程运行约四十二分钟，高峰期行车间隔约六分钟、平峰约八分钟、低峰约九分钟。"
+        },
+        {
+          "type": "TRAVEL_TIME_HINT",
+          "text": "2号线周末与节假日的运营安排与工作日不同，排回程时须按周末口径另行核对。"
+        }
+      ]
+    },
+    {
+      "title": "携程攻略·南社古村拍照与夜游",
+      "url": "https://gs.ctrip.com/html5/you/sight/29/112649399.html",
+      "connector_type": "web_search_fallback",
+      "voice": "CREATOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {
+          "name": "南社明清古村落",
+          "text": "傍晚红灯笼夜景出片；西门入园经谢氏大宗祠、百岁坊、水塘观景台较顺；草木多蚊虫。"
+        }
+      ],
+      "claims": [
+        {
+          "type": "EXPERIENCE",
+          "text": "傍晚红灯笼夜景出片，西门入园后经谢氏大宗祠、百岁坊、水塘观景台是较顺的走法。"
+        },
+        {
+          "type": "EXPERIENCE",
+          "text": "古村草木多蚊虫，需带驱蚊液；汉服与新中式服装在此出片效果好。"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "「鸦片战争博物馆官网·开放与预约口径」的「鸦片战争博物馆」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「鸦片战争博物馆官网·开放与预约口径」的「海战博物馆」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「鸦片战争博物馆官网·开放与预约口径」的「威远炮台」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「东莞市可园博物馆官网·参观指南与预约」的「可园博物馆」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「东莞本地宝·南社明清古村落游玩提示」的「南社明清古村落」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「携程攻略·松山湖环湖骑行动线」的「松湖烟雨」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「携程攻略·松山湖环湖骑行动线」的「查理大桥」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「携程攻略·松山湖环湖骑行动线」的「华为欧洲小镇」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「携程攻略·松山湖季节与客流」的「松湖烟雨」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「百度百科·松湖烟雨公共交通与配套」的「松湖烟雨」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「东莞市人民政府 12345·轨道交通2号线运营口径」的「东莞轨道交通2号线」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线",
+    "「携程攻略·南社古村拍照与夜游」的「南社明清古村落」缺 features/why_visit/suggested_duration_minutes——景点卡不完整，补齐后才能进路线"
+  ],
+  "evidence_hint": [
+    {
+      "title": "鸦片战争博物馆官网·开放与预约口径",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "东莞市可园博物馆官网·参观指南与预约",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "东莞本地宝·南社明清古村落游玩提示",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "携程攻略·松山湖环湖骑行动线",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "携程攻略·松山湖季节与客流",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "百度百科·松湖烟雨公共交通与配套",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "东莞市人民政府 12345·轨道交通2号线运营口径",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    },
+    {
+      "title": "携程攻略·南社古村拍照与夜游",
+      "platform": null,
+      "suggested_level": "C",
+      "reason": "搜索索引/转载，只能算单源线索"
+    }
+  ],
+  "voices": {
+    "CREATOR": 3,
+    "EDITOR": 1,
+    "MEDIA": 1,
+    "OFFICIAL": 3
+  },
+  "credibility": {
+    "reviews": 0,
+    "water_suspects": 0,
+    "notes_with_promo_flags": 0,
+    "note": "水军信号是启发式提示，**不是结论**；promo_flags 同理——命中推广词不等于内容为假。两者都只用于「排后面看」。"
+  },
+  "coverage": {
+    "notes": 8,
+    "by_level": {
+      "C": 8
+    },
+    "connector_types": [
+      "web_search_fallback"
+    ],
+    "voices": {
+      "CREATOR": 3,
+      "EDITOR": 1,
+      "MEDIA": 1,
+      "OFFICIAL": 3
+    },
+    "reviews": 0,
+    "errors": 0,
+    "warnings": 12
+  },
+  "triangulation": {
+    "places": [
+      {
+        "place": "松湖烟雨",
+        "mentions": 3,
+        "independent_sources": 3,
+        "voices": [
+          "CREATOR",
+          "EDITOR"
+        ],
+        "reviews_seen": 0,
+        "status": "CROSS_CHECKED",
+        "sources": [
+          {
+            "domain": "gs.ctrip.com",
+            "voice": "CREATOR",
+            "title": "携程攻略·松山湖环湖骑行动线",
+            "url": "https://gs.ctrip.com/html5/you/sight/qinhuangdao132/145626610.html",
+            "checked_at": "2026-09-28",
+            "says": ""
+          },
+          {
+            "domain": "you.ctrip.com",
+            "voice": "CREATOR",
+            "title": "携程攻略·松山湖季节与客流",
+            "url": "https://you.ctrip.com/sight/dongguan212/1833792.html",
+            "checked_at": "2026-09-28",
+            "says": ""
+          },
+          {
+            "domain": "baike.baidu.com",
+            "voice": "EDITOR",
+            "title": "百度百科·松湖烟雨公共交通与配套",
+            "url": "https://baike.baidu.com/item/%E6%9D%BE%E6%B9%96%E7%83%9F%E9%9B%A8/7303926",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "南社明清古村落",
+        "mentions": 2,
+        "independent_sources": 2,
+        "voices": [
+          "CREATOR",
+          "MEDIA"
+        ],
+        "reviews_seen": 0,
+        "status": "CROSS_CHECKED",
+        "sources": [
+          {
+            "domain": "dg.bendibao.com",
+            "voice": "MEDIA",
+            "title": "东莞本地宝·南社明清古村落游玩提示",
+            "url": "https://dg.bendibao.com/dglvyou/2026813/ly183142.shtm",
+            "checked_at": "2026-09-28",
+            "says": ""
+          },
+          {
+            "domain": "gs.ctrip.com",
+            "voice": "CREATOR",
+            "title": "携程攻略·南社古村拍照与夜游",
+            "url": "https://gs.ctrip.com/html5/you/sight/29/112649399.html",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "东莞轨道交通2号线",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "OFFICIAL"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "www.dongguan.gov.cn",
+            "voice": "OFFICIAL",
+            "title": "东莞市人民政府 12345·轨道交通2号线运营口径",
+            "url": "https://www.dongguan.gov.cn/12345/201801/page/km/FAQ/faqDetail.html?klpId=828847&page=1",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "华为欧洲小镇",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "CREATOR"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "gs.ctrip.com",
+            "voice": "CREATOR",
+            "title": "携程攻略·松山湖环湖骑行动线",
+            "url": "https://gs.ctrip.com/html5/you/sight/qinhuangdao132/145626610.html",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "可园博物馆",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "OFFICIAL"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "dgkeyuan.org",
+            "voice": "OFFICIAL",
+            "title": "东莞市可园博物馆官网·参观指南与预约",
+            "url": "https://dgkeyuan.org/article/1762.html",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "威远炮台",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "OFFICIAL"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "www.ypzz.cn",
+            "voice": "OFFICIAL",
+            "title": "鸦片战争博物馆官网·开放与预约口径",
+            "url": "https://www.ypzz.cn/",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "查理大桥",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "CREATOR"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "gs.ctrip.com",
+            "voice": "CREATOR",
+            "title": "携程攻略·松山湖环湖骑行动线",
+            "url": "https://gs.ctrip.com/html5/you/sight/qinhuangdao132/145626610.html",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "海战博物馆",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "OFFICIAL"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "www.ypzz.cn",
+            "voice": "OFFICIAL",
+            "title": "鸦片战争博物馆官网·开放与预约口径",
+            "url": "https://www.ypzz.cn/",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      },
+      {
+        "place": "鸦片战争博物馆",
+        "mentions": 1,
+        "independent_sources": 1,
+        "voices": [
+          "OFFICIAL"
+        ],
+        "reviews_seen": 0,
+        "status": "SINGLE_SOURCE",
+        "sources": [
+          {
+            "domain": "www.ypzz.cn",
+            "voice": "OFFICIAL",
+            "title": "鸦片战争博物馆官网·开放与预约口径",
+            "url": "https://www.ypzz.cn/",
+            "checked_at": "2026-09-28",
+            "says": ""
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "places_total": 9,
+      "cross_checked": 2,
+      "single_source": 7,
+      "voices": [
+        "CREATOR",
+        "EDITOR",
+        "MEDIA",
+        "OFFICIAL"
+      ],
+      "note": "独立来源 ≥2 才算交叉印证；**单源不等于错，只是还没人替你复核**。本报告只做并列，不裁决冲突——冲突项要人工读原话，按 evidence-rules.md 第 ④ 条「矛盾项并列」处理。"
+    }
+  }
+}

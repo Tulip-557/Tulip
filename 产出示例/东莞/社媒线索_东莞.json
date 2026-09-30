@@ -1,0 +1,126 @@
+{
+  "destination": "东莞",
+  "checked_at": "2026-09-28",
+  "notes": [
+    {
+      "title": "鸦片战争博物馆官网·开放与预约口径",
+      "url": "https://www.ypzz.cn/",
+      "connector_type": "web_search_fallback",
+      "voice": "OFFICIAL",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "鸦片战争博物馆", "text": "周一全天闭馆；实行预约参观制。"},
+        {"name": "海战博物馆", "text": "周二全天闭馆；与威远炮台预约凭证通用。"},
+        {"name": "威远炮台", "text": "与海战博物馆预约凭证通用；按日限流。"}
+      ],
+      "claims": [
+        {"type": "CLOSURE", "text": "鸦片战争博物馆每周一全天闭馆，海战博物馆每周二全天闭馆——排虎门线必须先避开这两天。"},
+        {"type": "QUEUE", "text": "各馆实行预约参观制，须提前预约；海战博物馆与威远炮台的预约凭证可通用，其余各点须分别预约。"},
+        {"type": "QUEUE", "text": "虎门林则徐纪念馆、海战博物馆、沙角炮台、威远炮台分别按日限流，热门日建议早到。"}
+      ]
+    },
+    {
+      "title": "东莞市可园博物馆官网·参观指南与预约",
+      "url": "https://dgkeyuan.org/article/1762.html",
+      "connector_type": "web_search_fallback",
+      "voice": "OFFICIAL",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "可园博物馆", "text": "逢周二闭馆（法定节假日除外）；散客免预约；古建筑区与综合馆区分开管理。"}
+      ],
+      "claims": [
+        {"type": "CLOSURE", "text": "可园逢周二闭馆（国家法定节假日除外）——周二到东莞就别把可园排进去。"},
+        {"type": "EXPERIENCE", "text": "场馆每天在固定时段于集合点提供免费讲解，另可扫官方公众号二维码获取免费语音讲解。"},
+        {"type": "EXPERIENCE", "text": "可园分古建筑区与综合馆区两个馆区，综合馆区全年免费开放，两个馆区体验差别大。"}
+      ]
+    },
+    {
+      "title": "东莞本地宝·南社明清古村落游玩提示",
+      "url": "https://dg.bendibao.com/dglvyou/2026813/ly183142.shtm",
+      "connector_type": "web_search_fallback",
+      "voice": "MEDIA",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "南社明清古村落", "text": "现存祠堂二十余间、古民居两百余间；以长形水塘为中心布局；个别展馆有时段限制。"}
+      ],
+      "claims": [
+        {"type": "EXPERIENCE", "text": "村内现存祠堂二十余间、古民居两百余间，以中间长形水塘为中心布局，慢逛约两到三小时。"},
+        {"type": "EXPERIENCE", "text": "景区内含部分展馆，个别展馆有时段限制，祠堂类点位傍晚前后会关闭。"}
+      ]
+    },
+    {
+      "title": "携程攻略·松山湖环湖骑行动线",
+      "url": "https://gs.ctrip.com/html5/you/sight/qinhuangdao132/145626610.html",
+      "connector_type": "web_search_fallback",
+      "voice": "CREATOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "松湖烟雨", "text": "环湖绿道四十余公里；顺时针骑行下坡居多；湖边蚊虫多。"},
+        {"name": "查理大桥", "text": "可同时拍到湖面与华为欧洲小镇建筑群，出片首选机位。"},
+        {"name": "华为欧洲小镇", "text": "内部仅限员工预约进入，外部可在滨湖西路、康桥公交站外围拍远景。"}
+      ],
+      "claims": [
+        {"type": "EXPERIENCE", "text": "查理大桥视野开阔，可同时拍到湖面远景与华为欧洲小镇建筑群，是出片首选机位。"},
+        {"type": "EXPERIENCE", "text": "华为欧洲小镇内部仅限员工预约进入，外部游客可在滨湖西路、康桥公交站外围免费拍远景——不要试图进园区。"},
+        {"type": "EXPERIENCE", "text": "沿湖顺时针骑行下坡路段居多，路线轻松，环湖绿道四十余公里，全程骑行较费脚力。"}
+      ]
+    },
+    {
+      "title": "携程攻略·松山湖季节与客流",
+      "url": "https://you.ctrip.com/sight/dongguan212/1833792.html",
+      "connector_type": "web_search_fallback",
+      "voice": "CREATOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "松湖烟雨", "text": "秋冬落羽杉成片；清晨常起薄雾；周末人流大、车位紧张；湖边蚊虫多。"}
+      ],
+      "claims": [
+        {"type": "SEASONAL", "text": "秋冬湖畔落羽杉成片，十一月至次年一月湖畔氛围感最好；清晨常有薄雾。"},
+        {"type": "QUEUE", "text": "周末人流量大，车位紧张，建议早出发或优先工作日前往。"},
+        {"type": "EXPERIENCE", "text": "湖边蚊虫较多，需备驱蚊用品；建议下午出发环湖，光线更柔和。"}
+      ]
+    },
+    {
+      "title": "百度百科·松湖烟雨公共交通与配套",
+      "url": "https://baike.baidu.com/item/%E6%9D%BE%E6%B9%96%E7%83%9F%E9%9B%A8/7303926",
+      "connector_type": "web_search_fallback",
+      "voice": "EDITOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "松湖烟雨", "text": "多条公交与环湖文旅专线可达；周末及节假日增开摆渡线路；周边有免费停车场。"}
+      ],
+      "claims": [
+        {"type": "EXPERIENCE", "text": "多条公交与环湖文旅专线可达「松湖烟雨」站，周末及节假日会增开摆渡线路。"},
+        {"type": "EXPERIENCE", "text": "自驾可停松山湖文化艺术街区停车场，节假日大学路入口附近可能允许单排顺行停放。"}
+      ]
+    },
+    {
+      "title": "东莞市人民政府 12345·轨道交通2号线运营口径",
+      "url": "https://www.dongguan.gov.cn/12345/201801/page/km/FAQ/faqDetail.html?klpId=828847&page=1",
+      "connector_type": "web_search_fallback",
+      "voice": "OFFICIAL",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "东莞轨道交通2号线", "text": "全程约四十二分钟；高峰间隔约六分钟、平峰约八分钟、低峰约九分钟；周末运营安排与工作日不同。"}
+      ],
+      "claims": [
+        {"type": "TRAVEL_TIME_HINT", "text": "2号线全程运行约四十二分钟，高峰期行车间隔约六分钟、平峰约八分钟、低峰约九分钟。"},
+        {"type": "TRAVEL_TIME_HINT", "text": "2号线周末与节假日的运营安排与工作日不同，排回程时须按周末口径另行核对。"}
+      ]
+    },
+    {
+      "title": "携程攻略·南社古村拍照与夜游",
+      "url": "https://gs.ctrip.com/html5/you/sight/29/112649399.html",
+      "connector_type": "web_search_fallback",
+      "voice": "CREATOR",
+      "checked_at": "2026-09-28",
+      "place_evidence": [
+        {"name": "南社明清古村落", "text": "傍晚红灯笼夜景出片；西门入园经谢氏大宗祠、百岁坊、水塘观景台较顺；草木多蚊虫。"}
+      ],
+      "claims": [
+        {"type": "EXPERIENCE", "text": "傍晚红灯笼夜景出片，西门入园后经谢氏大宗祠、百岁坊、水塘观景台是较顺的走法。"},
+        {"type": "EXPERIENCE", "text": "古村草木多蚊虫，需带驱蚊液；汉服与新中式服装在此出片效果好。"}
+      ]
+    }
+  ]
+}

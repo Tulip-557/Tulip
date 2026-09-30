@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img">
+  <title>外滩与陆家嘴天际线示意图</title>
+  <desc>自绘示意图，非实景照片。左侧为外滩万国建筑群，右侧为陆家嘴三座高塔，中间为黄浦江。</desc>
+  <rect width="960" height="540" fill="#e9eef2"/>
+  <rect y="336" width="960" height="204" fill="#c3d2db"/>
+  <rect y="336" width="960" height="7" fill="#aebfc9"/>
+  <g fill="#8b8378">
+    <rect x="62" y="204" width="58" height="132"/>
+    <rect x="128" y="232" width="44" height="104"/>
+    <rect x="180" y="186" width="52" height="150"/>
+    <polygon points="206,186 206,150 212,138 218,150 218,186"/>
+    <rect x="240" y="222" width="40" height="114"/>
+    <rect x="288" y="196" width="62" height="140"/>
+    <rect x="356" y="240" width="46" height="96"/>
+    <rect x="410" y="212" width="54" height="124"/>
+  </g>
+  <g fill="#96a0a8">
+    <ellipse cx="206" cy="176" rx="16" ry="8"/>
+    <ellipse cx="319" cy="186" rx="14" ry="7"/>
+  </g>
+  <g fill="#6f7f8c">
+    <polygon points="618,336 634,96 650,336"/>
+    <rect x="686" y="150" width="42" height="186"/>
+    <rect x="694" y="122" width="26" height="28"/>
+    <polygon points="752,336 772,168 792,336"/>
+    <ellipse cx="836" cy="252" rx="15" ry="15"/>
+    <rect x="831" y="252" width="10" height="84"/>
+  </g>
+  <g stroke="#e9eef2" stroke-width="2">
+    <line x1="618" y1="130" x2="650" y2="130"/>
+    <line x1="620" y1="170" x2="648" y2="170"/>
+    <line x1="621" y1="210" x2="646" y2="210"/>
+    <line x1="622" y1="250" x2="645" y2="250"/>
+    <line x1="623" y1="290" x2="644" y2="290"/>
+  </g>
+  <g stroke="#c3d2db" stroke-width="3" opacity="0.85">
+    <line x1="120" y1="392" x2="260" y2="392"/>
+    <line x1="300" y1="428" x2="470" y2="428"/>
+    <line x1="560" y1="404" x2="700" y2="404"/>
+    <line x1="240" y1="466" x2="420" y2="466"/>
+    <line x1="600" y1="470" x2="780" y2="470"/>
+  </g>
+  <g fill="#3f4a54" font-family="sans-serif" text-anchor="middle">
+    <text x="262" y="372" font-size="21">外滩 · 万国建筑群</text>
+    <text x="734" y="372" font-size="21">陆家嘴</text>
+    <text x="480" y="516" font-size="25" font-weight="500">D1 动线示意图（自绘 · 非实景 · 非等比例）</text>
+    <text x="480" y="496" font-size="18" fill="#6b7783">南京东路 → 外滩 → 豫园，一路向东再向南，不走回头路</text>
+  </g>
+</svg>

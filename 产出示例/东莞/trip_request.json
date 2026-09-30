@@ -1,0 +1,34 @@
+{
+  "origin": "珠海",
+  "destination": "东莞",
+  "origin_city": "珠海",
+  "destination_city": "东莞",
+  "start_date": "2026-10-17",
+  "end_date": "2026-10-19",
+  "travelers": 3,
+  "budget_cny": 1500,
+  "budget_scope": "PER_PERSON",
+  "style": "balanced",
+  "must_visit": [
+    {"name": "可园", "priority": "IMPORTANT"},
+    {"name": "松山湖景区", "priority": "IMPORTANT"}
+  ],
+  "excluded_places": [],
+  "mobility": {
+    "level": "MODERATE",
+    "max_walking_km_per_day": 8,
+    "accepts_high_altitude": true,
+    "accessibility_needs": []
+  },
+  "tradeoff_priority": ["CORE_PLACES", "COMFORT", "PACE", "COST"],
+  "risk_tolerance": {"accepts_weather_dependent_core": true},
+  "browser_approval": {"xiaohongshu": "ANONYMOUS_ONLY", "ota": "ANONYMOUS_ONLY"},
+  "route_modes": ["transit", "driving"],
+  "transport_preferences": {
+    "accepts_early_departure": false,
+    "accepts_overnight_transport": false,
+    "accepts_transfers": true
+  },
+  "latest_return_time": null,
+  "discovery": {"radius_meters": 10000, "types": "110000|140000", "limit": 15}
+}

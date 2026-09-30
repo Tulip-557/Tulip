@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6d9b0"/>
+      <stop offset="45%" stop-color="#f0c091"/>
+      <stop offset="100%" stop-color="#e9b98f"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c98f63"/>
+      <stop offset="40%" stop-color="#8fae9f"/>
+      <stop offset="100%" stop-color="#3f6f66"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky3)"/>
+  <circle cx="240" cy="190" r="66" fill="#fff2d8" opacity="0.9"/>
+  <!-- 云 -->
+  <g fill="#ffffff" opacity="0.35">
+    <ellipse cx="620" cy="150" rx="150" ry="24"/>
+    <ellipse cx="880" cy="118" rx="110" ry="18"/>
+  </g>
+  <!-- 远山 -->
+  <path d="M0 372 L200 300 L380 356 L560 292 L780 360 L980 306 L1200 358 L1200 400 L0 400 Z" fill="#8f7d76" opacity="0.5"/>
+  <!-- 对岸欧式尖顶建筑群 -->
+  <g fill="#6b5a52" opacity="0.85">
+    <path d="M330 372 l0 -46 l22 -46 l22 46 l0 46 z"/>
+    <rect x="366" y="336" width="86" height="36"/>
+    <path d="M366 336 l43 -34 l43 34 z"/>
+    <path d="M480 372 l0 -40 l18 -40 l18 40 l0 40 z"/>
+    <rect x="512" y="344" width="70" height="28"/>
+    <path d="M512 344 l35 -26 l35 26 z"/>
+    <path d="M604 372 l0 -34 l16 -34 l16 34 l0 34 z"/>
+    <rect x="632" y="350" width="54" height="22"/>
+    <path d="M632 350 l27 -22 l27 22 z"/>
+    <rect x="700" y="330" width="96" height="42"/>
+    <path d="M700 330 l48 -38 l48 38 z"/>
+  </g>
+  <!-- 落羽杉林（对岸） -->
+  <g fill="#5f4a3c" opacity="0.8">
+    <path d="M780 372 l6 -70 l10 70 z"/>
+    <path d="M806 372 l6 -78 l10 78 z"/>
+    <path d="M834 372 l6 -66 l10 66 z"/>
+    <path d="M862 372 l6 -74 l10 74 z"/>
+    <path d="M890 372 l6 -62 l10 62 z"/>
+  </g>
+  <g fill="#7a5b3e" opacity="0.75">
+    <path d="M930 372 l6 -68 l10 68 z"/>
+    <path d="M956 372 l6 -76 l10 76 z"/>
+    <path d="M984 372 l6 -64 l10 64 z"/>
+  </g>
+  <!-- 湖面 -->
+  <rect x="0" y="372" width="1200" height="236" fill="url(#lake)"/>
+  <g stroke="#ffe9c9" stroke-opacity="0.45" stroke-width="4" fill="none">
+    <path d="M300 430 q120 -10 240 0 t240 0"/>
+    <path d="M420 470 q100 -8 200 0 t200 0"/>
+    <path d="M240 512 q130 -10 260 0 t260 0"/>
+  </g>
+  <!-- 木栈道 -->
+  <g>
+    <path d="M0 610 h1200 v58 H0 z" fill="#8a6a4a"/>
+    <g stroke="#6d5138" stroke-width="3">
+      <line x1="60" y1="610" x2="60" y2="668"/>
+      <line x1="180" y1="610" x2="180" y2="668"/>
+      <line x1="300" y1="610" x2="300" y2="668"/>
+      <line x1="420" y1="610" x2="420" y2="668"/>
+      <line x1="540" y1="610" x2="540" y2="668"/>
+      <line x1="660" y1="610" x2="660" y2="668"/>
+      <line x1="780" y1="610" x2="780" y2="668"/>
+      <line x1="900" y1="610" x2="900" y2="668"/>
+      <line x1="1020" y1="610" x2="1020" y2="668"/>
+      <line x1="1140" y1="610" x2="1140" y2="668"/>
+    </g>
+    <rect x="0" y="600" width="1200" height="12" fill="#9c7c58"/>
+  </g>
+  <!-- 栏杆 -->
+  <g stroke="#a8875f" stroke-width="5">
+    <line x1="0" y1="572" x2="1200" y2="572"/>
+  </g>
+  <g fill="#a8875f">
+    <rect x="80" y="572" width="8" height="30"/>
+    <rect x="300" y="572" width="8" height="30"/>
+    <rect x="520" y="572" width="8" height="30"/>
+    <rect x="740" y="572" width="8" height="30"/>
+    <rect x="960" y="572" width="8" height="30"/>
+    <rect x="1140" y="572" width="8" height="30"/>
+  </g>
+  <!-- 近岸落羽杉 -->
+  <g fill="#4a3a2c">
+    <path d="M120 668 l8 -120 l14 120 z"/>
+    <path d="M162 668 l8 -104 l14 104 z"/>
+    <path d="M1040 668 l8 -112 l14 112 z"/>
+    <path d="M1084 668 l8 -96 l14 96 z"/>
+  </g>
+  <g fill="#6b4a30">
+    <ellipse cx="130" cy="536" rx="46" ry="30"/>
+    <ellipse cx="172" cy="556" rx="40" ry="26"/>
+    <ellipse cx="1050" cy="544" rx="44" ry="28"/>
+    <ellipse cx="1094" cy="562" rx="38" ry="24"/>
+  </g>
+  <!-- 前景草地 -->
+  <path d="M0 668 h1200 v132 H0 z" fill="#4d6141"/>
+  <path d="M0 668 q200 -20 400 4 q220 26 420 -6 q200 -30 380 4 L1200 800 L0 800 Z" fill="#3f5235"/>
+</svg>

@@ -1,0 +1,493 @@
+{
+  "city": "东莞",
+  "checked_at": "2026-09-28T22:22+0800",
+  "provider": "amap",
+  "radius_meters": 1500,
+  "stops": [
+    {
+      "stop": "鸦片战争博物馆",
+      "location": "113.660035,22.824313",
+      "places": [
+        {
+          "name": "林则徐销烟池与虎门炮台旧址",
+          "address": "虎门镇解放路86-4号",
+          "category": "风景名胜;风景名胜;国家级景点",
+          "rating": 4.7,
+          "location": "113.660034,22.824316",
+          "distance_meters": 0
+        },
+        {
+          "name": "林则徐销烟池旧址",
+          "address": "虎门镇解放路113号鸦片战争博物馆",
+          "category": "风景名胜;风景名胜;国家级景点",
+          "rating": 4.4,
+          "location": "113.660033,22.824313",
+          "distance_meters": 0
+        },
+        {
+          "name": "玉墟古庙",
+          "address": "虎门镇解放路113号鸦片战争博物馆",
+          "category": "风景名胜;风景名胜;寺庙道观",
+          "rating": 3.0,
+          "location": "113.660045,22.824295",
+          "distance_meters": 2
+        },
+        {
+          "name": "林则徐铜像雕像",
+          "address": "虎门镇解放路113号鸦片战争博物馆内(东北角)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.4,
+          "location": "113.660135,22.824631",
+          "distance_meters": 36
+        },
+        {
+          "name": "荷韵池",
+          "address": "虎门镇解放路113号鸦片战争博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.6,
+          "location": "113.659807,22.824578",
+          "distance_meters": 37
+        },
+        {
+          "name": "抗英群雕",
+          "address": "虎门镇解放路113号鸦片战争博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.2,
+          "location": "113.660429,22.824218",
+          "distance_meters": 41
+        },
+        {
+          "name": "虎门销化鸦片纪念碑",
+          "address": "解放路113号",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 3.7,
+          "location": "113.659998,22.824754",
+          "distance_meters": 49
+        },
+        {
+          "name": "林则徐虎门销烟记",
+          "address": "解放路88号",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 4.3,
+          "location": "113.660368,22.823948",
+          "distance_meters": 53
+        },
+        {
+          "name": "鸦片战争博物馆探索工坊",
+          "address": "解放路113号",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 3.5,
+          "location": "113.660625,22.823975",
+          "distance_meters": 71
+        },
+        {
+          "name": "则徐公园",
+          "address": "解放路与镇口大路交叉口西南40米",
+          "category": "风景名胜;公园广场;公园",
+          "rating": 3.8,
+          "location": "113.660652,22.823915",
+          "distance_meters": 77
+        },
+        {
+          "name": "虎门林则徐纪念馆(入口)",
+          "address": "解放路与镇口大路交叉口西南20米",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": null,
+          "location": "113.660725,22.824025",
+          "distance_meters": 77
+        },
+        {
+          "name": "广东水师提督石狮雕塑",
+          "address": "镇口大路与镇口松岗路交叉口西南40米",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.9,
+          "location": "113.659876,22.824998",
+          "distance_meters": 77
+        },
+        {
+          "name": "林则徐销烟池旧址-画廊",
+          "address": "林则徐销烟池旧址东南门旁",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": null,
+          "location": "113.660558,22.823795",
+          "distance_meters": 78
+        },
+        {
+          "name": "玉虚古庙",
+          "address": "镇口松岗路1号",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 3.3,
+          "location": "113.660004,22.825105",
+          "distance_meters": 88
+        },
+        {
+          "name": "水碾",
+          "address": "镇口大路1号",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 2.5,
+          "location": "113.659489,22.824946",
+          "distance_meters": 89
+        },
+        {
+          "name": "前置滑膛铁炮雕塑",
+          "address": "虎门镇解放路113号鸦片战争博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.3,
+          "location": "113.659763,22.825142",
+          "distance_meters": 96
+        },
+        {
+          "name": "虎门故事展厅",
+          "address": "虎门镇解放路113号鸦片战争博物馆内(西北角)",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 3.8,
+          "location": "113.659372,22.825002",
+          "distance_meters": 102
+        },
+        {
+          "name": "迪雅文化中心",
+          "address": "虎门镇解放路113号鸦片战争博物馆对面",
+          "category": "科教文化服务;文化宫;文化宫",
+          "rating": null,
+          "location": "113.661066,22.824238",
+          "distance_meters": 105
+        },
+        {
+          "name": "打谷机",
+          "address": "镇口大路24东",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 2.5,
+          "location": "113.659254,22.824982",
+          "distance_meters": 109
+        }
+      ],
+      "filtered_as_noise": 0
+    },
+    {
+      "stop": "可园博物馆",
+      "location": "113.74339,23.042432",
+      "places": [
+        {
+          "name": "可园博物馆-柳堤",
+          "address": "可园路32号可园博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.6,
+          "location": "113.743256,23.042376",
+          "distance_meters": 15
+        },
+        {
+          "name": "莫伯治与岭南建筑艺术展厅",
+          "address": "莞城可园北路与下关路交叉口南100米",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.2,
+          "location": "113.743665,23.04268",
+          "distance_meters": 39
+        },
+        {
+          "name": "沁心亭",
+          "address": "可园博物馆-博物馆区(东南角)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.7,
+          "location": "113.743642,23.042762",
+          "distance_meters": 44
+        },
+        {
+          "name": "玲珑园",
+          "address": "可园博物馆-博物馆区",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.4,
+          "location": "113.743489,23.042897",
+          "distance_meters": 52
+        },
+        {
+          "name": "可园博物馆-西湖",
+          "address": "莞城街道西隅社区可园路32号可园博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.3,
+          "location": "113.742851,23.042424",
+          "distance_meters": 55
+        },
+        {
+          "name": "可园博物馆-博物馆区",
+          "address": "可园路32号可园博物馆内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.9,
+          "location": "113.743467,23.042933",
+          "distance_meters": 56
+        },
+        {
+          "name": "居巢居廉与可园展厅",
+          "address": "可园博物馆-博物馆区",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.3,
+          "location": "113.743623,23.042898",
+          "distance_meters": 57
+        },
+        {
+          "name": "乐韵亭",
+          "address": "可园博物馆-博物馆区",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.7,
+          "location": "113.74385,23.042742",
+          "distance_meters": 58
+        },
+        {
+          "name": "可园博物馆-问鱼台",
+          "address": "可园路32号可园博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.4,
+          "location": "113.744093,23.042581",
+          "distance_meters": 73
+        },
+        {
+          "name": "可园博物馆-东湖",
+          "address": "莞城街道西隅社区可园路32号可园博物馆",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.1,
+          "location": "113.74412,23.042257",
+          "distance_meters": 77
+        },
+        {
+          "name": "可园博物馆-竹林小径",
+          "address": "可园路32号可园博物馆内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.6,
+          "location": "113.744039,23.04279",
+          "distance_meters": 77
+        },
+        {
+          "name": "岭南传统园林与民居展厅",
+          "address": "可园博物馆-博物馆区内(东侧)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.0,
+          "location": "113.743788,23.043038",
+          "distance_meters": 78
+        },
+        {
+          "name": "孔雀门",
+          "address": "可园路32号可园博物馆内古建筑区",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.8,
+          "location": "113.744092,23.042127",
+          "distance_meters": 79
+        },
+        {
+          "name": "东莞可园-亲水平台",
+          "address": "可园路32号可园博物馆内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.3,
+          "location": "113.742607,23.04221",
+          "distance_meters": 83
+        },
+        {
+          "name": "可园博物馆-古建筑区",
+          "address": "可园路32号可园博物馆内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.0,
+          "location": "113.743653,23.041673",
+          "distance_meters": 88
+        },
+        {
+          "name": "东莞市书法家协会展览中心",
+          "address": "莞城可园路32号可园博物馆",
+          "category": "科教文化服务;展览馆;展览馆",
+          "rating": 4.0,
+          "location": "113.743426,23.041602",
+          "distance_meters": 92
+        },
+        {
+          "name": "可园-环碧廊",
+          "address": "莞城街道西隅社区可园路32号可园博物馆",
+          "category": "风景名胜;公园广场;公园",
+          "rating": 2.9,
+          "location": "113.743697,23.041652",
+          "distance_meters": 92
+        },
+        {
+          "name": "可园广场",
+          "address": "可园路32号可园博物馆",
+          "category": "风景名胜;公园广场;城市广场",
+          "rating": 3.7,
+          "location": "113.743523,23.04327",
+          "distance_meters": 94
+        },
+        {
+          "name": "可园博物馆-石雕展区",
+          "address": "可园路32号可园博物馆内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.4,
+          "location": "113.744382,23.042311",
+          "distance_meters": 102
+        }
+      ],
+      "filtered_as_noise": 0
+    },
+    {
+      "stop": "松湖烟雨",
+      "location": "113.890634,22.915318",
+      "places": [
+        {
+          "name": "松山湖风景区松湖烟雨",
+          "address": "松山湖风景区(东北角)",
+          "category": "风景名胜;风景名胜;国家级景点",
+          "rating": 4.7,
+          "location": "113.890634,22.915318",
+          "distance_meters": 0
+        },
+        {
+          "name": "松山湖音乐喷泉广场",
+          "address": "滨湖路松山湖风景区内(北侧)",
+          "category": "风景名胜;公园广场;城市广场",
+          "rating": 4.4,
+          "location": "113.888992,22.917304",
+          "distance_meters": 277
+        },
+        {
+          "name": "松湖广场",
+          "address": "松山湖管委会松山湖至诚路12号松山湖风景区内(北侧)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.1,
+          "location": "113.889043,22.917447",
+          "distance_meters": 287
+        },
+        {
+          "name": "松山湖风景区松湖烟雨-观景台",
+          "address": "松山湖管委会松山湖科技产业园区松湖烟雨内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.0,
+          "location": "113.896377,22.916766",
+          "distance_meters": 609
+        },
+        {
+          "name": "烟雨亭",
+          "address": "松山湖科技产业园区松湖烟雨内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.7,
+          "location": "113.896139,22.917775",
+          "distance_meters": 626
+        },
+        {
+          "name": "松湖烟雨-情人湾",
+          "address": "松山湖科技产业园区松湖烟雨内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.8,
+          "location": "113.897088,22.915097",
+          "distance_meters": 661
+        },
+        {
+          "name": "松山湖数学探索馆",
+          "address": "松山湖园区沁园路33号1栋101室",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 4.6,
+          "location": "113.887676,22.921255",
+          "distance_meters": 726
+        },
+        {
+          "name": "松山湖盒子美术馆",
+          "address": "松山湖文化艺术街区A2",
+          "category": "科教文化服务;美术馆;美术馆",
+          "rating": 4.5,
+          "location": "113.886922,22.921007",
+          "distance_meters": 738
+        },
+        {
+          "name": "波波女雕塑",
+          "address": "松山湖科技产业园区松湖烟雨内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.0,
+          "location": "113.897354,22.917755",
+          "distance_meters": 739
+        },
+        {
+          "name": "松山湖双年展《汗露》",
+          "address": "万科虹溪诺雅西侧210米",
+          "category": "科教文化服务;展览馆;展览馆",
+          "rating": 3.6,
+          "location": "113.897871,22.916244",
+          "distance_meters": 748
+        },
+        {
+          "name": "钟书阁(悠兰里ULAND松山湖文化艺术街区店)",
+          "address": "松山湖文化艺术街区A3",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 4.6,
+          "location": "113.886123,22.92087",
+          "distance_meters": 771
+        },
+        {
+          "name": "松山湖双年展《光纬共生体》",
+          "address": "礼宾路与沁园路交叉口东南320米",
+          "category": "科教文化服务;展览馆;展览馆",
+          "rating": 3.9,
+          "location": "113.888315,22.922007",
+          "distance_meters": 780
+        },
+        {
+          "name": "松山湖风景区-荷香水榭凉亭",
+          "address": "荷香水榭内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.5,
+          "location": "113.894365,22.921964",
+          "distance_meters": 831
+        },
+        {
+          "name": "荷香水榭",
+          "address": "松山湖科技产业园区松湖烟雨内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.5,
+          "location": "113.894454,22.922069",
+          "distance_meters": 846
+        },
+        {
+          "name": "中国根书艺术馆(松山湖馆)",
+          "address": "悠兰里ULAND松山湖文化艺术街区A4",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": null,
+          "location": "113.885472,22.921303",
+          "distance_meters": 849
+        },
+        {
+          "name": "松山湖文化馆",
+          "address": "礼宾路与沁园路交叉口南280米",
+          "category": "科教文化服务;文化宫;文化宫",
+          "rating": null,
+          "location": "113.885825,22.921725",
+          "distance_meters": 866
+        },
+        {
+          "name": "月牙湾",
+          "address": "松山湖",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.9,
+          "location": "113.898787,22.913045",
+          "distance_meters": 872
+        },
+        {
+          "name": "榕树下.榕荫庭院",
+          "address": "大学路松山湖大桥桥底",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 3.9,
+          "location": "113.894471,22.907987",
+          "distance_meters": 904
+        },
+        {
+          "name": "TNT天酷街舞中心(松山湖店)",
+          "address": "东城街道松山湖悠兰里ULAND文化艺术街区B3栋三楼301号",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 4.5,
+          "location": "113.886375,22.922675",
+          "distance_meters": 927
+        },
+        {
+          "name": "松山湖人工智能科学馆",
+          "address": "礼宾路",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 4.5,
+          "location": "113.885121,22.922015",
+          "distance_meters": 934
+        }
+      ],
+      "filtered_as_noise": 0
+    }
+  ]
+}

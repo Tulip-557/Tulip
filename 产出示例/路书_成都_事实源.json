@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "destination": "成都",
+    "city_code": "cd",
+    "title": "成都路书",
+    "trip_theme": "秋日老城与烟火气",
+    "origin": "珠海",
+    "nights": "3 天 2 晚",
+    "party": "2 人",
+    "date_range": "2026-10-01 ~ 2026-10-03",
+    "verified_date": "2026-09-27",
+    "photos_source": "自绘文字占位图（非实拍、非图库素材）",
+    "photos_note": "4 张均为自绘文字占位图（宽窄巷子、川西民居、熊猫、竹径），逐张在 caption 标「示意」",
+    "sketch_note": "自绘示意图：非等比例，仅供参考",
+    "variant": "friend",
+    "render_fixture": true,
+    "render_fixture_reason": "渲染基线桩件：全文 0 枚证据徽章、无 compact 档。它的价值在版式指纹（63aa6072b6）与逐字节复现，不在内容，所以不参与 source_audit / compact_check 等内容闸门。补徽章会改产物字节、等于毁掉基线，故保持原样"
+  },
+  "days": [
+    {
+      "date": "2026-10-01",
+      "theme": "宽窄巷子 · 老城慢行",
+      "title": "10-01 周四 · 落地老城，先把步子放慢",
+      "summary": "今天不赶路，落地先安顿，下午只走一个片区。",
+      "photos": [
+        {
+          "src": "imgs/kuanzhai.png",
+          "caption": "宽窄巷子街景（示意）"
+        },
+        {
+          "src": "imgs/minju.png",
+          "caption": "川西民居院门（示意）"
+        }
+      ],
+      "slots": [
+        {
+          "time": "11:30",
+          "body": "<b>落地天府机场 → 酒店</b>。地铁 18 号线转 1 号线，全程约 <b>62 分钟</b>（高德路线，查询于 2026-09-27）【估算】"
+        },
+        {
+          "time": "14:30",
+          "body": "<b>宽窄巷子</b>。免费开放，全天可进；人流高峰在 16:00 之后，建议此时段先逛窄巷子。"
+        },
+        {
+          "time": "18:00",
+          "body": "<b>晚餐 · 马旺子川菜馆（宽窄巷子店）</b>。人均 <b>¥95</b>（大众点评 2026-09-27），需现场排队，建议 17:30 前到。"
+        }
+      ],
+      "notes": [
+        {
+          "kind": "metro",
+          "text": "地铁 1 号线「宽窄巷子」站 B 口出，步行 3 分钟。"
+        },
+        {
+          "kind": "photo",
+          "text": "窄巷子 27 号院门、井巷子砖墙是最出片的两个点，下午侧光最好。"
+        },
+        {
+          "kind": "stay",
+          "text": "住宽窄巷子片区，明后两天可步行或地铁直达，不用挪行李。"
+        }
+      ],
+      "warnings": [
+        "黄金周首日，机场到市区地铁拥挤，行李多建议打车（约 ¥120，高德预估 2026-09-27）。"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "theme": "大熊猫基地 · 早去早回",
+      "title": "10-02 周五 · 看熊猫要趁早",
+      "summary": "熊猫上午最活跃，7:30 入园是唯一正确的时间。",
+      "photos": [
+        {
+          "src": "imgs/panda.png",
+          "caption": "大熊猫基地（示意）"
+        }
+      ],
+      "slots": [
+        {
+          "time": "07:30",
+          "body": "<b>大熊猫繁育研究基地</b>。门票 <b>¥55</b>（官网 2026-09-27），需提前 1 天在官方公众号实名预约，当日不放票。"
+        },
+        {
+          "time": "12:00",
+          "body": "<b>午餐 · 基地内熊猫餐厅</b>。人均 <b>¥60</b>，园区内唯一正餐选择，口味一般但省时间。"
+        },
+        {
+          "time": "15:00",
+          "body": "<b>回市区 · 人民公园鹤鸣茶社</b>。盖碗茶 <b>¥28/位</b>，可无限续水，坐到傍晚。"
+        },
+        {
+          "time": "18:30",
+          "body": "<b>晚餐 · 钢管厂五区小郡肝串串香</b>。人均 <b>¥80</b>（点评 2026-09-27），营业至次日 02:00。"
+        }
+      ],
+      "notes": [
+        {
+          "kind": "metro",
+          "text": "地铁 3 号线「熊猫大道」站 A 口，转园区摆渡车 5 分钟。"
+        },
+        {
+          "kind": "stay",
+          "text": "连住，无需搬行李。"
+        }
+      ],
+      "warnings": [
+        "基地闭园 18:00，观光车 17:00 停运，别把行程排太晚。"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "theme": "杜甫草堂 · 收尾与返程",
+      "title": "10-03 周六 · 半日收尾，下午返程",
+      "summary": "最后半天留给草堂，留足 3 小时去机场。",
+      "photos": [
+        {
+          "src": "imgs/caotang.png",
+          "caption": "杜甫草堂竹径（示意）"
+        }
+      ],
+      "slots": [
+        {
+          "time": "09:00",
+          "body": "<b>杜甫草堂</b>。门票 <b>¥50</b>（官网 2026-09-27），开放 08:00–18:00（17:00 停止入场）。"
+        },
+        {
+          "time": "12:00",
+          "body": "<b>午餐 · 草堂附近陈麻婆豆腐（青华路店）</b>。人均 <b>¥70</b>，营业 10:30–21:00。"
+        },
+        {
+          "time": "14:00",
+          "body": "<b>返程</b>。草堂 → 天府机场地铁约 <b>70 分钟</b>（高德路线，2026-09-27）。"
+        }
+      ],
+      "notes": [
+        {
+          "kind": "metro",
+          "text": "地铁 4 号线「草堂北路」站 D 口，步行 8 分钟。"
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "sections": {
+    "overview": "<div class='eyebrow'>总览</div><h1>成都 3 天 · 秋日老城与烟火气</h1><p class='lead'>珠海出发，2 人，3 天 2 晚。节奏偏慢，每天只排一个主片区，中午留足吃饭时间。</p><p class='lead'>全程地铁可达，不需要租车。信息均为 2026-09-27 联网实查。</p><div class='warn-line'>黄金周首尾两天机场线拥挤，建议返程预留 3 小时。</div><div class='weather'><div class='wday'><div class='d'>10-01</div><div class='w'>多云</div><div class='t'>19–26℃</div></div><div class='wday'><div class='d'>10-02</div><div class='w'>晴</div><div class='t'>18–27℃</div></div><div class='wday'><div class='d'>10-03</div><div class='w'>阴有小雨</div><div class='t'>17–23℃</div></div></div><p class='lead'>天气来源：中央气象台 2026-09-27 预报，临近出发会再核一次。</p><div class='card' id='prepCard'><h2>出行准备</h2><ul class='check'><li><span class='ct'>身份证 + 手机（熊猫基地、草堂均需实名预约）</span></li><li><span class='ct'>折叠伞（10-03 有小雨）</span></li><li><span class='ct'>舒适步行鞋（三天日均步行 8–12 公里）</span></li></ul></div>",
+    "drive": "<div class='eyebrow'>路程</div><h2>大交通与市区交通</h2><div class='card'><p><b>去程</b> 珠海金湾 → 成都天府，10-01 早班机，落地 11:00。</p><p><b>返程</b> 成都天府 → 珠海金湾，10-03 17:30 起飞，14:00 从草堂出发。</p></div><table class='tb'><tr><th>路段</th><th>方式</th><th>耗时</th><th>备注</th></tr><tr><td>天府机场 → 宽窄巷子</td><td>地铁 18→1 号线</td><td>约 62 分钟</td><td>高德路线，2026-09-27</td></tr><tr><td>宽窄巷子 → 熊猫基地</td><td>地铁 3 号线 + 摆渡</td><td>约 45 分钟</td><td>高德路线，2026-09-27</td></tr><tr><td>市区 → 天府机场</td><td>地铁 1→18 号线</td><td>约 70 分钟</td><td>黄金周预留 3 小时</td></tr></table>",
+    "boost": "<div class='eyebrow'>备选</div><h2>时间富余才去</h2><div class='card'><p><b>青羊宫</b> —— 与草堂顺路，门票 ¥10，若 10-03 上午体力富余可加。</p><p><b>玉林路小酒馆</b> —— 10-02 晚上不累的话，地铁 3 号线直达，夜里 22:00 后最有氛围。</p></div>",
+    "ticket": "<div class='eyebrow'>门票</div><h2>门票与预约</h2><table class='tb'><tr><th>景点</th><th>票价</th><th>放票</th><th>预约截止</th></tr><tr><td>大熊猫繁育研究基地</td><td>¥55</td><td>提前 1 天 09:00</td><td>当日不放票，须提前约</td></tr><tr><td>杜甫草堂</td><td>¥50</td><td>提前 7 天</td><td>可当日约，旺季建议提前</td></tr><tr><td>宽窄巷子</td><td>免费</td><td>—</td><td>无需预约</td></tr></table><p class='lead'>票价均为官网 2026-09-27 实查。学生/老人半价需现场查验身份证。</p>",
+    "tips": "<div class='eyebrow'>提示</div><h2>避雷</h2><div class='tips'><div class='tip'>熊猫基地观光车 17:00 停运，别以为园区 18:00 关就来得及逛完。</div><div class='tip'>宽窄巷子里的小吃价格是外面的 2–3 倍，想吃正经川菜走两条街到长顺街。</div><div class='tip'>黄金周熊猫基地 7:30 开园即入园，8:30 之后人挤人，看不到活动的熊猫。</div></div>",
+    "stay": "<div class='eyebrow'>住宿</div><h2>住</h2><div class='card'><p><b>片区选择</b>：宽窄巷子 / 人民公园一带。地铁 1、4 号线交汇，三天行程都不用跨区。</p><p><b>已订口径</b>：退房时间 12:00；入住时问清三样——是否有押金、能否寄存行李、早餐时间。</p><p><b>价档参考</b>：黄金周该片区舒适型 ¥450–700/晚（携程 2026-09-27 查询）。</p></div>",
+    "cost": "<div class='eyebrow'>预算</div><h2>预算</h2><div class='stats'><div class='stat'><div class='n'>¥4,200</div><div class='l'>两人合计（不含购物）</div></div><div class='stat'><div class='n'>¥2,100</div><div class='l'>人均</div></div><div class='stat'><div class='n'>¥1,150</div><div class='l'>住宿（2 晚）</div></div></div><table class='tb'><tr><th>项目</th><th>金额</th><th>说明</th></tr><tr><td>往返机票</td><td>¥1,600</td><td>2 人，早班去晚班回</td></tr><tr><td>住宿</td><td>¥1,150</td><td>2 晚，¥575/晚</td></tr><tr><td>餐饮</td><td>¥900</td><td>6 顿正餐，人均 ¥75</td></tr><tr><td>门票</td><td>¥210</td><td>熊猫 ¥55×2 + 草堂 ¥50×2</td></tr><tr><td>市内交通</td><td>¥180</td><td>地铁 + 少量打车</td></tr><tr><td>隐藏成本</td><td>¥160</td><td>行李寄存、临时打车、伴手礼零钱</td></tr></table>",
+    "sos": "<div class='eyebrow'>应急</div><h2>Plan B</h2><div class='sos-grid'><div class='sos'><h4>熊猫基地约满</h4><p>改去成都动物园（¥20，无需预约）或青城山，同日地铁可达。</p></div><div class='sos'><h4>10-03 暴雨</h4><p>草堂改室内：成都博物馆（免费，需预约）或四川博物院。</p></div><div class='sos'><h4>返程航班延误</h4><p>天府机场地铁 18 号线末班 23:00；超时改打车，约 ¥120。</p></div></div>",
+    "eat": "<div class='eyebrow'>美食</div><h2>餐厅</h2><table class='tb'><tr><th>时段</th><th>店</th><th>地界</th><th>人均</th><th>营业</th></tr><tr><td>10-01 午</td><td>马旺子川菜馆（宽窄巷子店）</td><td>宽窄巷子</td><td>¥95</td><td>11:00–14:00 / 17:00–21:00</td></tr><tr><td>10-01 晚</td><td>钢管厂五区小郡肝串串香</td><td>新华公园</td><td>¥80</td><td>17:00–02:00</td></tr><tr><td>10-02 午</td><td>熊猫餐厅（基地内）</td><td>熊猫基地</td><td>¥60</td><td>11:00–15:00</td></tr><tr><td>10-02 晚</td><td>蜀大侠火锅（人民公园店）</td><td>人民公园</td><td>¥110</td><td>11:00–23:00</td></tr><tr><td>10-03 午</td><td>陈麻婆豆腐（青华路店）</td><td>草堂</td><td>¥70</td><td>10:30–21:00</td></tr></table><p class='lead'><b>早餐</b> · 随意 —— 酒店含早；或楼下「甘食记」肥肠粉（¥18）。<br><b>宵夜</b> · 随意 —— 玉林串串、冒椒火辣，营业至凌晨。</p>",
+    "gift": "<div class='eyebrow'>特产</div><h2>送礼</h2><div class='card'><p><b>送礼三问</b>：送给谁（长辈 / 同事 / 朋友）？预算多少？要不要带得走？</p><p><b>推荐</b>：郫县豆瓣（超市装 ¥15–30）、张飞牛肉（¥40/袋）、竹叶青茶（¥120/罐）。</p><p><b>提醒</b>：别在景点门口买——同款在超市便宜一半，且日期更新。</p></div>"
+  }
+}

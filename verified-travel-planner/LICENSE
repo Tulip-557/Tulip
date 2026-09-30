@@ -1,0 +1,122 @@
+MIT License
+
+Copyright (c) 2026 verified-travel-planner（本 skill 的融合与改写部分）
+
+---
+
+本作品是以下两个 MIT 许可项目的衍生作品（derivative work）。
+根据 MIT 许可证要求，其原始版权声明与许可声明一并保留如下。
+
+随包分发、直接来自上游的文件（逐项可追溯，详见 THIRD_PARTY_NOTICES.md 第一节）。
+**标注口径**：`原样` = 一个字节未改；`已改动` = 有改动或派生，改动内容见括号。
+本清单与 THIRD_PARTY_NOTICES.md 的「归属核对表」一一对应，
+**`tools/validate_skill.py` 会校验两者是否一致**（不一致即 FAIL）。
+
+  · awangwang123/jianhao-travel-planner
+      assets/情报卡_基准骨架.html            —— 原样
+      assets/路书_基准骨架.html              —— 已改动（补证据等级徽章 CSS；2026-09-30
+                                                打印块动效覆盖加 !important；
+                                                版式指纹随之 9c3c6249a4 → cd440ea068 → 63aa6072b6）
+      tools/consistency.py                  —— 已改动（占位符正则长度上限 24→80；
+                                                原上限会漏掉骨架里那条 40+ 字符的配图说明占位符）
+
+  · tanweiping1012-source/travel-planner
+      engine/travel_planner/timeutil.py      —— 原样
+      engine/travel_planner/models.py        —— 原样
+      engine/travel_planner/intake.py        —— 已改动（新增 planned_places 采集项与校验）
+      engine/travel_planner/flight.py        —— 原样
+      engine/travel_planner/lodging.py       —— 原样
+      engine/travel_planner/rail.py          —— 原样
+      engine/travel_planner/research.py      —— 原样
+      engine/travel_planner/geomatch.py      —— 原样
+      engine/travel_planner/workflow.py      —— 已改动（快照内嵌 raw_calls 来源留痕；
+                                                路线并发采集，顺序/隔离语义同串行）
+      engine/travel_planner/amap.py          —— 已改动（补退避重试自适应、call_log 留痕）
+      engine/travel_planner/feasibility.py   —— 已改动（EMPTY_ITINERARY 由警告提为阻断级；
+                                                2026-09-30 结构重构，报告逐字节一致）
+      engine/travel_planner/diagnostics.py   —— 已改动（扩展自检分支、区分配置空与损坏）
+      engine/travel_planner/credentials.py   —— 已改动（增加 Windows 支持：
+                                                环境变量 → 本地凭据文件 → macOS 钥匙串）
+      tools/travel_planner.py                —— 已改动（派生文件，六处适配：
+                                                引擎路径 src/→engine/、跨平台凭据、
+                                                doctor 合并本机检查、evaluate 非零退出码、
+                                                nearby-spots 命令、来源留痕出口）
+
+================================================================================
+上游项目一：awangwang123/jianhao-travel-planner
+https://github.com/awangwang123/jianhao-travel-planner
+================================================================================
+
+MIT License
+
+Copyright (c) 2026 awangwang123
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+上游项目二：tanweiping1012-source/travel-planner
+https://github.com/tanweiping1012-source/travel-planner
+================================================================================
+
+MIT License
+
+Copyright (c) 2026 travel-planner-mvp contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+本 skill 自身部分
+================================================================================
+
+Copyright (c) 2026 verified-travel-planner 作者（融合、改写与自研部分；
+逐文件归属见上文清单与 THIRD_PARTY_NOTICES.md）
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

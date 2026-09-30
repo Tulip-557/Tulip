@@ -1,0 +1,74 @@
+{
+  "_说明": "D1（2026-09-29 周二）行程层输入，供 evaluate 做确定性可行性检查。段间时长取自高德路线实采（2026-09-28）：南京东路→外滩 23 分钟 / 1.72 km、外滩→豫园 11 分钟 / 811 m；观测约束来自官网与高德 POI。步行合计 6.3 km，低于 MODERATE 档 8 km 上限。",
+  "timezone": "Asia/Shanghai",
+  "budget_cny": 332,
+  "constraints": {
+    "max_daily_minutes": 720,
+    "max_walking_km_per_day": 8,
+    "default_transfer_buffer_minutes": 15,
+    "stale_after_hours": 24
+  },
+  "activities": [
+    {
+      "id": "d1-plangoal",
+      "name": "上海城市规划展示馆",
+      "type": "ATTRACTION",
+      "start": "2026-09-29T11:00:00+08:00",
+      "end": "2026-09-29T13:30:00+08:00",
+      "opening_time": "09:00",
+      "closing_time": "17:00",
+      "last_entry_time": "16:00",
+      "estimated_cost": 0,
+      "walking_km": 1.5,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d1-lunch",
+      "name": "午餐 · 沈大成（南京东路店）",
+      "type": "MEAL",
+      "start": "2026-09-29T13:55:00+08:00",
+      "end": "2026-09-29T14:55:00+08:00",
+      "opening_time": "07:30",
+      "closing_time": "22:00",
+      "estimated_cost": 86,
+      "walking_km": 0.6,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d1-nanjing",
+      "name": "南京东路步行街",
+      "type": "ATTRACTION",
+      "start": "2026-09-29T15:10:00+08:00",
+      "end": "2026-09-29T16:25:00+08:00",
+      "estimated_cost": 0,
+      "walking_km": 1.5,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d1-bund",
+      "name": "外滩",
+      "type": "ATTRACTION",
+      "start": "2026-09-29T17:05:00+08:00",
+      "end": "2026-09-29T18:00:00+08:00",
+      "estimated_cost": 0,
+      "walking_km": 1.2,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d1-yuyuan",
+      "name": "豫园老城厢 · 晚餐（南翔馒头店）",
+      "type": "ATTRACTION",
+      "start": "2026-09-29T18:30:00+08:00",
+      "end": "2026-09-29T20:10:00+08:00",
+      "estimated_cost": 176,
+      "walking_km": 1.5,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    }
+  ],
+  "segments": [
+    {"from_id": "d1-plangoal", "to_id": "d1-lunch", "duration_minutes": 10, "buffer_minutes": 15, "estimated_cost": 0},
+    {"from_id": "d1-lunch", "to_id": "d1-nanjing", "duration_minutes": 5, "buffer_minutes": 10, "estimated_cost": 0},
+    {"from_id": "d1-nanjing", "to_id": "d1-bund", "duration_minutes": 23, "buffer_minutes": 15, "estimated_cost": 0},
+    {"from_id": "d1-bund", "to_id": "d1-yuyuan", "duration_minutes": 11, "buffer_minutes": 15, "estimated_cost": 0}
+  ]
+}

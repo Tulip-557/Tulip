@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="jianhao-travel-planner · 路书基准骨架 v1（源：jianhao-travel-planner, MIT）· 指纹 cd440ea068">
+<title>上海一日路书（2026-09-29 周二） · 上海</title>
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --bg:#F7F5F0; --surface:#FCFBF7; --ink:#1C1B17; --ink2:#5C594E; --ink3:#8A8677;
+  --line:#E3DFD3; --accent:#2F5D43; --accent-soft:#E6EEE8; --on-accent:#F7F5F0;
+  --warn:#8A6D1F; --warn-soft:#F3EEDF;
+  --red:#b5493a; --gold:#c8a45c;
+  --radius:14px; --fs:19px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:var(--fs)}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--on-accent);padding:8px 16px;z-index:99;border-radius:0 0 8px 0;font-size:.8rem}
+.skip:focus{left:0}
+
+/* ---------- 左侧栏 ---------- */
+.side{position:fixed;inset:0 auto 0 0;width:236px;overflow-y:auto;background:#F2EEE3;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:28px 22px;z-index:10}
+.logo{font-size:1.15rem;font-weight:800;letter-spacing:.02em}
+.logo span{color:var(--accent)}
+.logo-sub{font-size:.58rem;letter-spacing:.2em;color:var(--ink3);margin-top:4px;text-transform:uppercase}
+.nav-group{margin-top:26px}
+.nav-label{font-size:.6rem;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase;margin-bottom:8px;padding-left:12px}
+.side nav a{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;font-size:.82rem;color:#4A473E;transition:background .2s,color .2s;margin-bottom:2px}
+.side nav a:hover{background:#E8E3D4;color:var(--ink)}
+.side nav a.on{background:var(--accent);color:var(--on-accent);font-weight:600;box-shadow:0 3px 10px rgba(47,93,67,.25)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.side-foot{margin-top:auto;font-size:.66rem;color:var(--ink3);border-top:1px solid var(--line);padding-top:14px;line-height:2}
+
+/* ---------- 主区 ---------- */
+main{margin-left:236px}
+.wrap{max-width:860px;margin:0 auto;padding:0 44px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.eyebrow{font-size:.62rem;letter-spacing:.24em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:12px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.35;font-weight:800;max-width:16em}
+h2{font-size:clamp(1.45rem,2.7vw,1.95rem);line-height:1.35;font-weight:800}
+.lead{color:var(--ink2);margin-top:12px;max-width:34em}
+
+/* ---------- 通用卡片/标签/表格 ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;margin-bottom:14px}
+.tag{display:inline-block;font-size:.66rem;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:600;margin-left:8px;vertical-align:middle}
+.tag.dim{background:transparent;border:1px solid var(--line);color:var(--ink3);font-weight:400}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+
+/* ---------- 证据分级徽章：[A]/[B]/[C·单源]/[D] 由渲染器转成这枚小标 ---------- */
+/* 语义：越实越绿、越虚越红。cursor:help + title 给出等级全称。 */
+.ev{display:inline-flex;align-items:center;justify-content:center;min-width:1.35em;height:1.4em;padding:0 4px;margin-left:3px;border-radius:5px;font-size:.6em;font-weight:800;line-height:1;letter-spacing:.02em;vertical-align:.3em;cursor:help;border:1px solid transparent;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+.ev-a{background:#E6EEE8;color:#2F5D43;border-color:#C4D9CE}
+.ev-b{background:#E7EEF3;color:#3E6B8A;border-color:#C8DAE6}
+.ev-c{background:#F3EEDF;color:#8A6D1F;border-color:#E4DABE}
+.ev-d{background:#F7E9E6;color:#B5493A;border-color:#EACFC8}
+.ev-note{font-size:.68em;color:var(--ink3);margin-left:2px}
+@media print{.ev{border-color:#999!important}}
+strong{color:var(--ink)}
+table.tb{width:100%;border-collapse:collapse;margin-top:14px;font-size:.85rem;background:var(--surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.tb th{background:#F2EEE3;text-align:left;padding:10px 12px;font-size:.78rem;color:var(--ink2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tb td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.tb tr:last-child td{border-bottom:none}
+.tb td b{color:var(--ink)}
+
+/* ---------- 天气 ---------- */
+.weather{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.wday{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
+.wday .d{font-size:.7rem;color:var(--ink3)}
+.wday .w{font-size:.82rem;font-weight:700;margin-top:4px}
+.wday .t{font-size:.7rem;color:var(--ink2);margin-top:3px}
+
+/* ---------- 清单（可勾选） ---------- */
+.check{list-style:none;margin-top:16px}
+.check li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--surface);cursor:pointer;transition:background .2s}
+.check li:hover{border-color:var(--accent)}
+.check li.done{background:var(--accent-soft)}
+.check li.done .ct{text-decoration:line-through;color:var(--ink3)}
+.check input{width:22px;height:22px;margin-top:2px;accent-color:var(--accent);flex:none;cursor:pointer}
+.check .ct{font-size:.92rem}
+.check li.hot{border:2px solid var(--warn);background:var(--warn-soft)}
+.check li.hot .ct b{color:#6B5A22}
+
+/* ---------- 每日照片 ---------- */
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.photos.single{grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto}
+@media (max-width:900px){.photos{grid-template-columns:1fr}.photos.single{max-width:100%}}
+.photos figure{margin:0}
+.photos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line)}
+.photos.single img{aspect-ratio:auto;object-fit:contain}
+.photos figcaption{font-size:.68rem;color:var(--ink3);margin-top:5px;line-height:1.5}
+
+/* ---------- 每日 ---------- */
+.day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;scroll-margin-top:20px}
+.day.today{border:2px solid var(--accent);box-shadow:0 6px 24px rgba(47,93,67,.14)}
+.day-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}
+.day-idx{font-size:.62rem;letter-spacing:.14em;color:var(--ink3)}
+.day-head h3{font-size:1.15rem;font-weight:800}
+.today-badge{display:none;font-size:.7rem;padding:4px 12px;border-radius:99px;background:var(--accent);color:var(--on-accent);font-weight:700;align-items:center;gap:6px}
+.day.today .today-badge{display:inline-flex}
+.slot{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.slot:last-of-type{border-bottom:none}
+.slot-time{font-size:.78rem;font-weight:700;color:var(--accent);padding-top:2px}
+.slot-body{font-size:.9rem;color:var(--ink2)}
+.slot-body b,.slot-body strong{color:var(--ink);font-weight:700}
+.note-row{display:flex;gap:10px;margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--accent-soft);font-size:.84rem;color:var(--ink2);align-items:flex-start}
+.note-row.photo{background:#EDF0E6}
+.note-row .ic{flex:none}
+.warn-line{margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--warn-soft);font-size:.84rem;color:#6B5A22}
+
+/* ---------- 数据（预算） ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px 14px}
+.stat .n{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.stat .l{font-size:.72rem;color:var(--ink2);margin-top:3px}
+
+/* ---------- 提示 ---------- */
+.tips{counter-reset:tip;margin-top:16px}
+.tip{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tip:last-child{border-bottom:none}
+.tip::before{counter-increment:tip;content:counter(tip);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:.85rem;text-align:center;line-height:34px}
+.tip p{font-size:.9rem;color:var(--ink2);padding-top:5px}
+.sos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.sos{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.sos h4{font-size:.95rem;margin-bottom:8px}
+.sos p{font-size:.82rem;color:var(--ink2)}
+
+/* ---------- 工具条/返回顶部 ---------- */
+.toolbar{position:fixed;top:18px;right:20px;z-index:20;display:flex;gap:8px}
+.tbtn{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:.78rem;font-weight:700;color:var(--ink2);cursor:pointer;transition:all .2s}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+.backtop{position:fixed;bottom:24px;right:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:var(--on-accent);border:none;font-size:1.1rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 14px rgba(47,93,67,.3)}
+.backtop.show{opacity:1;pointer-events:auto}
+
+/* ---------- 入场动效 ---------- */
+html.js section .card,html.js section .day,html.js section .tip,html.js .wday,html.js .sos{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+html.js section.in .card,html.js section.in .day,html.js section.in .tip,html.js section.in .wday,html.js section.in .sos{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js section .card,html.js section .day,html.js section .tip,html.js .wday,html.js .sos{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:900px){
+  html{font-size:calc(var(--fs) - 1px)}
+  body{padding-bottom:76px}
+  .side{position:static;width:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;padding:12px 14px;border-right:none;border-bottom:1px solid var(--line)}
+  .logo-sub,.side-foot{display:none}
+  .nav-group{margin:0;display:flex;gap:4px;flex-wrap:wrap}
+  .nav-label{display:block;flex:1 1 100%;font-size:.58rem;letter-spacing:.16em;color:var(--ink3);margin:2px 0 4px 2px}
+  .side nav a{padding:7px 10px;font-size:.76rem}
+  .nav-group--chips{margin-top:8px;display:grid;align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:6px}
+  .nav-group--chips>.nav-label{grid-column:1/-1;margin:0 0 1px 2px}
+  .nav-group--chips a{margin:0;padding:8px 6px;font-size:.74rem;line-height:1.3;justify-content:center;text-align:center;border:1px solid var(--line);background:var(--surface);border-radius:8px}
+  .nav-group--chips a:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .nav-group--chips a.on{border-color:transparent}
+  main{margin-left:0}
+  .wrap{padding:0 18px}
+  section{padding:44px 0}
+  .weather{grid-template-columns:repeat(3,1fr)}
+  .stats{grid-template-columns:1fr 1fr}
+  .sos-grid{grid-template-columns:1fr}
+  .slot{grid-template-columns:76px 1fr;gap:10px}
+  .tb{font-size:.78rem}
+  .tb th,.tb td{padding:8px 8px}
+  .toolbar{top:auto;bottom:14px;left:14px;right:auto;flex-direction:row}
+  .tbtn{padding:7px 11px;font-size:.72rem;box-shadow:0 2px 8px rgba(0,0,0,.08);background:rgba(252,251,247,.92)}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  .side,.toolbar,.backtop,.skip{display:none}
+  main{margin-left:0}
+  body{background:#fff;font-size:12pt}
+  .wrap{max-width:100%;padding:0}
+  section{padding:20px 0;page-break-inside:avoid}
+  .day{page-break-inside:avoid}
+  /* !important 必须保留：入场动效 html.js section .card{opacity:0} 特异性更高，
+     没滚动到的区块打印/导 PDF 时会整块空白（2026-09-30 CDP 实测 9/13 区块隐形） */
+  .card,.day,.tip,.wday,.sos{opacity:1!important;transform:none!important}
+  .check li.done .ct{text-decoration:none;color:var(--ink)}
+}
+
+/* ---------- 兼容层（宁波/丽水 共用，勿删） ---------- */
+b,strong{color:var(--ink)}
+.warn-line b{color:inherit}
+.tb td .intro{display:block;font-size:.78rem;color:var(--ink3);margin-top:3px;line-height:1.5}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<div class="toolbar" role="group" aria-label="阅读工具">
+  <button class="tbtn" id="fontDec" aria-label="字号调小">A−</button>
+  <button class="tbtn" id="fontInc" aria-label="字号调大">A＋</button>
+  <button class="tbtn" id="printBtn" aria-label="打印这份路书">🖨 打印</button>
+</div>
+<aside class="side">
+  <div>
+    <div class="logo">上海<span>.</span></div>
+    <div class="logo-sub">1 天 · 2 人</div>
+  </div>
+  <nav aria-label="页面导航">
+    <div class="nav-group">
+      <div class="nav-label">行程</div>
+      <a href="#overview">总览</a>
+      <a href="#drive">路程</a>
+      <a href="#day1">第 1 天 · 雨天室内 + 外滩老城厢</a>
+      <a href="#boost">备选</a>
+    </div>
+    <div class="nav-group nav-group--chips">
+      <div class="nav-label">备忘</div>
+      <a href="#ticket">门票</a>
+      <a href="#tips">提示</a>
+      <a href="#stay">住宿</a>
+      <a href="#cost">预算</a>
+      <a href="#sos">应急</a>
+      <a href="#eat">美食</a>
+      <a href="#gift">特产</a>
+    </div>
+  </nav>
+  <div class="side-foot">
+    郑州出发 · 2026-09-29<br>
+    2 人<br>
+    信息 2026-09-28实查
+  </div>
+</aside>
+<main id="main">
+  <div class="wrap">
+        <section id="overview">
+<p class='lead'><b>情报来源</b>：已采集 <b>3 条</b>；路径：官方文旅发布 / 搜索引擎索引；线索卡 <b>社媒线索_上海.json</b>；核实于 2026-09-28。<br>口碑构成：官方机构 2 / 媒体 1。<b>本趟未采到真人评价与评论</b>——文中不得表述为「游客普遍反映」。死线不变：票价 / 营业时间 / 车次余票 / 距离车程从不取自社媒，这部分始终回官方渠道与地图核。</p>
+<div class='eyebrow'>总览</div><h1>上海一天：雨天走一条不淋透的线</h1><p class='lead'>2 人 · 9 月 29 日（周二）一天。按「睡到自然醒 + 雨天室内 + 经济」排：上午泡免费的规划馆，中午在南京东路吃饭，下午沿步行街走到外滩，傍晚进豫园老城厢看灯吃饭，最后从豫园站走。天气取自高德 weatherInfo（2026-09-28 21:01 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。</p><div class='weather'><div class='wday'><div class='d'>9-28 周一</div><div class='w'>阴 / 小雨</div><div class='t'>27 / 23℃</div></div><div class='wday'><div class='d'>9-29 周二</div><div class='w'>小雨 / 中雨</div><div class='t'>26 / 23℃</div></div><div class='wday'><div class='d'>9-30 周三</div><div class='w'>小雨 / 阴</div><div class='t'>26 / 21℃</div></div></div><div class='card' id='prepCard'><h2>出行准备</h2><ul class='check'><li><input type="checkbox" id="ck1"><span class='ct'>防风伞（雨不小，超轻款扛不住江风）</span></li><li><input type="checkbox" id="ck2"><span class='ct'>防水鞋或备用鞋袜</span></li><li><input type="checkbox" id="ck3"><span class='ct'>规划馆预约码（没约到就要改道，先确认）</span></li><li><input type="checkbox" id="ck4"><span class='ct'>身份证原件（场馆实名核验要用）</span></li><li><input type="checkbox" id="ck5"><span class='ct'>充电宝（全天在外面，导航耗电）</span></li></ul></div>
+        </section>
+        <section id="drive">
+<div class='eyebrow'>路程</div><h2>市内交通</h2><div class='card'><p>今天不涉及跨城交通。全天靠<b>地铁 + 步行</b>，地铁起步价约 3 元。机场那段明天才用得上，见「住」里的说明。</p></div><table class='tb'><tr><th>路段</th><th>方式</th><th>耗时</th><th>备注</th></tr><tr><td>人民广场站 → 城市规划展示馆</td><td>步行</td><td>约 5 分钟</td><td>3 号口出，馆在人民大道 100 号（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>规划馆 → 南京东路步行街</td><td>步行</td><td>约 10 分钟</td><td>人民广场往东即到【估算】</td></tr><tr><td>南京东路步行街 → 外滩</td><td>步行</td><td><b>23 分钟 / 1.72 km</b></td><td>高德路线，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>外滩 → 豫园</td><td>步行</td><td><b>11 分钟 / 811 m</b></td><td>高德路线，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>豫园 → 南京东路步行街</td><td>步行</td><td><b>28 分钟 / 2.04 km</b></td><td>备用路线，下雨不推荐 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr></table>
+<div class="card" data-route="primary"><h3>主路线 · 博物馆 + 老城厢线</h3><p>上午用一座免费室内馆打底，中午在南京东路吃饭，下午沿步行街走到外滩，傍晚进豫园老城厢——一路向东再向南，不走回头路。</p><p><b>途经</b>：上海城市规划展示馆 → 南京东路步行街 → 外滩 → 豫园老城厢</p><p><b>什么情况走它</b>：雨天、想省钱、不想走回头路——默认就走这条</p></div>
+<div class="card" data-nearby="1" data-nearby-count="5"><h3>沿途顺道可看（5 处）</h3><table class="tb"><tr><th>点</th><th>哪一站附近</th><th>距离</th><th>说明</th></tr><tr><td>人民公园</td><td>上海城市规划展示馆</td><td>约 116 m</td><td>规划馆就在公园里，等入馆前先逛一圈刚好；南京西路 231 号，全天 05:00-22:00 开、免费，周二照常。 高德 POI，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>上海久事美术馆</td><td>外滩</td><td>约 83 m</td><td>在外滩一号（原亚细亚大楼）里，10:00-18:00 开、周二照常——雨天走到外滩这段，可以进来避雨看展。 高德 POI，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>外滩天文台</td><td>外滩</td><td>约 44 m</td><td>中山东二路 1 号甲，外滩沿线的历史建筑，11:00 开到次日 01:30。 高德 POI，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>外滩信号台</td><td>外滩</td><td>约 37 m</td><td>就在天文台隔壁，17:00-22:00 开——正好接上你走到外滩的时间段。 高德 POI，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>上海基督教沐恩堂</td><td>人民广场站（14 号口步行 50 m）</td><td>约 205 m</td><td>⚠️ 平时不开放参观——POI 只标出周日的礼拜时段（07:30/10:00/14:00/19:00），周二进不去。路过看一眼外观可以，别当成能进的点排。 高德 POI，2026-09-28 查 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr></table></div>
+        </section>
+        <section id="day1">
+      <div class="day">
+        <div class="day-head">
+          <span class="day-idx">DAY 1 / 2026-09-29</span>
+          <h3>D1 · 9/29 周二：城市规划展示馆 → 南京东路 → 外滩 → 豫园</h3>
+          <span class="today-badge">今天</span>
+        </div>
+        <div class="photos single">
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NjAgNTQwIiB3aWR0aD0iOTYwIiBoZWlnaHQ9IjU0MCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+5aSW5rup5LiO6ZmG5a625Zi05aSp6ZmF57q/56S65oSP5Zu+PC90aXRsZT4KICA8ZGVzYz7oh6rnu5jnpLrmhI/lm77vvIzpnZ7lrp7mma/nhafniYfjgILlt6bkvqfkuLrlpJbmu6nkuIflm73lu7rnrZHnvqTvvIzlj7PkvqfkuLrpmYblrrblmLTkuInluqfpq5jloZTvvIzkuK3pl7TkuLrpu4TmtabmsZ/jgII8L2Rlc2M+CiAgPHJlY3Qgd2lkdGg9Ijk2MCIgaGVpZ2h0PSI1NDAiIGZpbGw9IiNlOWVlZjIiLz4KICA8cmVjdCB5PSIzMzYiIHdpZHRoPSI5NjAiIGhlaWdodD0iMjA0IiBmaWxsPSIjYzNkMmRiIi8+CiAgPHJlY3QgeT0iMzM2IiB3aWR0aD0iOTYwIiBoZWlnaHQ9IjciIGZpbGw9IiNhZWJmYzkiLz4KICA8ZyBmaWxsPSIjOGI4Mzc4Ij4KICAgIDxyZWN0IHg9IjYyIiB5PSIyMDQiIHdpZHRoPSI1OCIgaGVpZ2h0PSIxMzIiLz4KICAgIDxyZWN0IHg9IjEyOCIgeT0iMjMyIiB3aWR0aD0iNDQiIGhlaWdodD0iMTA0Ii8+CiAgICA8cmVjdCB4PSIxODAiIHk9IjE4NiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjE1MCIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMDYsMTg2IDIwNiwxNTAgMjEyLDEzOCAyMTgsMTUwIDIxOCwxODYiLz4KICAgIDxyZWN0IHg9IjI0MCIgeT0iMjIyIiB3aWR0aD0iNDAiIGhlaWdodD0iMTE0Ii8+CiAgICA8cmVjdCB4PSIyODgiIHk9IjE5NiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjE0MCIvPgogICAgPHJlY3QgeD0iMzU2IiB5PSIyNDAiIHdpZHRoPSI0NiIgaGVpZ2h0PSI5NiIvPgogICAgPHJlY3QgeD0iNDEwIiB5PSIyMTIiIHdpZHRoPSI1NCIgaGVpZ2h0PSIxMjQiLz4KICA8L2c+CiAgPGcgZmlsbD0iIzk2YTBhOCI+CiAgICA8ZWxsaXBzZSBjeD0iMjA2IiBjeT0iMTc2IiByeD0iMTYiIHJ5PSI4Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMzE5IiBjeT0iMTg2IiByeD0iMTQiIHJ5PSI3Ii8+CiAgPC9nPgogIDxnIGZpbGw9IiM2ZjdmOGMiPgogICAgPHBvbHlnb24gcG9pbnRzPSI2MTgsMzM2IDYzNCw5NiA2NTAsMzM2Ii8+CiAgICA8cmVjdCB4PSI2ODYiIHk9IjE1MCIgd2lkdGg9IjQyIiBoZWlnaHQ9IjE4NiIvPgogICAgPHJlY3QgeD0iNjk0IiB5PSIxMjIiIHdpZHRoPSIyNiIgaGVpZ2h0PSIyOCIvPgogICAgPHBvbHlnb24gcG9pbnRzPSI3NTIsMzM2IDc3MiwxNjggNzkyLDMzNiIvPgogICAgPGVsbGlwc2UgY3g9IjgzNiIgY3k9IjI1MiIgcng9IjE1IiByeT0iMTUiLz4KICAgIDxyZWN0IHg9IjgzMSIgeT0iMjUyIiB3aWR0aD0iMTAiIGhlaWdodD0iODQiLz4KICA8L2c+CiAgPGcgc3Ryb2tlPSIjZTllZWYyIiBzdHJva2Utd2lkdGg9IjIiPgogICAgPGxpbmUgeDE9IjYxOCIgeTE9IjEzMCIgeDI9IjY1MCIgeTI9IjEzMCIvPgogICAgPGxpbmUgeDE9IjYyMCIgeTE9IjE3MCIgeDI9IjY0OCIgeTI9IjE3MCIvPgogICAgPGxpbmUgeDE9IjYyMSIgeTE9IjIxMCIgeDI9IjY0NiIgeTI9IjIxMCIvPgogICAgPGxpbmUgeDE9IjYyMiIgeTE9IjI1MCIgeDI9IjY0NSIgeTI9IjI1MCIvPgogICAgPGxpbmUgeDE9IjYyMyIgeTE9IjI5MCIgeDI9IjY0NCIgeTI9IjI5MCIvPgogIDwvZz4KICA8ZyBzdHJva2U9IiNjM2QyZGIiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iMC44NSI+CiAgICA8bGluZSB4MT0iMTIwIiB5MT0iMzkyIiB4Mj0iMjYwIiB5Mj0iMzkyIi8+CiAgICA8bGluZSB4MT0iMzAwIiB5MT0iNDI4IiB4Mj0iNDcwIiB5Mj0iNDI4Ii8+CiAgICA8bGluZSB4MT0iNTYwIiB5MT0iNDA0IiB4Mj0iNzAwIiB5Mj0iNDA0Ii8+CiAgICA8bGluZSB4MT0iMjQwIiB5MT0iNDY2IiB4Mj0iNDIwIiB5Mj0iNDY2Ii8+CiAgICA8bGluZSB4MT0iNjAwIiB5MT0iNDcwIiB4Mj0iNzgwIiB5Mj0iNDcwIi8+CiAgPC9nPgogIDxnIGZpbGw9IiMzZjRhNTQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4KICAgIDx0ZXh0IHg9IjI2MiIgeT0iMzcyIiBmb250LXNpemU9IjIxIj7lpJbmu6kgwrcg5LiH5Zu95bu6562R576kPC90ZXh0PgogICAgPHRleHQgeD0iNzM0IiB5PSIzNzIiIGZvbnQtc2l6ZT0iMjEiPumZhuWutuWYtDwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ4MCIgeT0iNTE2IiBmb250LXNpemU9IjI1IiBmb250LXdlaWdodD0iNTAwIj5EMSDliqjnur/npLrmhI/lm77vvIjoh6rnu5ggwrcg6Z2e5a6e5pmvIMK3IOmdnuetieavlOS+i++8iTwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ4MCIgeT0iNDk2IiBmb250LXNpemU9IjE4IiBmaWxsPSIjNmI3NzgzIj7ljZfkuqzkuJzot68g4oaSIOWklua7qSDihpIg6LGr5Zut77yM5LiA6Lev5ZCR5Lic5YaN5ZCR5Y2X77yM5LiN6LWw5Zue5aS06LevPC90ZXh0PgogIDwvZz4KPC9zdmc+Cg==" alt="D1 动线示意：南京东路 → 外滩 → 豫园，一路向东再向南（自绘示意图，非实景、非等比例）" loading="lazy"><figcaption>D1 动线示意：南京东路 → 外滩 → 豫园，一路向东再向南（自绘示意图，非实景、非等比例）</figcaption></figure>
+        </div>
+        <div class="note-row"><span class="ic">🧭</span><div>今天的玩法是三段式：上午用一座室内馆打底（雨天不淋），下午沿南京东路一路走到外滩看江，傍晚把时间留给豫园老城厢看灯吃饭。三个点连着走，走完不用回头。</div></div>
+        <div class="slot">
+          <div class="slot-time">10:30</div>
+          <div class="slot-body">从住处出发，地铁到<b>人民广场站</b>。今天全天小雨、夜间转中雨，<b>伞必带</b>，鞋选不怕水的。出门前先把<b>城市规划展示馆的预约码</b>调出来——它是免费但要实名预约的，没约上今天就得改道（改法见 Plan B）。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">11:00</div>
+          <div class="slot-body"><b>上海城市规划展示馆</b>（人民大道 100 号，人民广场站 3 号口）。<b>免费</b>，但必须提前在官方公众号实名预约，可约 7 日内时段；开放时间<b>周四至周二 9:00-17:00</b>，<b>16:00 停止入馆</b>，<b>周三闭馆</b>（官网 + 高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。今天周二，正常开放。<br>按 2.5 小时留：1F 序厅的环幕光影、3F 整层的上海全域沙盘最值得花时间，从沙盘上能一眼看清你明天要飞走的浦东机场在哪个方向。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">13:30</div>
+          <div class="slot-body">午饭在<b>南京东路一带</b>解决，两家都不用绕路：<b>沈大成（南京东路店）</b>南京路步行街 636 号，人均 <b>¥43</b>，营业 <b>07:30-22:00</b>（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>；想吃生煎就选<b>大壶春</b>（山西南路与南京路步行街交叉口西北 40 米），人均 <b>¥23</b>，营业 <b>07:00-19:30</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>。两家都在步行街内侧，下雨不用在露天排队。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">15:00</div>
+          <div class="slot-body">饭后向东北逛<b>南京东路步行街</b>。这段路商场连着商场，躲雨方便，走累了随便进一家歇脚。一直逛到东头，就是外滩。这段路全天开放、不售票（高德 POI 与上海市文旅局「上海传奇 世界之窗」线路均把它作为开放街区串进动线，2026-09-28 查）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">16:00</div>
+          <div class="slot-body"><b>南京东路步行街 → 外滩：步行约 1.72 公里 / 23 分钟</b>（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。雨天外滩人少，江对岸的陆家嘴泡在雨雾里反而比晴天好看。江边风大，折叠伞容易被吹翻，建议防风的直柄伞或防水外套；石板路湿滑，别穿光底鞋。外滩一带另有免费开放的美术馆类场馆，可作临时避雨点<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">17:15</div>
+          <div class="slot-body"><b>外滩 → 豫园：步行约 811 米 / 11 分钟</b>（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。<b>豫园街区、九曲桥、豫园商城全部免费</b>，街区 <b>17:30 亮灯、22:00 熄灯</b><span class="ev ev-b" title="证据等级 B·多源交叉">B</span>，正好赶上灯笼亮起来那一下。<br><b>想进豫园园林的话注意</b>：开放 <b>周二至周日 9:00-16:30</b>，<b>16:00 停止入园</b>，周一闭园（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>，门票旺季 <b>¥40</b>（9-11 月）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。你到这儿已经 17:15，园林进不去了——想进去就得把下午的顺序整个提前，代价是看不到外滩的傍晚光（二选一，见备选段）。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">18:30</div>
+          <div class="slot-body">晚饭：<b>南翔馒头店（城隍庙店）</b>——豫园路 87 号（豫园地铁站 7 号口步行 470 米），人均 <b>¥88</b>，营业<b>周一至周四 07:30-20:30</b>（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>，蟹粉小笼是招牌；想省一点就吃<b>沈大成（豫园商城店）</b>，豫园老街 64 号，人均 ¥43<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。<b>今晚是中雨</b>，两家都在商城内部或紧邻，吃完不用在露天久待。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">19:30</div>
+          <div class="slot-body">从<b>豫园站</b>（10 号线 / 14 号线）坐地铁回住处。如果住处不在 10/14 沿线，也可以往北走回南京东路站（2 号线 / 10 号线），<b>步行约 2.04 公里 / 28 分钟</b>（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>——但下雨天不推荐，直接豫园站换乘更省事。</div>
+        </div>
+        <div class="note-row"><span class="ic">🚇</span><div>今日交通：全程地铁 + 步行，不涉及开车。关键三段步行距离都已用高德路线核过：南京东路→外滩 1.72 km、外滩→豫园 811 m、豫园→南京东路 2.04 km（均为 2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。</div></div>
+        <div class="note-row"><span class="ic">🍜</span><div>吃饭：午晚餐各给了两家，都在动线正上方，不用为吃饭折返。人均与营业时间全部取高德 POI（2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>，没有引用任何 UGC 给的时间。</div></div>
+        <div class="note-row photo"><span class="ic">📷</span><div>拍照：外滩江边背对陆家嘴那一侧，雨天能拍到「外滩建筑群 + 雨雾中的陆家嘴」同框；豫园九曲桥 17:30 亮灯后从湖心亭方向回拍灯笼倒影最稳。</div></div>
+        <div class="warn-line">今夜中雨，豫园/外滩都是露天地面，伞要带防风的，鞋要防滑。</div>
+        <div class="warn-line">城市规划展示馆免费但必须提前实名预约，现场不一定约得到——出门前先确认预约状态。</div>
+      </div>
+        </section>
+        <section id="boost">
+<div class="card" data-route="alternatives" data-alt-count="5"><h3>备选路线（5 条）</h3><table class="tb"><tr><th>路线</th><th>途经</th><th>什么情况走它</th><th>代价 / 依据</th></tr><tr><td>历史博物馆替身线</td><td>上海市历史博物馆 → 南京东路步行街 → 外滩 → 豫园老城厢</td><td>规划馆约不到时</td><td>动线几乎不变，只比主线多走 500 米。 两馆相距步行 852 m / 12 分钟（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>过江看陆家嘴线</td><td>上海城市规划展示馆 → 外滩 → 陆家嘴</td><td>想换一边看上海</td><td>中雨天登高只能看雾，花 ¥199 以上买一片白不划算。 南京东路站 → 陆家嘴站地铁 12 分钟 / 约 ¥3、不换乘（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>园林优先线（先南后北）</td><td>上海城市规划展示馆 → 豫园园林 → 外滩源 → 外滩</td><td>想进豫园园林</td><td>必须 16:00 前入园；外滩只剩夜景，比主线多走约 1.1 km。 豫园 → 外滩源步行 1895 m / 26 分钟（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>全室内避雨线</td><td>上海城市规划展示馆 → 上海市历史博物馆 → 上海世博会博物馆</td><td>雨大到不想在室外走</td><td>世博馆在城南，跟老城厢反方向。 豫园 → 世博会博物馆地铁 5783 m / 46 分钟、换乘 1 次（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>武康路街区线（本轮劝退）</td><td>武康大楼 → 武康路 → 安福路</td><td>好天气、想逛街区</td><td>整条露天街区，明天小雨转中雨；过去还要 49 分钟地铁。 外滩 → 武康大楼地铁 8229 m / 49 分钟（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr></table></div>
+<div class='eyebrow'>备选</div><h2>时间富余才去</h2><div class='card'><p><b>上海自然博物馆</b>（静安区北京西路 510 号，13 号线自然博物馆站）——成人票 <b>¥30</b>，须提前 7 日线上实名预约（官网参观服务告示页，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。<b>但开放日两源矛盾</b>：高德 POI 写「周二不开放」<span class="ev ev-a" title="证据等级 A·工具实证">A</span>，携程攻略写「周二延时至 20:00」<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。<b>去之前先打 021-62620116 确认</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>。从人民广场过去地铁约 <b>41 分钟</b>、换乘 1 次（高德路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>，会吃掉半天。</p><p><b>豫园园林</b>——想进园必须 <b>16:00 前入园</b>（16:30 闭园），门票旺季 <b>¥40</b>（携程 / 同程 / Trip.com 一致）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。它不在主线上，进园就得走「园林优先线」。</p><p><b>修正一条</b>：<b>上海外滩美术馆（虎丘路 20 号）周二不开放</b>——高德 POI 写的是<b>周三至周日 11:00-19:00</b>（2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>，明天用不上，别把它安排成外滩段的避雨点。</p></div>
+        </section>
+        <section id="ticket">
+<div class='eyebrow'>门票</div><h2>门票与预约</h2><table class='tb'><tr><th>景点</th><th>票价</th><th>放票</th><th>预约截止</th></tr><tr><td>上海城市规划展示馆</td><td><b>免费</b>（官网，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td><td>官方公众号/小程序，可约 7 日内时段</td><td>约满即止，建议前一晚就约</td></tr><tr><td>上海自然博物馆（备选）</td><td>成人 <b>¥30</b>（官网告示页，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td><td>提前 7 日（含当天）线上放票</td><td>售完为止</td></tr><tr><td>豫园园林</td><td>旺季 <b>¥40</b>（9-11 月；携程/同程/Trip.com 三源一致）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td><td>「上海豫园」小程序实名购票</td><td>16:00 停止入园</td></tr><tr><td>外滩 / 南京东路 / 豫园街区</td><td><b>免费</b>（开放街区；高德 POI 与上海市文旅局线路，2026-09-28 查）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td><td>—</td><td>—</td></tr></table><p class='lead'>今天唯一必须提前约的是<b>城市规划展示馆</b>——免费但要实名预约，没约到就得改道。票价这张表里没有一条是单源线索：豫园那张标 <span class="ev ev-b" title="证据等级 B·多源交叉">B</span>（三个独立平台一致），其余都有官方渠道来源（官网 / 高德 POI，2026-09-28 查）。</p>
+        </section>
+        <section id="tips">
+<div class='eyebrow'>提示</div><h2>避雷</h2><div class='tips'><div class='tip'><div>南京东路步行街上会有人主动招揽「观光车」「合影人偶」，价格不透明、拍照后加价——不搭理直接走，没人会追。</div></div><div class='tip'><div>雨天外滩江风大，折叠伞的骨架很容易被吹翻；江边是石板路，湿了之后很滑，别穿光滑平底鞋。这两条合起来是「撑不住伞 + 摔一跤」的组合拳。</div></div><div class='tip'><div>豫园商城里有人自称「帮你代排队」买小笼包——不用花钱。工作日中午南翔馒头店本店的队伍通常不算长。</div></div><div class='tip'>规划馆 <b>16:00 停止入馆</b>，如果下午两点后才到，实际只剩不到两小时，等于白来。要把上午的行程往前压。</div></div>
+        </section>
+        <section id="stay">
+<div class='eyebrow'>住宿</div><h2>住</h2><div class='card'><p><b>本次不排住宿</b>——你已订好，且说明先不用考虑。</p><p><b>但位置值得提一句</b>：明天这条线是「人民广场 → 南京东路 → 外滩 → 豫园」，一路东南向、全程步行加 10/14 号线。住处只要落在<b>人民广场站 / 南京东路站 / 豫园站</b>任意一个的步行圈里，就能省掉一整段往返。</p><p><b>后天赶浦东的早班机</b>（你说 9-10 点起飞）：<b>2 号线</b>的终点站就是浦东 1/2 号航站楼，可一线直达、不用换乘——住 2 号线沿线最省事。9-10 点起飞一般 7:00 前到机场，首班车来得及，但节奏会紧；具体首班车时刻请当天在上海地铁官网再确认一次。</p></div>
+        </section>
+        <section id="cost">
+<div class='eyebrow'>预算</div><h2>预算</h2><div class='stats'><div class='stat'><div class='n'>约 ¥332</div><div class='l'>两人合计</div></div><div class='stat'><div class='n'>约 ¥166</div><div class='l'>人均</div></div><div class='stat'><div class='n'>¥0</div><div class='l'>门票</div></div></div><table class='tb'><tr><th>项目</th><th>金额</th><th>说明</th></tr><tr><td>城市规划展示馆</td><td>¥0</td><td>免费（官网，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>地铁</td><td>约 ¥20</td><td>按 3-5 元/人次 × 两人 × 往返 2 程估【估算】</td></tr><tr><td>午餐</td><td>约 ¥86</td><td>沈大成人均 ¥43 × 2（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>晚餐</td><td>约 ¥176</td><td>南翔馒头店人均 ¥88 × 2（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td><b>隐藏成本</b></td><td>约 ¥50</td><td>雨天临时打车、便利店买伞或鞋套、伴手礼零钱</td></tr></table><p class='lead'>合计约 <b>¥332（两人）/ ¥166（人均）</b>，在你说的「人均 500 以内」里还有富余。想再省：晚餐换成沈大成（人均 ¥43）能省下约 ¥90；想去豫园园林则加 ¥80（两张旺季票，携程 / 同程 / Trip.com 三源一致）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。</p>
+        </section>
+        <section id="sos">
+<div class='eyebrow'>应急</div><h2>Plan B</h2><div class='sos-grid'><div class='sos'><h4>规划馆约不到</h4><p>改去就在隔壁的上海博物馆人民广场馆（人民大道 201 号）。注意它现在只展「世界树之巅：美洲古代文明大展」，需购票，成人 <b>¥148</b>（上博官网，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。觉得贵就直接往东去南京东路逛街。</p></div><div class='sos'><h4>雨大到走不动</h4><p>南京东路沿线商场密集，任选一家进去避雨；外滩那一段可以砍掉，直接从南京东路站坐 2 号线到陆家嘴，或坐 10 号线到豫园站汇合后续行程。</p></div><div class='sos'><h4>豫园人挤到动不了</h4><p>改走外滩源的圆明园路一带——同样免费、人少、建筑好，从外滩往北走约 10 分钟。或者退回南京东路。</p></div><div class='sos'><h4>过了 16:00 还想进豫园园林</h4><p>进不去了（16:00 停止入园）。只能逛免费街区；后天一早你要走，等于这次放弃园林。</p></div></div>
+        </section>
+        <section id="eat">
+<div class='eyebrow'>美食</div><h2>餐厅</h2><table class='tb'><tr><th>时段</th><th>店</th><th>地界</th><th>人均</th><th>营业</th></tr><tr><td>9-29 早餐</td><td>住处附近或路上解决</td><td>—</td><td>¥15-25</td><td>睡到自然醒，不专门安排【估算】</td></tr><tr><td>9-29 午餐</td><td>沈大成（南京东路店）</td><td>南京路步行街 636 号</td><td>¥43</td><td>07:30-22:00（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>9-29 午餐备选</td><td>大壶春</td><td>山西南路 × 南京路步行街西北 40 米</td><td>¥23</td><td>07:00-19:30（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>9-29 晚餐</td><td>南翔馒头店（城隍庙店）</td><td>豫园路 87 号，豫园站 7 号口步行 470 米</td><td>¥88</td><td>周一至周四 07:30-20:30（高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></td></tr><tr><td>9-29 晚餐备选</td><td>沈大成（豫园商城店）</td><td>豫园老街 64 号</td><td>¥43</td><td>未核实<span class="ev ev-d" title="证据等级 D·未核实">D</span>——到店看门口营业牌，或先在点评上确认</td></tr></table><p class='lead'>今晚中雨，两家晚餐店都在豫园商城内部或紧邻，吃完不用在露天走远。表里所有人均与营业时间都取自高德 POI（<span class="ev ev-a" title="证据等级 A·工具实证">A</span>），<b>没有一条是 UGC 给的时间</b>。</p>
+        </section>
+        <section id="gift">
+<div class='eyebrow'>特产</div><h2>送礼</h2><div class='card'><p><b>送礼三问</b>：送给谁？预算多少？要不要带得走？</p><p><b>推荐（都方便带）</b>：沈大成的条头糕、双酿团（南京东路 636 号店内可买，高德 POI，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>；梨膏糖、五香豆（老城厢各老字号有售）；大白兔奶糖（超市比景区便宜）。</p><p><b>提醒</b>：别在豫园景区门口那几家买——同款在步行街或超市能便宜三成以上，生产日期还更新。你后天早上要飞郑州，<b>糟卤、酒这类液体只能托运</b>，随身带会被拦。</p></div>
+        </section>
+<footer style="padding:64px 0 80px;text-align:center">
+  <h2>上海路书 · 雨天上海：从规划馆到外滩老城厢</h2>
+  <p>郑州出发 · 2026-09-29 · 2 人<br>本地单文件 · 无外部依赖 · 断网可打开<br>信息 2026-09-28联网实查 · 未核实项已标注</p>
+  <p>配图：本版配图为自绘示意图，不是实景照片，也不是图库素材；已在图注标「示意」。没有使用任何第三方图片。；图源 自绘 SVG 示意图<br>自绘动线示意图为非等比例、仅供参考。</p>
+  <p style="margin-top:18px;font-weight:700">方案仅供参考——安全和开心，才是最重要的。🌕</p>
+</footer>
+  </div>
+</main>
+<button class="backtop" id="backtop" aria-label="回到顶部">↑</button>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 1. 当日模式：按今天日期高亮对应行程日 ---------- */
+  var TRIP = { "2026-09-29":"day1" };
+  function todayStr(){
+    var d = new Date();
+    var m = ("0"+(d.getMonth()+1)).slice(-2), day = ("0"+d.getDate()).slice(-2);
+    return d.getFullYear()+"-"+m+"-"+day;
+  }
+  var todayId = TRIP[todayStr()];
+  if (todayId){
+    var sec = document.getElementById(todayId);
+    if (sec){
+      var card = sec.querySelector(".day");
+      if (card) card.classList.add("today");
+      var navA = document.querySelector('.side nav a[href="#'+todayId+'"]');
+      if (navA) navA.innerHTML = '<span class="dot"></span>' + navA.textContent;
+      setTimeout(function(){ sec.scrollIntoView({behavior:"smooth", block:"start"}); }, 600);
+    }
+  } else {
+    var prep = document.getElementById("prepCard");
+    if (prep && todayStr() < "2026-09-29") prep.style.border = "2px solid var(--accent)";
+  }
+
+  /* ---------- 2. 字号三档（记忆） ---------- */
+  var FONTS = ["17px","19px","21px"];
+  var fi = 1;
+  try { fi = Math.max(0, Math.min(2, parseInt(localStorage.getItem("sh_font")||"1",10)||0)); } catch(e){}
+  function applyFont(){ document.documentElement.style.setProperty("--fs", FONTS[fi]); }
+  applyFont();
+  function saveFont(){ try{ localStorage.setItem("sh_font", String(fi)); }catch(e){} }
+  document.getElementById("fontInc").addEventListener("click", function(){ if(fi<2){fi++;applyFont();saveFont();} });
+  document.getElementById("fontDec").addEventListener("click", function(){ if(fi>0){fi--;applyFont();saveFont();} });
+
+  /* ---------- 3. 打印 ---------- */
+  document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+
+  /* ---------- 4. 勾选清单（记忆） ---------- */
+  document.querySelectorAll(".check li").forEach(function(li, i){
+    var box = li.querySelector("input");
+    var key = "sh_chk_" + box.id;
+    try { box.checked = localStorage.getItem(key) === "1"; } catch(e){}
+    if (box.checked) li.classList.add("done");
+    li.addEventListener("click", function(ev){
+      if (ev.target.tagName !== "INPUT"){ box.checked = !box.checked; }
+      li.classList.toggle("done", box.checked);
+      try{ localStorage.setItem(key, box.checked ? "1" : "0"); }catch(e){}
+    });
+  });
+
+  /* ---------- 5. 滚动监听：侧栏高亮 + 入场动效 ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".side nav a"));
+  var secs = Array.prototype.slice.call(document.querySelectorAll("main section"));
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        en.target.classList.add("in");
+        var id = en.target.id;
+        navLinks.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#"+id); });
+      }
+    });
+  }, { rootMargin: "-25% 0px -35% 0px" });
+  secs.forEach(function(s){ io.observe(s); });
+
+  /* ---------- 6. 返回顶部 ---------- */
+  var bt = document.getElementById("backtop");
+  window.addEventListener("scroll", function(){
+    bt.classList.toggle("show", window.scrollY > 600);
+  }, { passive:true });
+  bt.addEventListener("click", function(){ window.scrollTo({ top:0, behavior:"smooth" }); });
+})();
+</script>
+<script>
+/* 兜底：若上方脚本报错导致入场动效未初始化，3 秒后强制显示全部内容 */
+setTimeout(function(){
+  if (!document.querySelector('main section.in')){
+    document.querySelectorAll('main section').forEach(function(s){ s.classList.add('in'); });
+  }
+}, 3000);
+</script>
+</body>
+</html>

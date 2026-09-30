@@ -1,0 +1,445 @@
+{
+  "city": "上海",
+  "checked_at": "2026-09-28T22:19+0800",
+  "provider": "amap",
+  "radius_meters": 1200,
+  "stops": [
+    {
+      "stop": "上海城市规划展示馆",
+      "location": "121.475551,31.231444",
+      "places": [
+        {
+          "name": "人民公园-垂丝海棠小路(打卡点)",
+          "address": "南京西路231号人民公园内(东侧)",
+          "category": "风景名胜;风景名胜;观景点",
+          "rating": 0.0,
+          "location": "121.474981,31.232369",
+          "distance_meters": 116
+        },
+        {
+          "name": "人民广场(15号口)",
+          "address": "西藏中路268号上海来福士广场(人民广场地铁站15号口旁)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.1,
+          "location": "121.47631,31.232282",
+          "distance_meters": 117
+        },
+        {
+          "name": "茶救星球·蔬果茶(人民广场来福士店)",
+          "address": "西藏中路268号裙房B1-K11号(人民广场地铁站15号口旁)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.7,
+          "location": "121.476361,31.232266",
+          "distance_meters": 119
+        },
+        {
+          "name": "人民公园-南极石",
+          "address": "南京西路231号(近黄陂北路)人民公园内(东侧)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.8,
+          "location": "121.474145,31.232396",
+          "distance_meters": 170
+        },
+        {
+          "name": "都市总部大楼-都市总部大楼入口标识碑(打卡点)",
+          "address": "西藏中路168号都市总部大楼",
+          "category": "风景名胜;风景名胜;观景点",
+          "rating": 0.0,
+          "location": "121.477266,31.230853",
+          "distance_meters": 175
+        },
+        {
+          "name": "广东路人行地道",
+          "address": "广东路与西藏中路交叉口北40米",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.7,
+          "location": "121.47731,31.230716",
+          "distance_meters": 185
+        },
+        {
+          "name": "中共中央政治局机关旧址(1928-1931年)",
+          "address": "云南中路171-173号",
+          "category": "风景名胜;风景名胜;红色景区",
+          "rating": 4.4,
+          "location": "121.477622,31.231818",
+          "distance_meters": 201
+        },
+        {
+          "name": "上海基督教沐恩堂",
+          "address": "西藏中路316号(人民广场地铁站14号口步行50米)",
+          "category": "风景名胜;风景名胜;教堂",
+          "rating": 4.4,
+          "location": "121.475855,31.233273",
+          "distance_meters": 205
+        },
+        {
+          "name": "东方饭店旧址",
+          "address": "西藏中路120号(人民广场地铁站1号口步行220米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.4,
+          "location": "121.477649,31.230514",
+          "distance_meters": 224
+        },
+        {
+          "name": "上海市工人文化宫展览中心",
+          "address": "西藏中路120号上海市工人文化宫3层",
+          "category": "科教文化服务;展览馆;展览馆",
+          "rating": 4.1,
+          "location": "121.477673,31.23051",
+          "distance_meters": 226
+        },
+        {
+          "name": "南京东路派出所档案室",
+          "address": "云南中路与汉口路交叉口东南60米",
+          "category": "科教文化服务;档案馆;档案馆",
+          "rating": null,
+          "location": "121.477218,31.232936",
+          "distance_meters": 229
+        },
+        {
+          "name": "人民公园-张思德像",
+          "address": "南京西路231号(近黄陂北路)人民公园内(东北角)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.5,
+          "location": "121.473763,31.232852",
+          "distance_meters": 231
+        },
+        {
+          "name": "上海工匠馆",
+          "address": "北海路上海市工人文化宫(人民广场地铁站1号口步行220米)",
+          "category": "科教文化服务;展览馆;展览馆",
+          "rating": 4.7,
+          "location": "121.477846,31.230437",
+          "distance_meters": 245
+        },
+        {
+          "name": "上海人民广场",
+          "address": "人民大道185号",
+          "category": "风景名胜;公园广场;城市广场",
+          "rating": 4.7,
+          "location": "121.475213,31.228827",
+          "distance_meters": 292
+        }
+      ],
+      "filtered_as_noise": 5
+    },
+    {
+      "stop": "外滩",
+      "location": "121.492127,31.233516",
+      "places": [
+        {
+          "name": "外滩-气象广场",
+          "address": "中山东一路49号外滩",
+          "category": "风景名胜;公园广场;城市广场",
+          "rating": 3.7,
+          "location": "121.49212,31.233482",
+          "distance_meters": 3
+        },
+        {
+          "name": "外滩-信号台",
+          "address": "外滩街道中山东二路1号甲外滩-信号台",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 4.1,
+          "location": "121.4922,31.233187",
+          "distance_meters": 37
+        },
+        {
+          "name": "外滩天文台",
+          "address": "中山东二路1号甲",
+          "category": "科教文化服务;天文馆;天文馆",
+          "rating": 4.4,
+          "location": "121.492273,31.233133",
+          "distance_meters": 44
+        },
+        {
+          "name": "外滩一号艺术中心",
+          "address": "中山东一路1号亚细亚大楼2、3楼",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.6,
+          "location": "121.491415,31.233539",
+          "distance_meters": 67
+        },
+        {
+          "name": "CHRISTIE’S佳士得",
+          "address": "中山东一路1号4层",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 4.5,
+          "location": "121.491325,31.233425",
+          "distance_meters": 76
+        },
+        {
+          "name": "把万物进行到底国际当代艺术群展",
+          "address": "中山东一路与延安东路交叉口西北60米",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 1.7,
+          "location": "121.491275,31.233575",
+          "distance_meters": 81
+        },
+        {
+          "name": "上海久事美术馆",
+          "address": "外滩一号(原亚细亚大楼)",
+          "category": "科教文化服务;美术馆;美术馆",
+          "rating": 4.6,
+          "location": "121.491265,31.233372",
+          "distance_meters": 83
+        },
+        {
+          "name": "林栋甫爵士肖像画展",
+          "address": "中山东一路与延安东路交叉口西60米",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 2.4,
+          "location": "121.491256,31.233452",
+          "distance_meters": 83
+        },
+        {
+          "name": "亚细亚大楼",
+          "address": "中山东一路1号",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 4.4,
+          "location": "121.49124,31.233442",
+          "distance_meters": 84
+        },
+        {
+          "name": "中山东一路",
+          "address": "中山东二路与延安东路交叉口东80米",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.8,
+          "location": "121.492714,31.232902",
+          "distance_meters": 88
+        },
+        {
+          "name": "上海总会-有利银行旧址",
+          "address": "中山东一路2号",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.9,
+          "location": "121.491203,31.233838",
+          "distance_meters": 94
+        },
+        {
+          "name": "上市公司董秘百人会上海交流中心",
+          "address": "中山东二路8号101",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 2.7,
+          "location": "121.492217,31.232664",
+          "distance_meters": 95
+        },
+        {
+          "name": "上海外滩华尔道夫酒店-粉色熊(打卡点)",
+          "address": "中山东一路2号上海外滩华尔道夫酒店",
+          "category": "风景名胜;风景名胜;观景点",
+          "rating": 0.0,
+          "location": "121.49105,31.233815",
+          "distance_meters": 107
+        },
+        {
+          "name": "上海外滩华尔道夫酒店-会议厅",
+          "address": "中山东一路2号上海外滩华尔道夫酒店2层",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": null,
+          "location": "121.491041,31.233815",
+          "distance_meters": 108
+        },
+        {
+          "name": "法国邮船公司旧址",
+          "address": "中山东二路9号(豫园地铁站7号口步行450米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.9,
+          "location": "121.49231,31.232391",
+          "distance_meters": 126
+        },
+        {
+          "name": "上海电信博物馆",
+          "address": "延安东路34号",
+          "category": "科教文化服务;博物馆;博物馆",
+          "rating": 4.2,
+          "location": "121.4908,31.23333",
+          "distance_meters": 127
+        },
+        {
+          "name": "外滩轮渡口",
+          "address": "上海市外滩街道中山东二路1号",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 4.8,
+          "location": "121.493058,31.232589",
+          "distance_meters": 135
+        },
+        {
+          "name": "上海市金陵中学",
+          "address": "金陵东路4号(豫园地铁站7号口步行410米)",
+          "category": "科教文化服务;学校;中学",
+          "rating": null,
+          "location": "121.491817,31.231818",
+          "distance_meters": 191
+        }
+      ],
+      "filtered_as_noise": 1
+    },
+    {
+      "stop": "豫园",
+      "location": "121.492497,31.227714",
+      "places": [
+        {
+          "name": "上海豫园",
+          "address": "福佑路168号",
+          "category": "风景名胜;风景名胜;国家级景点",
+          "rating": 4.8,
+          "location": "121.492497,31.227714",
+          "distance_meters": 0
+        },
+        {
+          "name": "豫园-藏宝楼",
+          "address": "安仁路132号(豫园地铁站7号口步行380米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.9,
+          "location": "121.492491,31.227688",
+          "distance_meters": 2
+        },
+        {
+          "name": "豫园-学圃",
+          "address": "福佑路168号上海豫园(豫园地铁站7号口步行430米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.5,
+          "location": "121.492565,31.227652",
+          "distance_meters": 9
+        },
+        {
+          "name": "上海豫园-假山处方亭(打卡点)",
+          "address": "福佑路168号上海豫园",
+          "category": "风景名胜;风景名胜;观景点",
+          "rating": 0.0,
+          "location": "121.492465,31.227611",
+          "distance_meters": 11
+        },
+        {
+          "name": "点春堂",
+          "address": "豫园街道安仁路132号豫园湖心亭九曲桥北首",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.9,
+          "location": "121.492464,31.227594",
+          "distance_meters": 13
+        },
+        {
+          "name": "上海豫园-花形窗前(打卡点)",
+          "address": "福佑路168号上海豫园(西南角)",
+          "category": "风景名胜;风景名胜;观景点",
+          "rating": 0.0,
+          "location": "121.492314,31.227634",
+          "distance_meters": 19
+        },
+        {
+          "name": "豫园-快楼",
+          "address": "放浜中路与三牌楼路交汇处豫园内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.1,
+          "location": "121.492533,31.227511",
+          "distance_meters": 22
+        },
+        {
+          "name": "豫园-凤舞鸾吟",
+          "address": "福佑路168号上海豫园(豫园地铁站7号口步行440米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.7,
+          "location": "121.492491,31.22748",
+          "distance_meters": 26
+        },
+        {
+          "name": "广玉兰",
+          "address": "放浜中路与三牌楼路交汇处豫园内(西南角)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.3,
+          "location": "121.492251,31.227604",
+          "distance_meters": 26
+        },
+        {
+          "name": "上海豫园-透过石雕拍摄龙形屋顶(打卡点)",
+          "address": "福佑路168号上海豫园(西南角)",
+          "category": "风景名胜;风景名胜;观景点",
+          "rating": 0.0,
+          "location": "121.492237,31.227606",
+          "distance_meters": 27
+        },
+        {
+          "name": "豫园-万花楼",
+          "address": "安仁街132号豫园内(豫园地铁站7号口步行380米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.8,
+          "location": "121.4922,31.227694",
+          "distance_meters": 28
+        },
+        {
+          "name": "银杏树",
+          "address": "豫园-万花楼(豫园地铁站7号口步行380米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.2,
+          "location": "121.49219,31.227695",
+          "distance_meters": 29
+        },
+        {
+          "name": "豫园-两宜轩",
+          "address": "福佑路与安平街交叉口东南40米",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 2.9,
+          "location": "121.492132,31.227597",
+          "distance_meters": 37
+        },
+        {
+          "name": "古井亭",
+          "address": "安仁街132号豫园内(西侧)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.4,
+          "location": "121.492048,31.227652",
+          "distance_meters": 43
+        },
+        {
+          "name": "豫园-望江亭",
+          "address": "福佑路168号上海豫园(西南角)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.1,
+          "location": "121.49226,31.227337",
+          "distance_meters": 47
+        },
+        {
+          "name": "仰山堂",
+          "address": "福佑路168号上海豫园(西南角)",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 3.4,
+          "location": "121.492259,31.227337",
+          "distance_meters": 47
+        },
+        {
+          "name": "豫园-鱼乐榭",
+          "address": "豫园街道福佑路168号豫园(豫园地铁站7号口步行490米)",
+          "category": "风景名胜;风景名胜;风景名胜",
+          "rating": 4.0,
+          "location": "121.492009,31.227428",
+          "distance_meters": 56
+        },
+        {
+          "name": "豫园-亦舫",
+          "address": "安仁街132号(城隍庙内)(豫园地铁站7号口步行370米)",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 4.0,
+          "location": "121.491874,31.227722",
+          "distance_meters": 59
+        },
+        {
+          "name": "豫园-积水玉廊",
+          "address": "放浜中路与三牌楼路交汇处豫园内",
+          "category": "风景名胜;风景名胜相关;旅游景点",
+          "rating": 3.8,
+          "location": "121.492507,31.227172",
+          "distance_meters": 60
+        },
+        {
+          "name": "胡问遂艺术馆",
+          "address": "福佑路199号(豫园地铁站7号口步行320米)",
+          "category": "科教文化服务;科教文化场所;科教文化场所",
+          "rating": 4.5,
+          "location": "121.49279,31.228361",
+          "distance_meters": 77
+        }
+      ],
+      "filtered_as_noise": 0
+    }
+  ]
+}

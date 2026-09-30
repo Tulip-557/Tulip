@@ -1,0 +1,104 @@
+{
+  "_使用说明": "这是路书的事实源模板。复制一份改成你的行程，然后跑：python tools/render_html.py 你的.json -o 你的.html --verify。带 TODO 的值必须替换掉。字段含义见 references/ludbook-schema.md。含数字的句子要挂证据等级标（[A] 工具实证 / [B] 多源交叉 / [C·单源] 单源线索 / [D] 未核实，规格见 references/evidence-rules.md）——渲染后会自动变成小徽章，第 2 项交付自查要求正文至少有标记。",
+  "meta": {
+    "destination": "TODO 目的地（如：成都）",
+    "city_code": "xx",
+    "title": "TODO 路书标题",
+    "trip_theme": "TODO 行程主题（如：秋日老城与烟火气）",
+    "origin": "TODO 出发地",
+    "nights": "TODO N 天 N 晚",
+    "party": "TODO 人数结构（如：2 人 · 情侣）",
+    "date_range": "TODO 起 ~ 止（如：2026-10-01 ~ 2026-10-03）",
+    "verified_date": "TODO 实查日期（如：2026-09-27）",
+    "photos_source": "TODO 图源（如：Pexels 免费图库）",
+    "photos_note": "TODO 逐张说明：哪几张是当地实景、哪几张是同题材示意；示意项必须在 caption 里标「示意」",
+    "sketch_note": "TODO 若含自绘示意图，在此说明「非等比例、仅供参考」",
+    "variant": "friend",
+    "social_intel": {
+      "_说明": "阶段 3.5 社会情报采集的声明。渲染器会把它变成 #overview 顶部一条「情报来源」，交付自查第 ㉗ 项就查它。二选一：采到了就填 status=COLLECTED + paths + note_count；没去采就把 status 改成 SKIPPED 并写 skipped_reason。**两者都没有 = ㉗ 红灯**——跳过默认动作可以，静默跳过不行。",
+      "status": "COLLECTED",
+      "paths": ["官方文旅发布", "搜索引擎索引"],
+      "notes_file": "社媒线索_<目的地>.json",
+      "note_count": "TODO 采集条数（如：8）",
+      "voices": {
+        "_说明": "口碑构成——直接抄 social_notes.py 输出的 coverage.voices。渲染器会把它显示在「情报来源」条里。**关键用法**：若 TRAVELER/LOCAL/COMMENT 全为 0，说明这趟只采到机构与编辑口径，正文里就不得出现「游客普遍反映」这类写法（渲染器会自动加这句提醒）。填 0 的项不显示。",
+        "OFFICIAL": 0,
+        "MEDIA": 0,
+        "EDITOR": 0,
+        "CREATOR": 0,
+        "TRAVELER": 0,
+        "LOCAL": 0,
+        "COMMENT": 0
+      },
+      "checked_at": "TODO 采集日期（如：2026-09-27）",
+      "skipped_reason": null
+    }
+  },
+  "preferences": {
+    "_说明": "个性化偏好——用户**自报**的饮食/作息/兴趣，渲染器会把它做成「按你的偏好排的」小块注入 #drive（主路线区）。只呈现用户原话，**不写模型推断**（推断会冒充采集值，违背「每个数字都有来源」）。缺哪键就删哪键，三键全空可整个删掉本字段。diet/interests 可用字符串或数组，pace 可用字符串或 {wake_time, nap} 对象。",
+    "diet": "TODO 饮食忌口/喜好（如：不吃辣、想吃本帮菜）",
+    "pace": "TODO 作息与休息（如：9点前不起床、午饭后要小睡）",
+    "interests": "TODO 兴趣标签（如：建筑、本地菜市场、避开人挤人的景点）"
+  },
+  "routes": {
+    "_说明": "主路线 + 备选路线。用户要的是「能对比」，不是给一条路走到黑：一条主线 + ≥2 条备选。渲染去向：primary → #drive，alternatives → #boost（都是注入既有区块，不动骨架）。缺主路线 / 备选少于 2 条，交付自查第 28 项会拦。没有本字段时渲染器什么都不做——对引入本功能前的事实源零影响。",
+    "primary": {
+      "name": "TODO 主路线名（如：博物馆 + 老城厢线）",
+      "summary": "TODO 一句话说清这条线怎么走",
+      "stops": ["TODO 途经站 1", "TODO 途经站 2", "TODO 途经站 3"],
+      "best_for": "TODO 什么情况走它（让读者对号入座）"
+    },
+    "alternatives": [
+      {
+        "name": "TODO 备选名（如：过江看陆家嘴线）",
+        "stops": ["TODO", "TODO", "TODO"],
+        "best_for": "TODO 什么情况走它",
+        "tradeoff": "TODO 代价 / 前提——只列地名不写代价，等于把决策推回给读者",
+        "brief": "TODO 精简版用的一行说明，含证据标记（如：地铁 12 分钟 / ¥3（高德路线，2026-09-01 查）[A]）",
+        "evidence": "TODO 依据句，含 [A] / [B] 标记"
+      },
+      {
+        "name": "TODO 第二条备选",
+        "stops": ["TODO", "TODO"],
+        "best_for": "TODO",
+        "tradeoff": "TODO",
+        "brief": "TODO",
+        "evidence": "TODO"
+      }
+    ]
+  },
+  "days": [
+    {
+      "date": "2026-01-01",
+      "theme": "TODO 当日主题（会出现在侧栏导航，请短）",
+      "title": "TODO 逐日标题（会出现在日程卡抬头）",
+      "summary": "TODO 今日速览一句话：今天的主线是什么、为什么这么排。",
+      "photos": [
+        {"src": "TODO 图片地址或本地路径", "caption": "TODO 图注；非实拍必须写（示意）"}
+      ],
+      "slots": [
+        {"time": "09:00", "body": "TODO 时段卡。含数字的句子必须带来源、时戳与等级标，例如：全程约 <b>62 分钟</b>（高德路线，查询于 2026-09-27）[A]；某攻略说中午人最少[C·单源]。未查到的要写成「未核实[D]——请到 XX 确认」，不许用「大约」「通常」糊过去。"}
+      ],
+      "nearby": [
+        {"name": "TODO 顺道点名", "near": "TODO 在哪一站附近", "distance": "TODO 距离（如：约 300 m，由实测坐标算得）", "note": "TODO 一句说明 + 开放时间——**一定要核过开放日**", "brief": "TODO 精简版短句，含 [A]", "evidence": "TODO 来源与时戳 [A]"}
+      ],
+      "notes": [
+        {"kind": "metro", "text": "TODO 今日交通（kind 可选 summary/metro/photo/stay/food/warn）"},
+        {"kind": "stay", "text": "TODO 今晚住哪、要不要挪行李"}
+      ],
+      "warnings": ["TODO 当日唯一的踩坑预警（没有就留空数组）"]
+    }
+  ],
+  "sections": {
+    "overview": "<div class='eyebrow'>总览</div><h1>TODO 一句话说清这趟是什么</h1><p class='lead'>TODO 出发地、人数、天数、节奏取舍。</p><div class='weather'><div class='wday'><div class='d'>TODO 日期</div><div class='w'>TODO 天气</div><div class='t'>TODO 温度</div></div><div class='wday'><div class='d'>TODO</div><div class='w'>TODO</div><div class='t'>TODO</div></div><div class='wday'><div class='d'>TODO</div><div class='w'>TODO</div><div class='t'>TODO</div></div></div><div class='card' id='prepCard'><h2>出行准备</h2><ul class='check'><li><span class='ct'>TODO 证件 / 必带物</span></li></ul></div>",
+    "drive": "<div class='eyebrow'>路程</div><h2>大交通与市区交通</h2><div class='card'><p>TODO 往返大交通的精确时刻。</p></div><table class='tb'><tr><th>路段</th><th>方式</th><th>耗时</th><th>备注</th></tr><tr><td>TODO</td><td>TODO</td><td>TODO</td><td>来源 + 查询日期 + 等级标，如：高德路线 2026-09-27 [A]</td></tr></table>",
+    "boost": "<div class='eyebrow'>备选</div><h2>时间富余才去</h2><div class='card'><p><b>TODO 地点</b> —— TODO 什么条件下才去。</p></div>",
+    "ticket": "<div class='eyebrow'>门票</div><h2>门票与预约</h2><table class='tb'><tr><th>景点</th><th>票价</th><th>放票</th><th>预约截止</th></tr><tr><td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td></tr></table><p class='lead'>票价旁边要挂等级标：官方渠道 [A]、两个独立来源一致 [B]、查不到 [D]（并写明去哪确认）。<b>票价不许出现 [C]</b>——UGC 说的价格一律不可采信。</p>",
+    "tips": "<div class='eyebrow'>提示</div><h2>避雷</h2><div class='tips'><div class='tip'>TODO 必须是「真实场景 + 应对」，不许写「注意防晒」这类空话。</div></div>",
+    "stay": "<div class='eyebrow'>住宿</div><h2>住</h2><div class='card'><p><b>片区选择</b>：TODO 为什么住这一片。</p><p><b>已订口径</b>：退房时间、入住要问清哪几样。</p><p><b>价档参考</b>：TODO 价格 + 来源日期。</p></div>",
+    "cost": "<div class='eyebrow'>预算</div><h2>预算</h2><div class='stats'><div class='stat'><div class='n'>TODO</div><div class='l'>合计</div></div><div class='stat'><div class='n'>TODO</div><div class='l'>人均</div></div><div class='stat'><div class='n'>TODO</div><div class='l'>住宿</div></div></div><table class='tb'><tr><th>项目</th><th>金额</th><th>说明</th></tr><tr><td>隐藏成本</td><td>TODO</td><td>行李寄存、临时打车、伴手礼零钱</td></tr></table>",
+    "sos": "<div class='eyebrow'>应急</div><h2>Plan B</h2><div class='sos-grid'><div class='sos'><h4>TODO 关键环节</h4><p>TODO 出意外时改去哪、怎么走。</p></div><div class='sos'><h4>TODO</h4><p>TODO</p></div><div class='sos'><h4>TODO</h4><p>TODO</p></div></div>",
+    "eat": "<div class='eyebrow'>美食</div><h2>餐厅</h2><table class='tb'><tr><th>时段</th><th>店</th><th>地界</th><th>人均</th><th>营业</th></tr><tr><td>TODO 哪天哪顿</td><td>TODO 店名</td><td>TODO</td><td>TODO</td><td>TODO 营业时间</td></tr></table><p class='lead'>每日必须有午餐 + 晚餐行；早餐与宵夜用「随意」设定。人均与营业时间要挂等级标——<b>营业时间不许用 [C]</b>，那是 UGC 给的时间，必须回官方或地图核成 [A]/[B]。</p>",
+    "gift": "<div class='eyebrow'>特产</div><h2>送礼</h2><div class='card'><p><b>送礼三问</b>：送给谁？预算多少？要不要带得走？</p><p><b>推荐</b>：TODO</p><p><b>提醒</b>：别在景点门口买——同款在超市便宜一半，且日期更新。</p></div>"
+  }
+}

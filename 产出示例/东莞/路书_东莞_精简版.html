@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="jianhao-travel-planner · 路书基准骨架 v1（源：jianhao-travel-planner, MIT）· 指纹　·　本页为精简执行版 cd440ea068">
+<title>东莞·三天两晚 从销烟旧址到湖山古村 · 东莞（精简版）</title>
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --bg:#F7F5F0; --surface:#FCFBF7; --ink:#1C1B17; --ink2:#5C594E; --ink3:#8A8677;
+  --line:#E3DFD3; --accent:#2F5D43; --accent-soft:#E6EEE8; --on-accent:#F7F5F0;
+  --warn:#8A6D1F; --warn-soft:#F3EEDF;
+  --red:#b5493a; --gold:#c8a45c;
+  --radius:14px; --fs:19px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:var(--fs)}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--on-accent);padding:8px 16px;z-index:99;border-radius:0 0 8px 0;font-size:.8rem}
+.skip:focus{left:0}
+
+/* ---------- 左侧栏 ---------- */
+.side{position:fixed;inset:0 auto 0 0;width:236px;overflow-y:auto;background:#F2EEE3;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:28px 22px;z-index:10}
+.logo{font-size:1.15rem;font-weight:800;letter-spacing:.02em}
+.logo span{color:var(--accent)}
+.logo-sub{font-size:.58rem;letter-spacing:.2em;color:var(--ink3);margin-top:4px;text-transform:uppercase}
+.nav-group{margin-top:26px}
+.nav-label{font-size:.6rem;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase;margin-bottom:8px;padding-left:12px}
+.side nav a{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;font-size:.82rem;color:#4A473E;transition:background .2s,color .2s;margin-bottom:2px}
+.side nav a:hover{background:#E8E3D4;color:var(--ink)}
+.side nav a.on{background:var(--accent);color:var(--on-accent);font-weight:600;box-shadow:0 3px 10px rgba(47,93,67,.25)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.side-foot{margin-top:auto;font-size:.66rem;color:var(--ink3);border-top:1px solid var(--line);padding-top:14px;line-height:2}
+
+/* ---------- 主区 ---------- */
+main{margin-left:236px}
+.wrap{max-width:860px;margin:0 auto;padding:0 44px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.eyebrow{font-size:.62rem;letter-spacing:.24em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:12px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.35;font-weight:800;max-width:16em}
+h2{font-size:clamp(1.45rem,2.7vw,1.95rem);line-height:1.35;font-weight:800}
+.lead{color:var(--ink2);margin-top:12px;max-width:34em}
+
+/* ---------- 通用卡片/标签/表格 ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;margin-bottom:14px}
+.tag{display:inline-block;font-size:.66rem;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:600;margin-left:8px;vertical-align:middle}
+.tag.dim{background:transparent;border:1px solid var(--line);color:var(--ink3);font-weight:400}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+
+/* ---------- 证据分级徽章：[A]/[B]/[C·单源]/[D] 由渲染器转成这枚小标 ---------- */
+/* 语义：越实越绿、越虚越红。cursor:help + title 给出等级全称。 */
+.ev{display:inline-flex;align-items:center;justify-content:center;min-width:1.35em;height:1.4em;padding:0 4px;margin-left:3px;border-radius:5px;font-size:.6em;font-weight:800;line-height:1;letter-spacing:.02em;vertical-align:.3em;cursor:help;border:1px solid transparent;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+.ev-a{background:#E6EEE8;color:#2F5D43;border-color:#C4D9CE}
+.ev-b{background:#E7EEF3;color:#3E6B8A;border-color:#C8DAE6}
+.ev-c{background:#F3EEDF;color:#8A6D1F;border-color:#E4DABE}
+.ev-d{background:#F7E9E6;color:#B5493A;border-color:#EACFC8}
+.ev-note{font-size:.68em;color:var(--ink3);margin-left:2px}
+@media print{.ev{border-color:#999!important}}
+strong{color:var(--ink)}
+table.tb{width:100%;border-collapse:collapse;margin-top:14px;font-size:.85rem;background:var(--surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.tb th{background:#F2EEE3;text-align:left;padding:10px 12px;font-size:.78rem;color:var(--ink2);border-bottom:1px solid var(--line);white-space:nowrap}
+.tb td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.tb tr:last-child td{border-bottom:none}
+.tb td b{color:var(--ink)}
+
+/* ---------- 天气 ---------- */
+.weather{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.wday{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
+.wday .d{font-size:.7rem;color:var(--ink3)}
+.wday .w{font-size:.82rem;font-weight:700;margin-top:4px}
+.wday .t{font-size:.7rem;color:var(--ink2);margin-top:3px}
+
+/* ---------- 清单（可勾选） ---------- */
+.check{list-style:none;margin-top:16px}
+.check li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--surface);cursor:pointer;transition:background .2s}
+.check li:hover{border-color:var(--accent)}
+.check li.done{background:var(--accent-soft)}
+.check li.done .ct{text-decoration:line-through;color:var(--ink3)}
+.check input{width:22px;height:22px;margin-top:2px;accent-color:var(--accent);flex:none;cursor:pointer}
+.check .ct{font-size:.92rem}
+.check li.hot{border:2px solid var(--warn);background:var(--warn-soft)}
+.check li.hot .ct b{color:#6B5A22}
+
+/* ---------- 每日照片 ---------- */
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.photos.single{grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto}
+@media (max-width:900px){.photos{grid-template-columns:1fr}.photos.single{max-width:100%}}
+.photos figure{margin:0}
+.photos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line)}
+.photos.single img{aspect-ratio:auto;object-fit:contain}
+.photos figcaption{font-size:.68rem;color:var(--ink3);margin-top:5px;line-height:1.5}
+
+/* ---------- 每日 ---------- */
+.day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;scroll-margin-top:20px}
+.day.today{border:2px solid var(--accent);box-shadow:0 6px 24px rgba(47,93,67,.14)}
+.day-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}
+.day-idx{font-size:.62rem;letter-spacing:.14em;color:var(--ink3)}
+.day-head h3{font-size:1.15rem;font-weight:800}
+.today-badge{display:none;font-size:.7rem;padding:4px 12px;border-radius:99px;background:var(--accent);color:var(--on-accent);font-weight:700;align-items:center;gap:6px}
+.day.today .today-badge{display:inline-flex}
+.slot{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.slot:last-of-type{border-bottom:none}
+.slot-time{font-size:.78rem;font-weight:700;color:var(--accent);padding-top:2px}
+.slot-body{font-size:.9rem;color:var(--ink2)}
+.slot-body b,.slot-body strong{color:var(--ink);font-weight:700}
+.note-row{display:flex;gap:10px;margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--accent-soft);font-size:.84rem;color:var(--ink2);align-items:flex-start}
+.note-row.photo{background:#EDF0E6}
+.note-row .ic{flex:none}
+.warn-line{margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--warn-soft);font-size:.84rem;color:#6B5A22}
+
+/* ---------- 数据（预算） ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px 14px}
+.stat .n{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.stat .l{font-size:.72rem;color:var(--ink2);margin-top:3px}
+
+/* ---------- 提示 ---------- */
+.tips{counter-reset:tip;margin-top:16px}
+.tip{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tip:last-child{border-bottom:none}
+.tip::before{counter-increment:tip;content:counter(tip);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:.85rem;text-align:center;line-height:34px}
+.tip p{font-size:.9rem;color:var(--ink2);padding-top:5px}
+.sos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.sos{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.sos h4{font-size:.95rem;margin-bottom:8px}
+.sos p{font-size:.82rem;color:var(--ink2)}
+
+/* ---------- 工具条/返回顶部 ---------- */
+.toolbar{position:fixed;top:18px;right:20px;z-index:20;display:flex;gap:8px}
+.tbtn{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:.78rem;font-weight:700;color:var(--ink2);cursor:pointer;transition:all .2s}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+.backtop{position:fixed;bottom:24px;right:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:var(--on-accent);border:none;font-size:1.1rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 14px rgba(47,93,67,.3)}
+.backtop.show{opacity:1;pointer-events:auto}
+
+/* ---------- 入场动效 ---------- */
+html.js section .card,html.js section .day,html.js section .tip,html.js .wday,html.js .sos{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+html.js section.in .card,html.js section.in .day,html.js section.in .tip,html.js section.in .wday,html.js section.in .sos{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js section .card,html.js section .day,html.js section .tip,html.js .wday,html.js .sos{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:900px){
+  html{font-size:calc(var(--fs) - 1px)}
+  body{padding-bottom:76px}
+  .side{position:static;width:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;padding:12px 14px;border-right:none;border-bottom:1px solid var(--line)}
+  .logo-sub,.side-foot{display:none}
+  .nav-group{margin:0;display:flex;gap:4px;flex-wrap:wrap}
+  .nav-label{display:block;flex:1 1 100%;font-size:.58rem;letter-spacing:.16em;color:var(--ink3);margin:2px 0 4px 2px}
+  .side nav a{padding:7px 10px;font-size:.76rem}
+  .nav-group--chips{margin-top:8px;display:grid;align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:6px}
+  .nav-group--chips>.nav-label{grid-column:1/-1;margin:0 0 1px 2px}
+  .nav-group--chips a{margin:0;padding:8px 6px;font-size:.74rem;line-height:1.3;justify-content:center;text-align:center;border:1px solid var(--line);background:var(--surface);border-radius:8px}
+  .nav-group--chips a:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .nav-group--chips a.on{border-color:transparent}
+  main{margin-left:0}
+  .wrap{padding:0 18px}
+  section{padding:44px 0}
+  .weather{grid-template-columns:repeat(3,1fr)}
+  .stats{grid-template-columns:1fr 1fr}
+  .sos-grid{grid-template-columns:1fr}
+  .slot{grid-template-columns:76px 1fr;gap:10px}
+  .tb{font-size:.78rem}
+  .tb th,.tb td{padding:8px 8px}
+  .toolbar{top:auto;bottom:14px;left:14px;right:auto;flex-direction:row}
+  .tbtn{padding:7px 11px;font-size:.72rem;box-shadow:0 2px 8px rgba(0,0,0,.08);background:rgba(252,251,247,.92)}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  .side,.toolbar,.backtop,.skip{display:none}
+  main{margin-left:0}
+  body{background:#fff;font-size:12pt}
+  .wrap{max-width:100%;padding:0}
+  section{padding:20px 0;page-break-inside:avoid}
+  .day{page-break-inside:avoid}
+  /* !important 必须保留：入场动效 html.js section .card{opacity:0} 特异性更高，
+     没滚动到的区块打印/导 PDF 时会整块空白（2026-09-30 CDP 实测 9/13 区块隐形） */
+  .card,.day,.tip,.wday,.sos{opacity:1!important;transform:none!important}
+  .check li.done .ct{text-decoration:none;color:var(--ink)}
+}
+
+/* ---------- 兼容层（宁波/丽水 共用，勿删） ---------- */
+b,strong{color:var(--ink)}
+.warn-line b{color:inherit}
+.tb td .intro{display:block;font-size:.78rem;color:var(--ink3);margin-top:3px;line-height:1.5}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<div class="toolbar" role="group" aria-label="阅读工具">
+  <button class="tbtn" id="fontDec" aria-label="字号调小">A−</button>
+  <button class="tbtn" id="fontInc" aria-label="字号调大">A＋</button>
+  <button class="tbtn" id="printBtn" aria-label="打印这份路书">🖨 打印</button>
+</div>
+<aside class="side">
+  <div>
+    <div class="logo">东莞<span>.</span></div>
+    <div class="logo-sub">3 天 2 晚 · 3 人</div>
+  </div>
+  <nav aria-label="页面导航">
+    <div class="nav-group">
+      <div class="nav-label">行程</div>
+      <a href="#overview">总览</a>
+      <a href="#drive">路程</a>
+      <a href="#day1">第 1 天 · 虎门 · 销烟旧址与海防炮台</a>
+      <a href="#day2">第 2 天 · 莞城 · 岭南园林与老城烟火</a>
+      <a href="#day3">第 3 天 · 松山湖 + 南社 · 湖山与古村</a>
+      <a href="#boost">备选</a>
+    </div>
+    <div class="nav-group nav-group--chips">
+      <div class="nav-label">备忘</div>
+      <a href="#ticket">门票</a>
+      <a href="#tips">提示</a>
+      <a href="#stay">住宿</a>
+      <a href="#cost">预算</a>
+      <a href="#sos">应急</a>
+      <a href="#eat">美食</a>
+      <a href="#gift">特产</a>
+    </div>
+  </nav>
+  <div class="side-foot">
+    珠海出发 · 2026-10-17 ~ 2026-10-19<br>
+    3 人<br>
+    信息 2026-09-28实查
+  </div>
+</aside>
+<main id="main">
+  <div class="wrap">
+        <section id="overview">
+<div class='card'><p><b>这是精简执行版</b>——只留要动手做的事。下面这张表是<b>全局定位</b>：点「第 N 天」直接跳到当天。本页没有的东西（住宿比价、预算逐项、备选点、特产细节）都在<b>完整版</b>里。</p><table class='tb'><thead><tr><th>天</th><th>日期</th><th>主线</th><th>一句话</th></tr></thead><tbody><tr><td><a href='#day1'>第 1 天</a></td><td>2026-10-17</td><td>虎门 · 销烟旧址与海防炮台</td><td></td></tr><tr><td><a href='#day2'>第 2 天</a></td><td>2026-10-18</td><td>莞城 · 岭南园林与老城烟火</td><td></td></tr><tr><td><a href='#day3'>第 3 天</a></td><td>2026-10-19</td><td>松山湖 + 南社 · 湖山与古村</td><td></td></tr></tbody></table></div>
+<p class='lead'><b>情报来源</b>：已采集 <b>8 条</b>；路径：官方文旅发布 / 搜索引擎索引；线索卡 <b>社媒线索卡_东莞.json</b>；核实于 2026-09-28。<br>口碑构成：官方机构 3 / 媒体 1 / 攻略编辑 1 / 内容创作者 3。<b>本趟未采到真人评价与评论</b>——文中不得表述为「游客普遍反映」。死线不变：票价 / 营业时间 / 车次余票 / 距离车程从不取自社媒，这部分始终回官方渠道与地图核。</p>
+<div class='eyebrow'>总览</div><h1>东莞三天两晚 · 从销烟旧址到湖山古村</h1><p class='lead'>3 人，珠海高铁直达虎门，10/17 周六出发、10/19 周一返。半天一个片区：D1 虎门历史线、D2 莞城老城、D3 松山湖 + 南社古村。</p><div class='weather'><div class='wday'><div class='d'>10/17 周六</div><div class='w'>常年多云间晴</div><div class='t'>20–28℃</div></div><div class='wday'><div class='d'>10/18 周日</div><div class='w'>常年晴到多云</div><div class='t'>20–28℃</div></div><div class='wday'><div class='d'>10/19 周一</div><div class='w'>常年多云偶阵雨</div><div class='t'>20–28℃</div></div></div><p class='lead'><b>常年气候值 <span class="ev ev-b" title="证据等级 B·多源交叉">B</span>，不是天气预报</b>；高德预报窗口 4 天、10/17 在窗口外 <span class="ev ev-d" title="证据等级 D·未核实">D</span>——<b>出发前 3 天重查</b>。</p>
+        </section>
+        <section id="drive">
+<div class='eyebrow'>路程</div><h2>大交通与市区交通</h2><div class='card'><p><b>去程</b>：G1022 珠海 07:56 → 虎门 09:30，同车次不换乘<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。<b>返程</b>：虎门 → 广州南 → 珠海，约 1.5 小时<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。<b>两种车次都须在 12306 复核 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>——铁路未接入。</p></div><table class='tb'><tr><th>路段</th><th>驾车</th><th>来源</th></tr><tr><td>虎门站 → 鸦博</td><td>16 分 / 9.5 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>鸦博 → 威远炮台</td><td>16 分 / 6.8 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>威远炮台 → 南城</td><td>40 分 / 40.7 km（¥17）</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>南城 → 可园</td><td>14 分 / 6.1 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>可园 → 东莞记忆</td><td>4 分 / 1.0 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>东莞记忆 → 鳒鱼洲</td><td>7 分 / 3.0 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>鳒鱼洲 → 南城</td><td>14 分 / 6.0 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>南城 → 松湖烟雨</td><td>32 分 / 21.5 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>松湖烟雨 → 南社</td><td>28 分 / 18.5 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr><tr><td>南社 → 虎门站</td><td>47 分 / 40.5 km</td><td>高德 09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）</td></tr></table><p class='lead'><b>全程打车</b>：公交方案合计约 6.5 小时，驾车约 3.6 小时<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28），三人摊下来更划算。<b>地铁 2 号线兜底</b>：虎门火车站 → 东莞火车站 06:30–23:05<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。</p>
+<div class="card" data-route="primary"><h3>主路线 · 历史 → 老城 → 湖山（三天递进）</h3><p>D1 虎门看近代史（销烟池与海防炮台），D2 泡莞城老城区（可园、东莞记忆、鳒鱼洲），D3 松山湖接南社古村后返程。三天的先后被闭馆日锁死——鸦片战争博物馆周一闭、可园周二闭、海战博物馆周二闭，顺序不能随手调。</p><p><b>途经</b>：鸦片战争博物馆 → 威远炮台 · 海战博物馆 → 可园博物馆 → 东莞记忆 → 鳒鱼洲文创园 → 松湖烟雨 → 南社明清古村</p><p><b>什么情况走它</b>：三天两晚、以人文与老城为主——默认就走这条</p></div>
+<div class="card" data-nearby="1" data-nearby-count="1"><h3>沿途顺道可看（1 处）</h3><ul><li><b>松山湖音乐喷泉广场</b>（近松湖烟雨、约 277 m） —— 环湖骑行道上，全天开，骑车顺路就能看 <span class="ev ev-a" title="证据等级 A·工具实证">A</span></li></ul></div>
+        </section>
+        <section id="day1">
+      <div class="day">
+        <div class="day-head">
+          <span class="day-idx">DAY 1 / 2026-10-17</span>
+          <h3>D1 · 虎门：从销烟池到威远炮台</h3>
+          <span class="today-badge">今天</span>
+        </div>
+        <div class="photos single">
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjZmUzZjIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiNlOGVlZjIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjRlZGUxIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzZWEiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdlYTNiZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0Zjc4OTMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InN0b25lIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5YzkzODQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmQ2NTU4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9InVybCgjc2t5KSIvPgogIDxjaXJjbGUgY3g9IjkwNSIgY3k9IjE1MCIgcj0iNTgiIGZpbGw9IiNmN2YyZTIiIG9wYWNpdHk9IjAuODUiLz4KICA8IS0tIOi/nOWxsSAtLT4KICA8cGF0aCBkPSJNMCA0MDAgTDE3MCAzMjAgTDMwMCAzNzIgTDQzMCAzMTggTDYwMCAzOTIgTDc4MCAzMzYgTDk1MCAzOTAgTDEyMDAgMzQ0IEwxMjAwIDQzMCBMMCA0MzAgWiIgZmlsbD0iIzlmYjJiZCIgb3BhY2l0eT0iMC41NSIvPgogIDwhLS0g5rGf6Z2iIC0tPgogIDxyZWN0IHg9IjAiIHk9IjQzMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iMjQwIiBmaWxsPSJ1cmwoI3NlYSkiLz4KICA8ZyBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjI4IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiPgogICAgPHBhdGggZD0iTTQwIDUwMCBxNjAgLTEyIDEyMCAwIHQxMjAgMCB0MTIwIDAgdDEyMCAwIHQxMjAgMCB0MTIwIDAgdDEyMCAwIHQxMjAgMCIvPgogICAgPHBhdGggZD0iTTgwIDU2MCBxNjAgLTEyIDEyMCAwIHQxMjAgMCB0MTIwIDAgdDEyMCAwIHQxMjAgMCB0MTIwIDAgdDEyMCAwIi8+CiAgICA8cGF0aCBkPSJNMjAgNjIwIHE2MCAtMTIgMTIwIDAgdDEyMCAwIHQxMjAgMCB0MTIwIDAgdDEyMCAwIHQxMjAgMCB0MTIwIDAgdDEyMCAwIi8+CiAgPC9nPgogIDwhLS0g5bK457q/IC0tPgogIDxwYXRoIGQ9Ik0wIDY1NSBxMjIwIC0yOCA0MjAgNiBxMTgwIDMwIDM4MCAtNCBxMjIwIC0zNiA0MDAgMiBMMTIwMCA4MDAgTDAgODAwIFoiIGZpbGw9IiM4ZjlhN2UiLz4KICA8cGF0aCBkPSJNMCA2NzIgcTIyMCAtMjggNDIwIDYgcTE4MCAzMCAzODAgLTQgcTIyMCAtMzYgNDAwIDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZmN2E2MCIgc3Ryb2tlLXdpZHRoPSI0IiBvcGFjaXR5PSIwLjYiLz4KICA8IS0tIOeCruWPsOWPsOWfuiAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjE4MCIgeT0iNDcwIiB3aWR0aD0iNDQwIiBoZWlnaHQ9IjE4MCIgcng9IjgiIGZpbGw9InVybCgjc3RvbmUpIi8+CiAgICA8cmVjdCB4PSIxODAiIHk9IjQ3MCIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIxNiIgZmlsbD0iI2IzYWE5OSIvPgogICAgPCEtLSDlnpvlj6MgLS0+CiAgICA8ZyBmaWxsPSIjOGI4MjcxIj4KICAgICAgPHJlY3QgeD0iMTk2IiB5PSI0NDAiIHdpZHRoPSI1MiIgaGVpZ2h0PSIzNCIvPgogICAgICA8cmVjdCB4PSIyNjgiIHk9IjQ0MCIgd2lkdGg9IjUyIiBoZWlnaHQ9IjM0Ii8+CiAgICAgIDxyZWN0IHg9IjM0MCIgeT0iNDQwIiB3aWR0aD0iNTIiIGhlaWdodD0iMzQiLz4KICAgICAgPHJlY3QgeD0iNDEyIiB5PSI0NDAiIHdpZHRoPSI1MiIgaGVpZ2h0PSIzNCIvPgogICAgICA8cmVjdCB4PSI0ODQiIHk9IjQ0MCIgd2lkdGg9IjUyIiBoZWlnaHQ9IjM0Ii8+CiAgICAgIDxyZWN0IHg9IjU1NiIgeT0iNDQwIiB3aWR0aD0iNDgiIGhlaWdodD0iMzQiLz4KICAgIDwvZz4KICAgIDwhLS0g54Ku5L2N5rSe5Y+jIC0tPgogICAgPGcgZmlsbD0iIzQwMzkyZiI+CiAgICAgIDxwYXRoIGQ9Ik0yNTAgNjUwIHYtNzIgYTQwIDQwIDAgMCAxIDgwIDAgdjcyIHoiLz4KICAgICAgPHBhdGggZD0iTTQwMCA2NTAgdi03MiBhNDAgNDAgMCAwIDEgODAgMCB2NzIgeiIvPgogICAgICA8cGF0aCBkPSJNNTUwIDY1MCB2LTcyIGEzNiAzNiAwIDAgMSA3MiAwIHY3MiB6Ii8+CiAgICA8L2c+CiAgICA8IS0tIOWPpOeCriAtLT4KICAgIDxnPgogICAgICA8cmVjdCB4PSIyNzgiIHk9IjU1NiIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNiIgcng9IjgiIGZpbGw9IiMzZjQ2NTAiIHRyYW5zZm9ybT0icm90YXRlKC0xNiAyNzggNTU2KSIvPgogICAgICA8Y2lyY2xlIGN4PSIyNzIiIGN5PSI1NTYiIHI9IjE3IiBmaWxsPSIjMzMzYTQzIi8+CiAgICA8L2c+CiAgICA8Zz4KICAgICAgPHJlY3QgeD0iNDMyIiB5PSI1NTYiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTYiIHJ4PSI4IiBmaWxsPSIjM2Y0NjUwIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTYgNDMyIDU1NikiLz4KICAgICAgPGNpcmNsZSBjeD0iNDI2IiBjeT0iNTU2IiByPSIxNyIgZmlsbD0iIzMzM2E0MyIvPgogICAgPC9nPgogIDwvZz4KICA8IS0tIOWJjeaZr+iNiSAtLT4KICA8cGF0aCBkPSJNMCA3ODAgcTE2MCAtMjYgMzIwIDQgcTE4MCAzNCAzNjAgLTYgcTIyMCAtNDAgNTIwIDYgTDEyMDAgODAwIEwwIDgwMCBaIiBmaWxsPSIjNWY2ZDRmIi8+Cjwvc3ZnPgo=" alt="威远炮台：珠江口边的清代炮位（示意图，本地绘制，非实拍）" loading="lazy"><figcaption>威远炮台：珠江口边的清代炮位（示意图，本地绘制，非实拍）</figcaption></figure>
+        </div>
+        <div class="slot">
+          <div class="slot-time">07:40</div>
+          <div class="slot-body">珠海站集合，提前 40 分钟到。<b>早餐</b>在珠海站或车上解决。<b>车次须在 12306 复核</b><span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源·铁路未接入</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">07:56</div>
+          <div class="slot-body"><b>G1022 珠海 07:56 → 虎门 09:30</b>，同车次不换乘<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。备选：珠海北 09:47 → 广州南换 G6515 → 虎门 11:09，二等座约 ¥89.5/人<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">09:30</div>
+          <div class="slot-body">虎门站 → 鸦片战争博物馆<b>打车 16 分钟 / 9.5 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28），三人摊下来比公交省时间。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">10:00</div>
+          <div class="slot-body">鸦片战争博物馆，<b>免费但必须提前预约</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。8:30 开馆、<b>17:00 停止入场</b>、17:30 闭馆<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。<b>周一闭馆</b>——所以放在今天，不能挪到 10/19。停留 2–2.5 小时。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">12:30</div>
+          <div class="slot-body">虎门镇就近午饭（<b>店未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>，高德现搜评分 4.5+）。饭后 → 威远炮台<b>打车 16 分钟 / 6.8 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">13:40</div>
+          <div class="slot-body">威远炮台 + 海战博物馆，两处<b>预约凭证通用</b><span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。海战馆<b>周二闭馆</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28），今天周六正常开。停留 2–2.5 小时。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">16:00</div>
+          <div class="slot-body">→ 南城鸿福路酒店，<b>打车 40 分钟 / 40.7 公里，过路费 ¥17</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）（全程最长一程，公交要 129 分钟，别省）。入住休整。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">18:30</div>
+          <div class="slot-body">晚餐：<b>伟记烧鹅濑粉（南城莞太路分店）</b>，高德评分 4.4<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。人均未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span>。饭后鸿福路夜宵可选。</div>
+        </div>
+        <div class="note-row"><span class="ic">🛏</span><div>住南城鸿福路一带，两晚不挪窝（行李只搬一次）。候选：东莞康帝国际酒店（鸿福路 200 号海德广场 1 栋，高德评分 4.6）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>、东莞会展国际大酒店（会展北路 1 号，高德评分 4.5）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>。<b>房价未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>——出发前在携程/美团按 10/17 日期实查，优先三人间或双床房。</div></div>
+        <div class="note-row"><span class="ic">⚠️</span><div>今天最硬的约束是「预约」：鸦片战争博物馆免费但<b>必须提前预约</b>，且 <b>17:00 就停止入场</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>。落地先确认三人的预约二维码都在手机上，再出站。</div></div>
+        <details><summary>🚇 今日交通汇总（点开看）</summary>
+        <div class="note-row"><span class="ic">🚇</span><div>今日交通汇总：虎门站→鸦片战争博物馆 9.5 公里/16 分钟；→威远炮台 6.8 公里/16 分钟；→南城鸿福路 40.7 公里/40 分钟、过路费 ¥17。三段均为高德驾车路线，查询于 2026-09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>。全天驾车合计约 72 分钟 / 57 公里。</div></div>
+        </details>
+        <div class="warn-line">鸦片战争博物馆<b>周一闭馆</b>、海战博物馆<b>周二闭馆</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>。10/19 是周一，所以虎门这条线只能放在今天或明天，绝不能挪到最后一天。</div>
+      </div>
+        </section>
+        <section id="day2">
+      <div class="day">
+        <div class="day-head">
+          <span class="day-idx">DAY 2 / 2026-10-18</span>
+          <h3>D2 · 莞城：可园、东莞记忆与鳒鱼洲</h3>
+          <span class="today-badge">今天</span>
+        </div>
+        <div class="photos single">
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5MiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZGJlN2VmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y2ZjFlNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0id2F0ZXIiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzhmYjhhOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZjdkNzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNza3kyKSIvPgogIDwhLS0g6L+c5aSE6ZWs6ICz5aKZ5rCR5bGF576kIC0tPgogIDxnIGZpbGw9IiNiOWIyYTQiIG9wYWNpdHk9IjAuNyI+CiAgICA8cGF0aCBkPSJNNjAgNDIwIGgxMjAgdi03MCBxLTMwIC0zNCAtNjAgMCBxLTMwIC0zNCAtNjAgMCB6Ii8+CiAgICA8cGF0aCBkPSJNMjAwIDQzMCBoMTEwIHYtNjAgcS0yNyAtMzAgLTU1IDAgcS0yOCAtMzAgLTU1IDAgeiIvPgogICAgPHBhdGggZD0iTTg4MCA0MjUgaDEzMCB2LTcyIHEtMzIgLTM2IC02NSAwIHEtMzMgLTM2IC02NSAwIHoiLz4KICA8L2c+CiAgPCEtLSDkuLvlu7rnrZHvvJrpnZLnoJbplazogLPlopkgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIzMzAiIHk9IjMzMCIgd2lkdGg9IjQyMCIgaGVpZ2h0PSIyMzAiIGZpbGw9IiM4ZDg1NzciLz4KICAgIDxwYXRoIGQ9Ik0zMzAgMzMwIHEwIC02MCA3MCAtNjAgcTcwIDAgNzAgNjAgeiIgZmlsbD0iIzdkNzU2OCIvPgogICAgPHBhdGggZD0iTTY4MCAzMzAgcTAgLTYwIDcwIC02MCBxNzAgMCA3MCA2MCB6IiBmaWxsPSIjN2Q3NTY4Ii8+CiAgICA8cmVjdCB4PSIzMzAiIHk9IjMxOCIgd2lkdGg9IjQyMCIgaGVpZ2h0PSIxOCIgZmlsbD0iI2E0OWI4YiIvPgogICAgPCEtLSDpl6jnqpcgLS0+CiAgICA8ZyBmaWxsPSIjNWM1NTQ4Ij4KICAgICAgPHJlY3QgeD0iMzY4IiB5PSI0MDAiIHdpZHRoPSI3NCIgaGVpZ2h0PSI5NiIgcng9IjQiLz4KICAgICAgPHJlY3QgeD0iNDcwIiB5PSI0MDAiIHdpZHRoPSI3NCIgaGVpZ2h0PSI5NiIgcng9IjQiLz4KICAgICAgPHJlY3QgeD0iNTcyIiB5PSI0MDAiIHdpZHRoPSI3NCIgaGVpZ2h0PSI5NiIgcng9IjQiLz4KICAgICAgPHJlY3QgeD0iNjQ4IiB5PSI0MDAiIHdpZHRoPSI3NCIgaGVpZ2h0PSI5NiIgcng9IjQiLz4KICAgIDwvZz4KICAgIDxnIGZpbGw9IiNlZmU3ZDUiPgogICAgICA8cmVjdCB4PSIzNzQiIHk9IjQwNiIgd2lkdGg9IjYyIiBoZWlnaHQ9Ijg0IiByeD0iMyIvPgogICAgICA8cmVjdCB4PSI0NzYiIHk9IjQwNiIgd2lkdGg9IjYyIiBoZWlnaHQ9Ijg0IiByeD0iMyIvPgogICAgICA8cmVjdCB4PSI1NzgiIHk9IjQwNiIgd2lkdGg9IjYyIiBoZWlnaHQ9Ijg0IiByeD0iMyIvPgogICAgICA8cmVjdCB4PSI2NTQiIHk9IjQwNiIgd2lkdGg9IjYyIiBoZWlnaHQ9Ijg0IiByeD0iMyIvPgogICAgPC9nPgogICAgPGcgc3Ryb2tlPSIjNWM1NTQ4IiBzdHJva2Utd2lkdGg9IjMiPgogICAgICA8bGluZSB4MT0iNDA1IiB5MT0iNDA2IiB4Mj0iNDA1IiB5Mj0iNDkwIi8+CiAgICAgIDxsaW5lIHgxPSIzNzQiIHkxPSI0NDgiIHgyPSI0MzYiIHkyPSI0NDgiLz4KICAgICAgPGxpbmUgeDE9IjUwNyIgeTE9IjQwNiIgeDI9IjUwNyIgeTI9IjQ5MCIvPgogICAgICA8bGluZSB4MT0iNDc2IiB5MT0iNDQ4IiB4Mj0iNTM4IiB5Mj0iNDQ4Ii8+CiAgICAgIDxsaW5lIHgxPSI2MDkiIHkxPSI0MDYiIHgyPSI2MDkiIHkyPSI0OTAiLz4KICAgICAgPGxpbmUgeDE9IjU3OCIgeTE9IjQ0OCIgeDI9IjY0MCIgeTI9IjQ0OCIvPgogICAgICA8bGluZSB4MT0iNjg1IiB5MT0iNDA2IiB4Mj0iNjg1IiB5Mj0iNDkwIi8+CiAgICAgIDxsaW5lIHgxPSI2NTQiIHkxPSI0NDgiIHgyPSI3MTYiIHkyPSI0NDgiLz4KICAgIDwvZz4KICA8L2c+CiAgPCEtLSDmsLTmpq3lm57lu4ogLS0+CiAgPGc+CiAgICA8cmVjdCB4PSI3NjAiIHk9IjQ1MiIgd2lkdGg9IjMzMCIgaGVpZ2h0PSIxNiIgZmlsbD0iIzdhNmI1MiIvPgogICAgPGcgZmlsbD0iIzZkNjA0YSI+CiAgICAgIDxyZWN0IHg9Ijc3NiIgeT0iNDY4IiB3aWR0aD0iMTIiIGhlaWdodD0iOTIiLz4KICAgICAgPHJlY3QgeD0iOTAwIiB5PSI0NjgiIHdpZHRoPSIxMiIgaGVpZ2h0PSI5MiIvPgogICAgICA8cmVjdCB4PSIxMDUyIiB5PSI0NjgiIHdpZHRoPSIxMiIgaGVpZ2h0PSI5MiIvPgogICAgPC9nPgogICAgPHBhdGggZD0iTTc1MCA0NTIgaDM1MCBsLTI0IC00NiBoLTMwMiB6IiBmaWxsPSIjOGE1ZjQ1Ii8+CiAgICA8cGF0aCBkPSJNNzI2IDQwNiBxMTQ5IC00NiAyOTggMCBsLTI0IDQ2IGgtMjUwIHoiIGZpbGw9IiM5YTZiNGUiLz4KICA8L2c+CiAgPCEtLSDojbfoirHmsaAgLS0+CiAgPHJlY3QgeD0iMCIgeT0iNTYwIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyNDAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CiAgPGcgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC4yMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik02MCA2MjAgcTcwIC0xMCAxNDAgMCB0MTQwIDAgdDE0MCAwIHQxNDAgMCB0MTQwIDAgdDE0MCAwIHQxNDAgMCIvPgogICAgPHBhdGggZD0iTTIwIDY5MCBxNzAgLTEwIDE0MCAwIHQxNDAgMCB0MTQwIDAgdDE0MCAwIHQxNDAgMCB0MTQwIDAgdDE0MCAwIi8+CiAgPC9nPgogIDxnPgogICAgPGVsbGlwc2UgY3g9IjIwMCIgY3k9IjY0MCIgcng9IjYyIiByeT0iMjAiIGZpbGw9IiM0YzdmNWUiLz4KICAgIDxlbGxpcHNlIGN4PSI0MjAiIGN5PSI3MDAiIHJ4PSI3MiIgcnk9IjIyIiBmaWxsPSIjNTY4YTY3Ii8+CiAgICA8ZWxsaXBzZSBjeD0iNzAwIiBjeT0iNjQ2IiByeD0iNTYiIHJ5PSIxOCIgZmlsbD0iIzRjN2Y1ZSIvPgogICAgPGVsbGlwc2UgY3g9Ijk2MCIgY3k9IjcwNCIgcng9Ijc4IiByeT0iMjQiIGZpbGw9IiM1NjhhNjciLz4KICA8L2c+CiAgPGcgZmlsbD0iI2U4YjdjNCI+CiAgICA8Y2lyY2xlIGN4PSIyMzYiIGN5PSI2MjAiIHI9IjE1Ii8+CiAgICA8Y2lyY2xlIGN4PSIzOTIiIGN5PSI2ODIiIHI9IjE3Ii8+CiAgICA8Y2lyY2xlIGN4PSI3MjYiIGN5PSI2MjgiIHI9IjEzIi8+CiAgICA8Y2lyY2xlIGN4PSI5OTgiIGN5PSI2ODYiIHI9IjE4Ii8+CiAgPC9nPgogIDwhLS0g55+z5qCPIC0tPgogIDxyZWN0IHg9IjAiIHk9IjU0OCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iMTQiIGZpbGw9IiNjZmM2YjIiLz4KICA8ZyBmaWxsPSIjYmRiMzlkIj4KICAgIDxyZWN0IHg9IjgwIiB5PSI1NjIiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIvPgogICAgPHJlY3QgeD0iMzIwIiB5PSI1NjIiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIvPgogICAgPHJlY3QgeD0iNTYwIiB5PSI1NjIiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIvPgogICAgPHJlY3QgeD0iODAwIiB5PSI1NjIiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIvPgogICAgPHJlY3QgeD0iMTA0MCIgeT0iNTYyIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="可园：镬耳墙、水榭回廊与荷花池（示意图，本地绘制，非实拍）" loading="lazy"><figcaption>可园：镬耳墙、水榭回廊与荷花池（示意图，本地绘制，非实拍）</figcaption></figure>
+        </div>
+        <div class="slot">
+          <div class="slot-time">09:00</div>
+          <div class="slot-body"><b>早餐</b>：酒店含早就在酒店吃，不含早出门前找早茶。<br>酒店 → 可园，<b>打车 14 分钟 / 6.1 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">09:20</div>
+          <div class="slot-body">可园，<b>09:00–17:30，17:00 停止进园</b>；<b>周二闭馆</b>，今天周日正常开<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。<b>古建筑区 ¥8/人，综合馆区免费，散客免预约</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。免费讲解 10:00 一场，想听就卡点。停留 1.5–2 小时。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">11:30</div>
+          <div class="slot-body">走路去东莞记忆（<b>1.0 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28））。午饭中山路老字号：群姨猪肠粉 4.6 / 高佬粥店 4.6 / 中山餐馆 4.5 / 冠群饮食店 4.5（高德评分<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28））。<b>人均与营业时间未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">13:10</div>
+          <div class="slot-body">→ 鳒鱼洲文创园，<b>打车 7 分钟 / 3.0 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。旧厂区改造、沿江，下午慢逛拍照。店铺与营业时间未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">16:00</div>
+          <div class="slot-body">→ 回南城，<b>打车 14 分钟 / 6.0 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。回酒店歇脚。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">18:00</div>
+          <div class="slot-body">晚餐南城/东城（<b>店未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>；想继续本地口味可回志亮牛杂，高德 4.2<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28））。今晚别熬太晚，明天最长。</div>
+        </div>
+        <div class="note-row"><span class="ic">🍜</span><div>莞城中山路一带是东莞老字号最密的一片，步行范围内能吃到猪肠粉、粥、牛杂、糖水。<b>本版只采到高德评分与坐标，未核实人均与营业时间 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>——出发前用大众点评逐家核一下当天是否营业。</div></div>
+        <div class="note-row"><span class="ic">⚠️</span><div>可园<b>17:00 就停止进园并清场</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>，不是 17:30。下午才去的话只能看综合馆区（免费那半边），古建筑区 ¥8 那半边进不去。</div></div>
+        <details><summary>🚇 今日交通汇总（点开看）</summary>
+        <div class="note-row"><span class="ic">🚇</span><div>今日交通汇总：酒店→可园 6.1 公里/14 分钟；可园→东莞记忆 1.0 公里/4 分钟；东莞记忆→鳒鱼洲 3.0 公里/7 分钟；鳒鱼洲→南城 6.0 公里/14 分钟。均为高德驾车路线，查询于 2026-09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>。全天驾车合计约 39 分钟 / 16 公里，是三天里最轻松的一天。</div></div>
+        </details>
+        <div class="warn-line">可园逢<b>周二闭馆</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>——今天是周日没问题，但如果你把行程整体后移，记得重算闭馆日。</div>
+      </div>
+        </section>
+        <section id="day3">
+      <div class="day">
+        <div class="day-head">
+          <span class="day-idx">DAY 3 / 2026-10-19</span>
+          <h3>D3 · 松山湖骑行 + 南社明清古村，傍晚返珠海</h3>
+          <span class="today-badge">今天</span>
+        </div>
+        <div class="photos single">
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5MyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZjZkOWIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNDUlIiBzdG9wLWNvbG9yPSIjZjBjMDkxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5Yjk4ZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGFrZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYzk4ZjYzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNDAlIiBzdG9wLWNvbG9yPSIjOGZhZTlmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNmNmY2NiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI3NreTMpIi8+CiAgPGNpcmNsZSBjeD0iMjQwIiBjeT0iMTkwIiByPSI2NiIgZmlsbD0iI2ZmZjJkOCIgb3BhY2l0eT0iMC45Ii8+CiAgPCEtLSDkupEgLS0+CiAgPGcgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4zNSI+CiAgICA8ZWxsaXBzZSBjeD0iNjIwIiBjeT0iMTUwIiByeD0iMTUwIiByeT0iMjQiLz4KICAgIDxlbGxpcHNlIGN4PSI4ODAiIGN5PSIxMTgiIHJ4PSIxMTAiIHJ5PSIxOCIvPgogIDwvZz4KICA8IS0tIOi/nOWxsSAtLT4KICA8cGF0aCBkPSJNMCAzNzIgTDIwMCAzMDAgTDM4MCAzNTYgTDU2MCAyOTIgTDc4MCAzNjAgTDk4MCAzMDYgTDEyMDAgMzU4IEwxMjAwIDQwMCBMMCA0MDAgWiIgZmlsbD0iIzhmN2Q3NiIgb3BhY2l0eT0iMC41Ii8+CiAgPCEtLSDlr7nlsrjmrKflvI/lsJbpobblu7rnrZHnvqQgLS0+CiAgPGcgZmlsbD0iIzZiNWE1MiIgb3BhY2l0eT0iMC44NSI+CiAgICA8cGF0aCBkPSJNMzMwIDM3MiBsMCAtNDYgbDIyIC00NiBsMjIgNDYgbDAgNDYgeiIvPgogICAgPHJlY3QgeD0iMzY2IiB5PSIzMzYiIHdpZHRoPSI4NiIgaGVpZ2h0PSIzNiIvPgogICAgPHBhdGggZD0iTTM2NiAzMzYgbDQzIC0zNCBsNDMgMzQgeiIvPgogICAgPHBhdGggZD0iTTQ4MCAzNzIgbDAgLTQwIGwxOCAtNDAgbDE4IDQwIGwwIDQwIHoiLz4KICAgIDxyZWN0IHg9IjUxMiIgeT0iMzQ0IiB3aWR0aD0iNzAiIGhlaWdodD0iMjgiLz4KICAgIDxwYXRoIGQ9Ik01MTIgMzQ0IGwzNSAtMjYgbDM1IDI2IHoiLz4KICAgIDxwYXRoIGQ9Ik02MDQgMzcyIGwwIC0zNCBsMTYgLTM0IGwxNiAzNCBsMCAzNCB6Ii8+CiAgICA8cmVjdCB4PSI2MzIiIHk9IjM1MCIgd2lkdGg9IjU0IiBoZWlnaHQ9IjIyIi8+CiAgICA8cGF0aCBkPSJNNjMyIDM1MCBsMjcgLTIyIGwyNyAyMiB6Ii8+CiAgICA8cmVjdCB4PSI3MDAiIHk9IjMzMCIgd2lkdGg9Ijk2IiBoZWlnaHQ9IjQyIi8+CiAgICA8cGF0aCBkPSJNNzAwIDMzMCBsNDggLTM4IGw0OCAzOCB6Ii8+CiAgPC9nPgogIDwhLS0g6JC957695p2J5p6X77yI5a+55bK477yJIC0tPgogIDxnIGZpbGw9IiM1ZjRhM2MiIG9wYWNpdHk9IjAuOCI+CiAgICA8cGF0aCBkPSJNNzgwIDM3MiBsNiAtNzAgbDEwIDcwIHoiLz4KICAgIDxwYXRoIGQ9Ik04MDYgMzcyIGw2IC03OCBsMTAgNzggeiIvPgogICAgPHBhdGggZD0iTTgzNCAzNzIgbDYgLTY2IGwxMCA2NiB6Ii8+CiAgICA8cGF0aCBkPSJNODYyIDM3MiBsNiAtNzQgbDEwIDc0IHoiLz4KICAgIDxwYXRoIGQ9Ik04OTAgMzcyIGw2IC02MiBsMTAgNjIgeiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjN2E1YjNlIiBvcGFjaXR5PSIwLjc1Ij4KICAgIDxwYXRoIGQ9Ik05MzAgMzcyIGw2IC02OCBsMTAgNjggeiIvPgogICAgPHBhdGggZD0iTTk1NiAzNzIgbDYgLTc2IGwxMCA3NiB6Ii8+CiAgICA8cGF0aCBkPSJNOTg0IDM3MiBsNiAtNjQgbDEwIDY0IHoiLz4KICA8L2c+CiAgPCEtLSDmuZbpnaIgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMzcyIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyMzYiIGZpbGw9InVybCgjbGFrZSkiLz4KICA8ZyBzdHJva2U9IiNmZmU5YzkiIHN0cm9rZS1vcGFjaXR5PSIwLjQ1IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiPgogICAgPHBhdGggZD0iTTMwMCA0MzAgcTEyMCAtMTAgMjQwIDAgdDI0MCAwIi8+CiAgICA8cGF0aCBkPSJNNDIwIDQ3MCBxMTAwIC04IDIwMCAwIHQyMDAgMCIvPgogICAgPHBhdGggZD0iTTI0MCA1MTIgcTEzMCAtMTAgMjYwIDAgdDI2MCAwIi8+CiAgPC9nPgogIDwhLS0g5pyo5qCI6YGTIC0tPgogIDxnPgogICAgPHBhdGggZD0iTTAgNjEwIGgxMjAwIHY1OCBIMCB6IiBmaWxsPSIjOGE2YTRhIi8+CiAgICA8ZyBzdHJva2U9IiM2ZDUxMzgiIHN0cm9rZS13aWR0aD0iMyI+CiAgICAgIDxsaW5lIHgxPSI2MCIgeTE9IjYxMCIgeDI9IjYwIiB5Mj0iNjY4Ii8+CiAgICAgIDxsaW5lIHgxPSIxODAiIHkxPSI2MTAiIHgyPSIxODAiIHkyPSI2NjgiLz4KICAgICAgPGxpbmUgeDE9IjMwMCIgeTE9IjYxMCIgeDI9IjMwMCIgeTI9IjY2OCIvPgogICAgICA8bGluZSB4MT0iNDIwIiB5MT0iNjEwIiB4Mj0iNDIwIiB5Mj0iNjY4Ii8+CiAgICAgIDxsaW5lIHgxPSI1NDAiIHkxPSI2MTAiIHgyPSI1NDAiIHkyPSI2NjgiLz4KICAgICAgPGxpbmUgeDE9IjY2MCIgeTE9IjYxMCIgeDI9IjY2MCIgeTI9IjY2OCIvPgogICAgICA8bGluZSB4MT0iNzgwIiB5MT0iNjEwIiB4Mj0iNzgwIiB5Mj0iNjY4Ii8+CiAgICAgIDxsaW5lIHgxPSI5MDAiIHkxPSI2MTAiIHgyPSI5MDAiIHkyPSI2NjgiLz4KICAgICAgPGxpbmUgeDE9IjEwMjAiIHkxPSI2MTAiIHgyPSIxMDIwIiB5Mj0iNjY4Ii8+CiAgICAgIDxsaW5lIHgxPSIxMTQwIiB5MT0iNjEwIiB4Mj0iMTE0MCIgeTI9IjY2OCIvPgogICAgPC9nPgogICAgPHJlY3QgeD0iMCIgeT0iNjAwIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIxMiIgZmlsbD0iIzljN2M1OCIvPgogIDwvZz4KICA8IS0tIOagj+adhiAtLT4KICA8ZyBzdHJva2U9IiNhODg3NWYiIHN0cm9rZS13aWR0aD0iNSI+CiAgICA8bGluZSB4MT0iMCIgeTE9IjU3MiIgeDI9IjEyMDAiIHkyPSI1NzIiLz4KICA8L2c+CiAgPGcgZmlsbD0iI2E4ODc1ZiI+CiAgICA8cmVjdCB4PSI4MCIgeT0iNTcyIiB3aWR0aD0iOCIgaGVpZ2h0PSIzMCIvPgogICAgPHJlY3QgeD0iMzAwIiB5PSI1NzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjMwIi8+CiAgICA8cmVjdCB4PSI1MjAiIHk9IjU3MiIgd2lkdGg9IjgiIGhlaWdodD0iMzAiLz4KICAgIDxyZWN0IHg9Ijc0MCIgeT0iNTcyIiB3aWR0aD0iOCIgaGVpZ2h0PSIzMCIvPgogICAgPHJlY3QgeD0iOTYwIiB5PSI1NzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjMwIi8+CiAgICA8cmVjdCB4PSIxMTQwIiB5PSI1NzIiIHdpZHRoPSI4IiBoZWlnaHQ9IjMwIi8+CiAgPC9nPgogIDwhLS0g6L+R5bK46JC957695p2JIC0tPgogIDxnIGZpbGw9IiM0YTNhMmMiPgogICAgPHBhdGggZD0iTTEyMCA2NjggbDggLTEyMCBsMTQgMTIwIHoiLz4KICAgIDxwYXRoIGQ9Ik0xNjIgNjY4IGw4IC0xMDQgbDE0IDEwNCB6Ii8+CiAgICA8cGF0aCBkPSJNMTA0MCA2NjggbDggLTExMiBsMTQgMTEyIHoiLz4KICAgIDxwYXRoIGQ9Ik0xMDg0IDY2OCBsOCAtOTYgbDE0IDk2IHoiLz4KICA8L2c+CiAgPGcgZmlsbD0iIzZiNGEzMCI+CiAgICA8ZWxsaXBzZSBjeD0iMTMwIiBjeT0iNTM2IiByeD0iNDYiIHJ5PSIzMCIvPgogICAgPGVsbGlwc2UgY3g9IjE3MiIgY3k9IjU1NiIgcng9IjQwIiByeT0iMjYiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDUwIiBjeT0iNTQ0IiByeD0iNDQiIHJ5PSIyOCIvPgogICAgPGVsbGlwc2UgY3g9IjEwOTQiIGN5PSI1NjIiIHJ4PSIzOCIgcnk9IjI0Ii8+CiAgPC9nPgogIDwhLS0g5YmN5pmv6I2J5ZywIC0tPgogIDxwYXRoIGQ9Ik0wIDY2OCBoMTIwMCB2MTMyIEgwIHoiIGZpbGw9IiM0ZDYxNDEiLz4KICA8cGF0aCBkPSJNMCA2NjggcTIwMCAtMjAgNDAwIDQgcTIyMCAyNiA0MjAgLTYgcTIwMCAtMzAgMzgwIDQgTDEyMDAgODAwIEwwIDgwMCBaIiBmaWxsPSIjM2Y1MjM1Ii8+Cjwvc3ZnPgo=" alt="松湖烟雨：环湖木栈道与对岸落羽杉（示意图，本地绘制，非实拍）" loading="lazy"><figcaption>松湖烟雨：环湖木栈道与对岸落羽杉（示意图，本地绘制，非实拍）</figcaption></figure>
+        </div>
+        <div class="slot">
+          <div class="slot-time">09:00</div>
+          <div class="slot-body"><b>早餐</b>：酒店含早就吃酒店，不含早出门前在南城解决。<br>酒店 → 松湖烟雨，<b>打车 32 分钟 / 21.5 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。建议 08:30 出发，周末车位紧张<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">09:35</div>
+          <div class="slot-body">松湖烟雨，<b>免费、全天开放、平日无需预约</b>（景区官方口径）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。42 公里环湖绿道<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>，三人建议租电动车或只骑一段。查理大桥是出片机位<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。<b>华为欧洲小镇内部进不去，只能外围拍远景</b><span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。停留 2–2.5 小时。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">12:00</div>
+          <div class="slot-body">→ 南社明清古村落，<b>打车 28 分钟 / 18.5 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。午饭茶山镇就近（<b>店未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>）。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">13:30</div>
+          <div class="slot-body">南社明清古村落，<b>8:30–22:00</b>（同程与景区公告一致）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>。票价两个口径如实并列：现场 <b>¥30</b>，线上 <b>¥26–27</b>（本地宝与携程、同程多口径并列）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>——线上便宜但要提前下单。祠堂 22 间、古民居 200 余间（景区导览与文旅发布一致）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>，慢逛 2–3 小时。<b>带驱蚊液</b><span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">16:00</div>
+          <div class="slot-body">南社 → 虎门站，<b>打车 47 分钟 / 40.5 公里</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28），横穿全市，务必留余量。<b>建议订 17:40 之后的车次</b><span class="ev ev-d" title="证据等级 D·未核实">D</span><span class="ev-note">估算</span>，具体班次须在 12306 查 <span class="ev ev-d" title="证据等级 D·未核实">D</span>。</div>
+        </div>
+        <div class="slot">
+          <div class="slot-time">17:40</div>
+          <div class="slot-body">虎门站返珠海，常见走法虎门 → 广州南 → 珠海，全程约 1.5 小时<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。<b>末班与当日车次一律以 12306 为准 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>——铁路未接入，本版不给具体班次。<b>晚餐</b>回珠海再吃。</div>
+        </div>
+        <div class="note-row"><span class="ic">⚠️</span><div>今天是<b>周一</b>：鸦片战争博物馆闭馆 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>。今天行程不含虎门馆点（只去虎门站坐车），所以不受影响——但如果你想把 D1 的虎门线挪到今天，不行。</div></div>
+        <div class="note-row"><span class="ic">🛏</span><div>今天退房，行李随身。南社与松湖烟雨都没有正规寄存信息，<b>行李寄存方案未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>——建议出发前问酒店能否寄存到傍晚，或打车时把行李放后备箱（三人一辆车通常放得下）。</div></div>
+        <details><summary>🚇 今日交通汇总（点开看）</summary>
+        <div class="note-row"><span class="ic">🚇</span><div>今日交通汇总：酒店→松湖烟雨 21.5 公里/32 分钟；→南社 18.5 公里/28 分钟；→虎门站 40.5 公里/47 分钟。均为高德驾车路线，查询于 2026-09-28 <span class="ev ev-a" title="证据等级 A·工具实证">A</span>。全天驾车合计约 107 分钟 / 80.5 公里，是三天里最长的一天。</div></div>
+        </details>
+        <div class="warn-line">最后一段南社 → 虎门站是 <b>40.5 公里 / 47 分钟</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>，横穿全市。<b>别把南社逛到 17:00 以后才走</b>——那是红灯笼最好看的时候，但你会赶不上车。想拍夜景就把返程改到 20:00 后。</div>
+      </div>
+        </section>
+        <section id="boost">
+<div class="card" data-route="alternatives" data-alt-count="2"><h3>备选路线（2 条）</h3><ul><li><b>D1 压缩版（只看一个馆）</b> —— 高铁晚点，或想把第一天走轻一点 砍掉威远炮台与海战博物馆，省下约 3 小时。 海战博物馆与威远炮台的预约凭证可通用、其余各馆须分别预约<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>；海战博物馆每周二全天闭馆<span class="ev ev-a" title="证据等级 A·工具实证">A</span></li><li><b>D3 短程版（不走骑行）</b> —— 天气不好，或不想骑车 砍掉松湖烟雨的环湖骑行（全程露天），D3 只走南社，返程更从容。 南社 → 虎门站打车约 47 分钟 / 40.5 公里（高德驾车路线，2026-09-28 查）<span class="ev ev-a" title="证据等级 A·工具实证">A</span></li></ul></div>
+<div class='eyebrow'>备选</div><h2>时间富余才去</h2><div class='card'><p><b>沙角炮台</b>（高德 4.6<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>）——D1 鸦博没约上时替代，<b>开放未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>先打电话。</p><p><b>东莞市博物馆</b>——D2 下雨的室内兜底，<b>票价与开放未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>。</p><p><b>南社夜场</b>（17:30 后，¥25 / ¥19.8 两口径并列<span class="ev ev-b" title="证据等级 B·多源交叉">B</span>）——只有返程改签到 20:00 后才考虑。</p></div>
+        </section>
+        <section id="ticket">
+<div class='eyebrow'>门票</div><h2>门票与预约</h2><table class='tb'><tr><th>景点</th><th>票价</th><th>闭馆 / 截止</th></tr><tr><td>鸦片战争博物馆</td><td>免费·须预约（博物馆官网口径）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td><td><b>17:00 停止入场；周一闭馆</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）</td></tr><tr><td>海战博物馆 / 威远炮台</td><td>免费·凭证通用（博物馆官网口径）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td><td><b>海战馆周二闭馆</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）</td></tr><tr><td>可园·古建筑区</td><td><b>¥8/人</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）</td><td>17:00 停止进园；<b>周二闭馆</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）</td></tr><tr><td>可园·综合馆区</td><td>免费<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）</td><td>17:00 停止进园<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）</td></tr><tr><td>松湖烟雨</td><td>免费·免预约（景区官方口径）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td><td>全天（景区官方口径）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td></tr><tr><td>南社明清古村落</td><td><b>现场 ¥30 / 线上 ¥26–27</b>（本地宝与携程、同程多口径并列）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td><td>8:30–22:00（同程与景区公告一致）<span class="ev ev-b" title="证据等级 B·多源交叉">B</span></td></tr></table><p class='lead'><b>闭馆日是硬约束</b>：鸦博周一、可园周二、海战馆周二。<b>南社价差如实并列，按线上 ¥26 做预算但要提前下单</b>。票价全部来自官方渠道或多渠道交叉，无一条 UGC 单源。</p>
+        </section>
+        <section id="tips">
+<div class='eyebrow'>提示</div><h2>避雷</h2><div class='tips'><div class='tip'><b>闭馆日会废掉一天</b>：鸦博周一、可园与海战馆周二闭馆<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。10/19 是周一，虎门馆点只能放前两天。</div><div class='tip'><b>免费≠免预约</b>：鸦博免费但须预约，<b>17:00 停止入场</b><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28）。</div><div class='tip'><b>华为欧洲小镇进不去</b>，只能外围拍远景<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。</div><div class='tip'><b>42 公里绿道别硬骑</b><span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>，租电动车或只骑一段。</div><div class='tip'><b>南社夜景赶不上</b>——要拍就把返程改到 20:00 后。</div><div class='tip'><b>午后雷阵雨</b><span class="ev ev-b" title="证据等级 B·多源交叉">B</span>，带薄雨衣别带伞。</div><div class='tip'><b>老字号人均与营业时间 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>，去之前用大众点评核一次。</div></div>
+        </section>
+        <section id="stay">
+<div class='eyebrow'>住宿</div><h2>住</h2><div class='card'><p><b>两晚都住南城鸿福路，不挪窝</b>：地铁 2 号线市民中心站在旁（往虎门火车站末班 23:19）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28），且是三天动线的几何中心（北到莞城 6.1 km、东到松山湖 21.5 km、西南到虎门站 23.2 km）<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28）。</p><p><b>候选（高德评分<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28））</b>：东莞康帝国际酒店 4.6、东莞会展国际大酒店 4.5。</p><p><b>房价未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>——出发前按日期实查。<b>订前问三样</b>：能否寄存行李到 D3 傍晚、退房时间、是否含早。</p></div>
+        </section>
+        <section id="cost">
+<div class='eyebrow'>预算</div><h2>预算</h2><div class='stats'><div class='stat'><div class='n'>¥3 900</div><div class='l'>合计（3 人）</div></div><div class='stat'><div class='n'>¥1 300</div><div class='l'>人均</div></div><div class='stat'><div class='n'>¥1 100</div><div class='l'>住宿（2 晚）</div></div></div><table class='tb'><tr><th>项目</th><th>3 人</th><th>等级</th></tr><tr><td>高铁往返</td><td>¥537</td><td><span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span> 须以 12306 为准</td></tr><tr><td>住宿 2 晚</td><td>¥1 100</td><td><b><span class="ev ev-d" title="证据等级 D·未核实">D</span><span class="ev-note">估算</span></b></td></tr><tr><td>门票</td><td>¥102</td><td><span class="ev ev-a" title="证据等级 A·工具实证">A</span>（场馆官方渠道，查询于 2026-09-28） 可园 ¥8×3 + <span class="ev ev-b" title="证据等级 B·多源交叉">B</span> 南社 ¥26×3（携程与同程口径）</td></tr><tr><td>餐饮 3 天</td><td>¥1 800</td><td><b><span class="ev ev-d" title="证据等级 D·未核实">D</span><span class="ev-note">估算</span></b></td></tr><tr><td>市内交通</td><td>¥450</td><td><b><span class="ev ev-d" title="证据等级 D·未核实">D</span><span class="ev-note">估算</span></b></td></tr><tr><td>松山湖租车</td><td>¥120</td><td><b><span class="ev ev-d" title="证据等级 D·未核实">D</span></b></td></tr><tr><td>隐藏成本</td><td>¥200</td><td>寄存 / 加价 / 伴手礼</td></tr></table><p class='lead'><b>表里一半是 <span class="ev ev-d" title="证据等级 D·未核实">D</span> 估算，如实标了</b>。出发前把住宿与高铁按实际预订金额替换掉那两行。</p>
+        </section>
+        <section id="sos">
+<div class='eyebrow'>应急</div><h2>Plan B</h2><div class='sos-grid'><div class='sos'><h4>鸦博没约上 / 临时闭馆</h4><p>改去<b>沙角炮台</b>（同类型古战场，开放未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span>，先打电话）；或虎门线与莞城线对调（莞城无闭馆约束）。</p></div><div class='sos'><h4>午后雷阵雨</h4><p>先砍松湖烟雨骑行 → 改鳒鱼洲或东莞市博物馆；威远炮台露天，暴雨只逛海战馆室内。</p></div><div class='sos'><h4>G1022 无票</h4><p>走珠海北 → 广州南 → 虎门换乘（约 1h22m）<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>，上午顺延 1.5h，威远炮台与海战馆二选一。</p></div><div class='sos'><h4>南社逛不完</h4><p>压缩到 1.5h 走一条线<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>，时间加给松湖烟雨；下雨则反过来。</p></div><div class='sos'><h4>赶不上 17:40 的车</h4><p>南社→虎门站 47 分钟是硬时间<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28）。已晚点就改签 20:00 后，顺带看红灯笼夜景。</p></div><div class='sos'><h4>有人不适</h4><p>砍 D2（全天驾车仅 39 分钟<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（高德路线，查询于 2026-09-28），莞城线最好砍）。</p></div></div>
+        </section>
+        <section id="eat">
+<div class='eyebrow'>美食</div><h2>餐厅</h2><table class='tb'><tr><th>时段</th><th>店</th><th>人均 / 营业</th></tr><tr><td>D1 晚</td><td><b>伟记烧鹅濑粉</b>（南城莞太路，4.4<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28））</td><td>未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></td></tr><tr><td>D2 午</td><td><b>群姨猪肠粉 4.6 / 高佬粥店 4.6 / 中山餐馆 4.5 / 冠群饮食店 4.5</b>（莞城中山路<span class="ev ev-a" title="证据等级 A·工具实证">A</span>（官方渠道，查询于 2026-09-28））</td><td>未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></td></tr><tr><td>D1 午 / D2 晚 / D3 午</td><td>就近现搜（虎门 / 南城 / 茶山）</td><td>未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></td></tr></table><p class='lead'><b>能核实的是店在哪、评分多少；核实不了的是人均与今天开不开——一律标 <span class="ev ev-d" title="证据等级 D·未核实">D</span>，没有拿 UGC 数字充数</b>（营业时间不许落在 C 级单源上）。出发前用大众点评逐家核，替换掉 <span class="ev ev-d" title="证据等级 D·未核实">D</span>。</p>
+        </section>
+        <section id="gift">
+<div class='eyebrow'>特产</div><h2>送礼</h2><div class='card'><p><b>推荐</b>：食品类为主（糖不甩、道滘肉丸、荔枝干一类）<span class="ev ev-c" title="证据等级 C·单源线索">C</span><span class="ev-note">单源</span>。<b>具体店与价格未核实 <span class="ev ev-d" title="证据等级 D·未核实">D</span></b>。</p><p><b>别在景点门口买</b>，同款在超市更便宜、日期更新。<b>D2 在莞城或南城超市一次买齐</b>，别拖到 D3 赶车时。</p></div>
+        </section>
+<footer style="padding:64px 0 80px;text-align:center">
+  <h2>东莞路书 · 历史线 + 老城烟火 + 湖山骑行</h2>
+  <p>珠海出发 · 2026-10-17 ~ 2026-10-19 · 3 人<br>本地单文件 · 无外部依赖 · 断网可打开<br>信息 2026-09-28联网实查 · 未核实项已标注</p>
+  <p>配图：本版 AI 生成配图被跳过，各 day 的 photos 为空数组——不是遗漏，是有意留空。要配图请补本地路径或 URL，并在 caption 里标明是否实拍。；图源 本版未配图<br>本版无自绘示意图。</p>
+  <p style="margin-top:18px;font-weight:700">方案仅供参考——安全和开心，才是最重要的。🌕</p>
+</footer>
+  </div>
+</main>
+<button class="backtop" id="backtop" aria-label="回到顶部">↑</button>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 1. 当日模式：按今天日期高亮对应行程日 ---------- */
+  var TRIP = { "2026-10-17":"day1", "2026-10-18":"day2", "2026-10-19":"day3" };
+  function todayStr(){
+    var d = new Date();
+    var m = ("0"+(d.getMonth()+1)).slice(-2), day = ("0"+d.getDate()).slice(-2);
+    return d.getFullYear()+"-"+m+"-"+day;
+  }
+  var todayId = TRIP[todayStr()];
+  if (todayId){
+    var sec = document.getElementById(todayId);
+    if (sec){
+      var card = sec.querySelector(".day");
+      if (card) card.classList.add("today");
+      var navA = document.querySelector('.side nav a[href="#'+todayId+'"]');
+      if (navA) navA.innerHTML = '<span class="dot"></span>' + navA.textContent;
+      setTimeout(function(){ sec.scrollIntoView({behavior:"smooth", block:"start"}); }, 600);
+    }
+  } else {
+    var prep = document.getElementById("prepCard");
+    if (prep && todayStr() < "2026-10-17") prep.style.border = "2px solid var(--accent)";
+  }
+
+  /* ---------- 2. 字号三档（记忆） ---------- */
+  var FONTS = ["17px","19px","21px"];
+  var fi = 1;
+  try { fi = Math.max(0, Math.min(2, parseInt(localStorage.getItem("dg_font")||"1",10)||0)); } catch(e){}
+  function applyFont(){ document.documentElement.style.setProperty("--fs", FONTS[fi]); }
+  applyFont();
+  function saveFont(){ try{ localStorage.setItem("dg_font", String(fi)); }catch(e){} }
+  document.getElementById("fontInc").addEventListener("click", function(){ if(fi<2){fi++;applyFont();saveFont();} });
+  document.getElementById("fontDec").addEventListener("click", function(){ if(fi>0){fi--;applyFont();saveFont();} });
+
+  /* ---------- 3. 打印 ---------- */
+  document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+
+  /* ---------- 4. 勾选清单（记忆） ---------- */
+  document.querySelectorAll(".check li").forEach(function(li, i){
+    var box = li.querySelector("input");
+    var key = "dg_chk_" + box.id;
+    try { box.checked = localStorage.getItem(key) === "1"; } catch(e){}
+    if (box.checked) li.classList.add("done");
+    li.addEventListener("click", function(ev){
+      if (ev.target.tagName !== "INPUT"){ box.checked = !box.checked; }
+      li.classList.toggle("done", box.checked);
+      try{ localStorage.setItem(key, box.checked ? "1" : "0"); }catch(e){}
+    });
+  });
+
+  /* ---------- 5. 滚动监听：侧栏高亮 + 入场动效 ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".side nav a"));
+  var secs = Array.prototype.slice.call(document.querySelectorAll("main section"));
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        en.target.classList.add("in");
+        var id = en.target.id;
+        navLinks.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#"+id); });
+      }
+    });
+  }, { rootMargin: "-25% 0px -35% 0px" });
+  secs.forEach(function(s){ io.observe(s); });
+
+  /* ---------- 6. 返回顶部 ---------- */
+  var bt = document.getElementById("backtop");
+  window.addEventListener("scroll", function(){
+    bt.classList.toggle("show", window.scrollY > 600);
+  }, { passive:true });
+  bt.addEventListener("click", function(){ window.scrollTo({ top:0, behavior:"smooth" }); });
+})();
+</script>
+<script>
+/* 兜底：若上方脚本报错导致入场动效未初始化，3 秒后强制显示全部内容 */
+setTimeout(function(){
+  if (!document.querySelector('main section.in')){
+    document.querySelectorAll('main section').forEach(function(s){ s.classList.add('in'); });
+  }
+}, 3000);
+</script>
+</body>
+</html>

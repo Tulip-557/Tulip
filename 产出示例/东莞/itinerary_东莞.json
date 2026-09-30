@@ -1,0 +1,174 @@
+{
+  "budget_cny": 3900,
+  "timezone": "Asia/Shanghai",
+  "constraints": {
+    "max_daily_minutes": 720,
+    "max_walking_km_per_day": 10,
+    "default_transfer_buffer_minutes": 20,
+    "stale_after_hours": 24
+  },
+  "_说明": "duration_minutes 全部来自高德驾车路线实采（2026-09-28），不是估算。未实采的路段（如酒店→晚餐）不入表——宁可不写，不写假数字。",
+  "activities": [
+    {
+      "id": "d1-yapian",
+      "name": "鸦片战争博物馆",
+      "type": "ATTRACTION",
+      "start": "2026-10-17T10:00:00+08:00",
+      "end": "2026-10-17T12:30:00+08:00",
+      "opening_time": "08:30",
+      "closing_time": "17:30",
+      "last_entry_time": "17:00",
+      "estimated_cost": 0,
+      "walking_km": 2,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d1-weiyuan",
+      "name": "威远炮台与海战博物馆",
+      "type": "ATTRACTION",
+      "start": "2026-10-17T13:40:00+08:00",
+      "end": "2026-10-17T16:00:00+08:00",
+      "opening_time": "08:30",
+      "closing_time": "17:30",
+      "last_entry_time": "17:00",
+      "estimated_cost": 0,
+      "walking_km": 3,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d1-hotel",
+      "name": "南城鸿福路酒店入住",
+      "type": "LODGING",
+      "start": "2026-10-17T17:00:00+08:00",
+      "end": "2026-10-17T17:30:00+08:00",
+      "opening_time": "00:00",
+      "closing_time": "23:59",
+      "last_entry_time": null,
+      "estimated_cost": 550,
+      "walking_km": 0,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d2-keyuan",
+      "name": "可园博物馆",
+      "type": "ATTRACTION",
+      "start": "2026-10-18T09:20:00+08:00",
+      "end": "2026-10-18T11:20:00+08:00",
+      "opening_time": "09:00",
+      "closing_time": "17:30",
+      "last_entry_time": "17:00",
+      "estimated_cost": 8,
+      "walking_km": 2,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d2-memory",
+      "name": "东莞记忆与中山路午饭",
+      "type": "MEAL",
+      "start": "2026-10-18T11:50:00+08:00",
+      "end": "2026-10-18T13:10:00+08:00",
+      "opening_time": "00:00",
+      "closing_time": "23:59",
+      "last_entry_time": null,
+      "estimated_cost": 60,
+      "walking_km": 2,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d2-jianyu",
+      "name": "鳒鱼洲文创园",
+      "type": "ATTRACTION",
+      "start": "2026-10-18T13:40:00+08:00",
+      "end": "2026-10-18T16:00:00+08:00",
+      "opening_time": "00:00",
+      "closing_time": "23:59",
+      "last_entry_time": null,
+      "estimated_cost": 0,
+      "walking_km": 3,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d3-songshanhu",
+      "name": "松湖烟雨",
+      "type": "ATTRACTION",
+      "start": "2026-10-19T09:35:00+08:00",
+      "end": "2026-10-19T12:00:00+08:00",
+      "opening_time": "00:00",
+      "closing_time": "23:59",
+      "last_entry_time": null,
+      "estimated_cost": 40,
+      "walking_km": 5,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d3-nanshe",
+      "name": "南社明清古村落",
+      "type": "ATTRACTION",
+      "start": "2026-10-19T13:30:00+08:00",
+      "end": "2026-10-19T16:00:00+08:00",
+      "opening_time": "08:30",
+      "closing_time": "22:00",
+      "last_entry_time": null,
+      "estimated_cost": 26,
+      "walking_km": 3,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    },
+    {
+      "id": "d3-humenstation",
+      "name": "虎门站（返程）",
+      "type": "TRANSPORT",
+      "start": "2026-10-19T17:10:00+08:00",
+      "end": "2026-10-19T17:40:00+08:00",
+      "opening_time": "00:00",
+      "closing_time": "23:59",
+      "last_entry_time": null,
+      "estimated_cost": 90,
+      "walking_km": 1,
+      "source_checked_at": "2026-09-28T00:00:00+08:00"
+    }
+  ],
+  "segments": [
+    {
+      "from_id": "d1-yapian",
+      "to_id": "d1-weiyuan",
+      "duration_minutes": 16,
+      "buffer_minutes": 20,
+      "estimated_cost": 25
+    },
+    {
+      "from_id": "d1-weiyuan",
+      "to_id": "d1-hotel",
+      "duration_minutes": 40,
+      "buffer_minutes": 20,
+      "estimated_cost": 120
+    },
+    {
+      "from_id": "d2-keyuan",
+      "to_id": "d2-memory",
+      "duration_minutes": 4,
+      "buffer_minutes": 20,
+      "estimated_cost": 12
+    },
+    {
+      "from_id": "d2-memory",
+      "to_id": "d2-jianyu",
+      "duration_minutes": 7,
+      "buffer_minutes": 20,
+      "estimated_cost": 15
+    },
+    {
+      "from_id": "d3-songshanhu",
+      "to_id": "d3-nanshe",
+      "duration_minutes": 28,
+      "buffer_minutes": 20,
+      "estimated_cost": 55
+    },
+    {
+      "from_id": "d3-nanshe",
+      "to_id": "d3-humenstation",
+      "duration_minutes": 47,
+      "buffer_minutes": 20,
+      "estimated_cost": 120
+    }
+  ]
+}

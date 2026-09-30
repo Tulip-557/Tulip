@@ -1,0 +1,42 @@
+name: 闸门回归
+
+# 与本项目同一纪律：**FAIL 就是退出码 2**，CI 里红了就不许合。
+# 核心命令就是本地那条 `python verified-travel-planner/tools/ship.py`——
+# 已在本机实跑验证（含负向：注入坏样本必红），不是照着文档猜出来的。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gates:
+    name: 六道闸门 + 渲染基线
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 零第三方依赖，不装包；跑的就是本地那条命令
+      - name: 一键回归
+        run: python verified-travel-planner/tools/ship.py
+
+  # 凭据绝不入库（高德 key 属机器级凭据，只存用户目录 ~/.verified-travel-planner/）。
+  # 这一道是防手滑——key 一旦进 git，删了提交也删不掉历史。
+  # 注：组织仓库用 gitleaks-action 需自备 GITLEAKS_LICENSE；个人仓库免。
+  secrets:
+    name: 凭据泄漏扫描
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

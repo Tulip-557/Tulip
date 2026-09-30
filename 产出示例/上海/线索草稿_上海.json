@@ -1,0 +1,35 @@
+{
+  "destination": "上海",
+  "notes": [
+    {
+      "title": "上海市文化和旅游局：10 条黄浦江水岸线路（主题线路一「上海传奇 世界之窗」）",
+      "url": "https://whlyj.sh.gov.cn/cysc/20260720/363b7c4cd1d5489c866f9b8ad4df96cd.html",
+      "platform": "上海市文化和旅游局官网",
+      "checked_at": "2026-09-28",
+      "connector_type": "web_search_fallback",
+      "claims": [
+        {"type": "ROUTE_HYPOTHESIS", "text": "官方推荐动线把南京东路步行街、外滩、百年建筑群博览带、豫园、城隍庙串成一条，顺序是先逛南京路、再看外滩、最后进老城厢"}
+      ]
+    },
+    {
+      "title": "上海市文化和旅游局：文旅消夏游览线路（线路 3「沪上建筑美学巡礼」）",
+      "url": "https://cmp.whlyj.sh.gov.cn/CMP/tpr_view.ac?id=32479eecc5b642df84c15ddbd5d541aa",
+      "platform": "上海市文化和旅游局",
+      "checked_at": "2026-09-28",
+      "connector_type": "web_search_fallback",
+      "claims": [
+        {"type": "ROUTE_HYPOTHESIS", "text": "官方把上海自然博物馆与上海城市规划展示馆排在同一条线路里，这两处适合作为雨天室内的串联组合"}
+      ]
+    },
+    {
+      "title": "上海能待一整天的免费室内场馆（编辑整理）",
+      "url": "https://news.qq.com/rain/a/20250521A04GI200",
+      "platform": "腾讯新闻",
+      "checked_at": "2026-09-28",
+      "connector_type": "web_search_fallback",
+      "claims": [
+        {"type": "EXPERIENCE", "text": "外滩一带另有免费开放的美术馆类场馆，可作为雨天室内备选，适合外滩段临时避雨"}
+      ]
+    }
+  ]
+}

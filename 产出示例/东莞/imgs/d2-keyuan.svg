@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dbe7ef"/>
+      <stop offset="100%" stop-color="#f6f1e6"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8fb8a8"/>
+      <stop offset="100%" stop-color="#4f7d70"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky2)"/>
+  <!-- 远处镬耳墙民居群 -->
+  <g fill="#b9b2a4" opacity="0.7">
+    <path d="M60 420 h120 v-70 q-30 -34 -60 0 q-30 -34 -60 0 z"/>
+    <path d="M200 430 h110 v-60 q-27 -30 -55 0 q-28 -30 -55 0 z"/>
+    <path d="M880 425 h130 v-72 q-32 -36 -65 0 q-33 -36 -65 0 z"/>
+  </g>
+  <!-- 主建筑：青砖镬耳墙 -->
+  <g>
+    <rect x="330" y="330" width="420" height="230" fill="#8d8577"/>
+    <path d="M330 330 q0 -60 70 -60 q70 0 70 60 z" fill="#7d7568"/>
+    <path d="M680 330 q0 -60 70 -60 q70 0 70 60 z" fill="#7d7568"/>
+    <rect x="330" y="318" width="420" height="18" fill="#a49b8b"/>
+    <!-- 门窗 -->
+    <g fill="#5c5548">
+      <rect x="368" y="400" width="74" height="96" rx="4"/>
+      <rect x="470" y="400" width="74" height="96" rx="4"/>
+      <rect x="572" y="400" width="74" height="96" rx="4"/>
+      <rect x="648" y="400" width="74" height="96" rx="4"/>
+    </g>
+    <g fill="#efe7d5">
+      <rect x="374" y="406" width="62" height="84" rx="3"/>
+      <rect x="476" y="406" width="62" height="84" rx="3"/>
+      <rect x="578" y="406" width="62" height="84" rx="3"/>
+      <rect x="654" y="406" width="62" height="84" rx="3"/>
+    </g>
+    <g stroke="#5c5548" stroke-width="3">
+      <line x1="405" y1="406" x2="405" y2="490"/>
+      <line x1="374" y1="448" x2="436" y2="448"/>
+      <line x1="507" y1="406" x2="507" y2="490"/>
+      <line x1="476" y1="448" x2="538" y2="448"/>
+      <line x1="609" y1="406" x2="609" y2="490"/>
+      <line x1="578" y1="448" x2="640" y2="448"/>
+      <line x1="685" y1="406" x2="685" y2="490"/>
+      <line x1="654" y1="448" x2="716" y2="448"/>
+    </g>
+  </g>
+  <!-- 水榭回廊 -->
+  <g>
+    <rect x="760" y="452" width="330" height="16" fill="#7a6b52"/>
+    <g fill="#6d604a">
+      <rect x="776" y="468" width="12" height="92"/>
+      <rect x="900" y="468" width="12" height="92"/>
+      <rect x="1052" y="468" width="12" height="92"/>
+    </g>
+    <path d="M750 452 h350 l-24 -46 h-302 z" fill="#8a5f45"/>
+    <path d="M726 406 q149 -46 298 0 l-24 46 h-250 z" fill="#9a6b4e"/>
+  </g>
+  <!-- 荷花池 -->
+  <rect x="0" y="560" width="1200" height="240" fill="url(#water)"/>
+  <g stroke="#ffffff" stroke-opacity="0.22" stroke-width="3" fill="none">
+    <path d="M60 620 q70 -10 140 0 t140 0 t140 0 t140 0 t140 0 t140 0 t140 0"/>
+    <path d="M20 690 q70 -10 140 0 t140 0 t140 0 t140 0 t140 0 t140 0 t140 0"/>
+  </g>
+  <g>
+    <ellipse cx="200" cy="640" rx="62" ry="20" fill="#4c7f5e"/>
+    <ellipse cx="420" cy="700" rx="72" ry="22" fill="#568a67"/>
+    <ellipse cx="700" cy="646" rx="56" ry="18" fill="#4c7f5e"/>
+    <ellipse cx="960" cy="704" rx="78" ry="24" fill="#568a67"/>
+  </g>
+  <g fill="#e8b7c4">
+    <circle cx="236" cy="620" r="15"/>
+    <circle cx="392" cy="682" r="17"/>
+    <circle cx="726" cy="628" r="13"/>
+    <circle cx="998" cy="686" r="18"/>
+  </g>
+  <!-- 石栏 -->
+  <rect x="0" y="548" width="1200" height="14" fill="#cfc6b2"/>
+  <g fill="#bdb39d">
+    <rect x="80" y="562" width="18" height="18"/>
+    <rect x="320" y="562" width="18" height="18"/>
+    <rect x="560" y="562" width="18" height="18"/>
+    <rect x="800" y="562" width="18" height="18"/>
+    <rect x="1040" y="562" width="18" height="18"/>
+  </g>
+</svg>
