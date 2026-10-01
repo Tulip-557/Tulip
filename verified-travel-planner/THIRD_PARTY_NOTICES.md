@@ -70,7 +70,7 @@
   macOS 钥匙串」三级回退，并保证非 macOS 平台不加载 subprocess。
   类名 `KeychainCredentialStore` 保留为别名以兼容上游用法。
 - **`tools/travel_planner.py` 为派生文件**：迁移自上游 `scripts/travel_planner.py`，
-  做了六处适配 ——
+  做了七处适配 ——
   ① 引擎路径由 `src/` 改为 `engine/`；
   ② 凭据改用本 skill 的跨平台版本（上游那版在 Windows 上取不到任何值）；
   ③ `doctor` 命令并入本机能力检查（tzdata / 随包资产 / 引擎），
@@ -83,6 +83,11 @@
      说明文字里的计数也是声明。）
   ⑥ 新增来源留痕出口（2026-09-30，P1）：`amap-snapshot --no-keep-raw`、
      `search-places --trace` / `nearby-spots --trace`——留痕默认开启、可显式放弃。
+  ⑦ 新增 `route` 命令（2026-10-01）：点对点走高德方向接口，把驾车/步行距离、
+     过路费、公交票价采出来并逐段落留痕。此前**没有任何命令**能产出这两类数值
+     （`amap-snapshot` 只采城市级起终点、`search-places`/`nearby-spots` 都不调
+     方向接口），claim_audit 的 C2 因此永远只能把它们挂成 UNVERIFIED。
+     走 POI 级通道，与 `amap-snapshot` 的城市级覆盖门禁分属两套判据，不混用。
   命令集合与参数语义保持与上游一致，未删减。
 - **`tools/doctor.py` 为自写**，沿用上游 `diagnostics.py` 的"能力先测后报"思路，
   但检查项换成本机实际需要关心的（时区数据库、随包资产、引擎可导入）。
@@ -127,7 +132,7 @@
 | `engine/travel_planner/credentials.py` | 已改动 | `060922eddbd5` | 5838 |
 | `assets/路书_基准骨架.html` | 已改动 | `7718309fd556` | 21891 |
 | `tools/consistency.py` | 已改动 | `4d3247dca8f6` | 10471 |
-| `tools/travel_planner.py` | 已改动 | `51c19680bb2e` | 27470 |
+| `tools/travel_planner.py` | 已改动 | `ac8aa336add9` | 33739 |
 
 > **这张表现在是「核对」而不只是「声明」**：`validate_skill.py` 会读本表逐一比对
 > 磁盘上的 md5 与字节数，并比对 `LICENSE` 里的归属标注是否与本表一致——

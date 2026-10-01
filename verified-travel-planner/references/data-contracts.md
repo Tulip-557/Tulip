@@ -307,6 +307,48 @@ READY / PUBLIC_READY / LOGIN_REQUIRED / CONNECTED / EXPIRED / DEGRADED / BLOCKED
 
 高德的公交与驾车方向接口**不总是带票价**，本模块**从不自己编一个填上**。
 
+### `route` 命令（P1 来源留痕 · 点对点采集）
+
+`amap-snapshot` 采的是**城市级**起终点（带覆盖门禁，防「查东京得广西村庄」）；
+`route` 采的是**POI 级**点对点，与 `search-places` 同一档，不做行政级覆盖检查。
+**两条通道别混用**：城市级查询必须走 `amap-snapshot` 的 `expect_settlement` 覆盖检查，
+点位级走本命令——混用会同时破坏两边。
+
+为什么要有它：`claim_audit` 的 C2 要把「9.5 公里 / 过路费 ¥17」这类声明回查留痕池，
+但**此前没有任何命令能产出方向类留痕**（快照只覆盖城市级起终点，另两个 `--trace`
+命令都不调方向接口）。没有本命令，城内的距离/票价就永远只能挂 UNVERIFIED。
+
+输入：
+
+```json
+{
+  "mode": "driving",
+  "city": "东莞",
+  "legs": [
+    {"from_id": "a", "to_id": "b", "name": "虎门站",
+     "origin": "113.66,22.82", "destination": "113.75,22.90",
+     "origin_city": "东莞", "destination_city": "东莞"}
+  ]
+}
+```
+
+| 字段 | 规则 |
+|---|---|
+| `mode` | `driving` / `walking` / `transit` 三者之一。**非法值直接拒收**，不静默按驾车跑 |
+| `origin` / `destination` | **坐标优先**（`"经度,纬度"`）——不吃关键字搜索配额，端点也确定；给名字才回退一次 `search-places` |
+| `city` | 行程级默认城市，可被每段的 `city` 覆盖；`transit` 必需（高德要 `city`/`cityd`） |
+| `origin_city` / `destination_city` | 跨城公交用；缺省继承 `city` |
+| `from_id` / `to_id` | 与 `itinerary.segments` 的 id 对齐，供留痕比对关联 |
+
+输出：逐段一份 `Route`（字段同上），另带 `from_id` / `to_id`；`errors[]` 记失败的段。
+**单段失败只进 `errors`，不拖垮整批**——批量采 14 段时，一条坏路不该把另外 13 段的
+实采值一起丢掉。
+
+`--trace` 落盘的是本次全部**成功**调用的原始返回体（`{provider, generated_at,
+call_count, calls[]}`，key 已脱敏）。`claim_audit` 的 `--snapshot` 按**形状**识别它——
+方向接口的 `duration`（秒）/`distance`（米）/`tolls`·`cost` 会被换算成分钟/公里/票价
+进比对池。**没有留痕的采集值不算证据**。
+
 ## Rail Option
 
 方案消费的车次形态：

@@ -51,7 +51,7 @@ D:\旅游\                          ← 唯一真身（各客户端经目录联�
 └── 验收记录\                     ← 🔒 私有，不入库：高德采集入参出参 + 迁移/联接脚本 + 验收报告
 ```
 
-`tools/` 关键文件：`travel_planner.py`（★统一 CLI，14 命令）、`render_html.py`（事实源 JSON → 单文件 HTML，
+`tools/` 关键文件：`travel_planner.py`（★统一 CLI，15 命令）、`render_html.py`（事实源 JSON → 单文件 HTML，
 加 `--compact` 出精简执行版）、`consistency.py`（版式校验）、`ludbook_check.py`（30 项交付自查）、
 `freshness.py`（时效体检：动态数字到出发日还新不新）、`source_audit.py`（源核验：徽章标注纪律闸门，源核验 8 条规则）、`claim_audit.py`（声明↔留痕比对闸门：实采段时长与车费必须如实进路书，v2）、`echo_audit.py`（来源回声核查闸门：抓引用页验证声称值在页面上，内容真实第 2 层）、`cross_check.py`（独立源核查闸门：正文重合拆穿转引充双源，第 3 层）、`compact_draft.py`（compact 半自动草稿：只出草案副产物永不写事实源，约束段不进删除通道）、`social_notes.py`（社会情报归一化 + 增量合并 + 交叉印证）、
 `social_source.py`（社媒采集渠道能力矩阵 + 采集计划）、`social_login.py`（AUTH 档登录态探针）、
@@ -73,7 +73,7 @@ D:\旅游\                          ← 唯一真身（各客户端经目录联�
 ```bash
 cd verified-travel-planner
 
-# 全部 14 个命令
+# 全部 15 个命令
 python tools/travel_planner.py --help
 
 # 环境体检（客户端参数必带——不带会自己猜，装了几个客户端时猜不准）
@@ -84,6 +84,10 @@ python tools/travel_planner.py search-places --keywords "宽窄巷子" --city �
 
 # 采集坐标+路线+周边（需 key；起终点必须是【城市级】）
 python tools/travel_planner.py amap-snapshot --input 输入.json --output 快照.json
+
+# 点对点距离/时长/过路费·票价（需 key；【POI 级】，与上条城市级通道别混用）
+# 唯一能产出方向类留痕的命令——不跑它，距离/票价就永远无留痕可对
+python tools/travel_planner.py route --input 路段.json --output 结果.json --trace 留痕.json
 
 # 可行性检查（排不通 → 退出码 2）
 python tools/travel_planner.py evaluate --input 行程.json
@@ -171,7 +175,7 @@ base64 都逐字节一致。骨架每次 CSS 变更都会换基线——改骨�
 
 ## 当前状态与待办
 
-- **A 级全落地**：双核融合、引擎 14 模块、统一 CLI 14 命令、渲染管线（配图 base64 内联、断网可开）、
+- **A 级全落地**：双核融合、引擎 14 模块、统一 CLI 15 命令、渲染管线（配图 base64 内联、断网可开）、
   MIT 合规、契约文档 9 章。
 - **高德 key 已通过 4 步验收**：`credential-status` CONFIGURED → `doctor --live` 真连成功 →
   `search-places` 返回真实 POI → `amap-snapshot` 采集成功（`provenance.live_data = true`）。
@@ -190,7 +194,7 @@ base64 都逐字节一致。骨架每次 CSS 变更都会换基线——改骨�
   `references/browser-use.md`（浏览器核验能力与两个陷阱）、
   `references/social-sources.md`（社媒渠道五档矩阵 + 五条扩展路径 + 合规/反爬/解析）、
   `references/social-login.md`（用户授权登录：三种强度 / 实测 / 账号风险）。
-- **工程保障已落地（2026-09-28）**：`tests/`（102 条测试，标准库 unittest）、
+- **工程保障已落地（2026-09-28）**：`tests/`（115 条测试，标准库 unittest）、
   `tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、
   CI `.github/workflows/gates.yml`（gates + gitleaks）。
 - **内容真实三层链（2026-10-01 全部落地）**：第 1 层 `claim_audit`（v2：实采段

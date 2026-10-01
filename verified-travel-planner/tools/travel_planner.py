@@ -10,7 +10,7 @@ travel_planner.py — 统一命令行入口（本 skill 的主入口）
 本文件补齐的就是这个开关。
 
 迁移自 tanweiping1012-source/travel-planner（MIT）的 `scripts/travel_planner.py`，
-做了四处适配：
+做了七处适配（逐条与 `THIRD_PARTY_NOTICES.md` 的派生文件说明对应）：
 
   ① 引擎路径 `src/` → `engine/`（本 skill 的布局）
   ② 凭据用本 skill 的跨平台版（环境变量 → 凭据文件 → macOS 钥匙串）；
@@ -20,6 +20,13 @@ travel_planner.py — 统一命令行入口（本 skill 的主入口）
   ④ `evaluate` 在 `INFEASIBLE` 时返回非零退出码。上游只打印报告就正常退出，
      调用方拿不到「排不通」这个信号——而「排不通不给你」是本 skill 的硬闸门，
      闸门必须能被程序感知
+  ⑤ 新增 `nearby-spots` 命令（上游没有）：沿主路线各站走高德周边搜索，采
+     「顺道可去」的候选点，供事实源的 `days[].nearby` 用。只列不判断
+  ⑥ 新增来源留痕出口（2026-09-30，P1）：`amap-snapshot --no-keep-raw`、
+     `search-places --trace` / `nearby-spots --trace`
+  ⑦ 新增 `route` 命令（2026-10-01，P1 v2）：点对点走高德方向接口，把驾车/
+     步行距离、过路费、公交票价采出来并留痕——此前没有任何命令能产出这三类
+     数值，事实源里的「9.5 公里 / 过路费 ¥17」因此永远无留痕可对
 
 命令一览
 --------
@@ -29,6 +36,7 @@ travel_planner.py — 统一命令行入口（本 skill 的主入口）
     validate-request    需求采集校验（缺项 -> 追问，不猜）
     search-places       查高德 POI（需 key）
     nearby-spots        沿主路线各站采「顺道可去」的候选点（需 key；只列不判断）
+    route               点对点距离/时长/过路费·票价（需 key；P1 来源留痕 v2）
     amap-snapshot       一次采集坐标 + 路线 + 周边（需 key）
     evaluate            确定性可行性检查（排不通不给你）
     compile-research    社区线索汇编成景点卡
@@ -322,6 +330,99 @@ def command_nearby_spots(args: argparse.Namespace) -> None:
     _write_trace(client, args.trace)
 
 
+def _resolve_endpoint(client, raw, name, city) -> Location:
+    """把一个端点解析成 Location：**坐标优先**，给名字才回退 search-places。
+
+    坐标（`lng,lat`）是主通道——不吃关键字搜索配额（个人认证约 100 次/日），
+    而且端点确定，不会再被高德的同名地点匹配换掉。给名字才多花一次搜索。
+    """
+    text = str(raw or '').strip()
+    if not text:
+        raise ValueError('端点为空——该段缺 origin 或 destination「%s」' % (name or '?'))
+    if ',' in text:
+        try:
+            lng, lat = (float(x) for x in text.split(',')[:2])
+        except ValueError:
+            raise ValueError('坐标格式应为「经度,纬度」，收到「%s」' % text)
+        return Location(name=str(name or text), longitude=lng, latitude=lat, city=city)
+    found = client.search_places(text, city, 1)
+    if not found:
+        raise ValueError('未搜到地点「%s」（给坐标可绕过搜索、也更省配额）' % text)
+    place = found[0].location
+    return Location(name=str(name or place.name or text),
+                    longitude=place.longitude, latitude=place.latitude,
+                    city=place.city or city)
+
+
+def command_route(args: argparse.Namespace) -> None:
+    """点对点路线查询（高德方向接口）——距离 / 时长 / 过路费·票价，逐段落留痕。
+
+    定位：**P1 来源留痕 v2 的采集侧**。在它之前，`distance_meters` /
+    `estimated_cost` 这两类数值没有任何命令能产出来（`amap-snapshot` 只采
+    城市级起终点，`search-places` / `nearby-spots` 都不调方向接口），
+    于是事实源里的「9.5 公里」「过路费 ¥17」永远无留痕可对。本命令补这条通道。
+
+    与 `amap-snapshot` 的分工（**两条通道别混用**）：
+      · `amap-snapshot` 走**城市级**起终点，带覆盖门禁（防「查东京得广西村庄」）；
+      · 本命令走**POI 级**点对点，与 `search-places` 同一档，不做行政级覆盖检查。
+    门禁各自成立，混用会同时破坏两边——城市级查询必须走前者的覆盖检查。
+
+    输入（JSON）：
+        {"mode": "driving",              # driving / walking / transit
+         "city": "东莞",                  # 可被每段的 city 覆盖；transit 必需
+         "legs": [{"from_id": "a", "to_id": "b", "name": "虎门站",
+                   "origin": "113.66,22.82", "destination": "113.75,22.90"}]}
+        `origin` / `destination` 给坐标最省（`lng,lat`）；给名字则回退一次搜索。
+        跨城公交可另给 `origin_city` / `destination_city`。
+
+    输出：逐段 `duration_minutes` / `distance_meters` / `estimated_cost`
+    （驾车 = 过路费 tolls，公交 = 票价 cost）/ `transfer_count` /
+    `walking_distance_meters`。**单段失败只记进 `errors`，不拖垮整批**——
+    批量采 14 段时，一条坏路不该把其余 13 段的实采值一起丢掉。
+    """
+    spec = _read_json(args.input)
+    client = _amap_client()
+
+    mode = str(spec.get('mode') or 'driving').strip().lower()
+    if mode not in ('driving', 'walking', 'transit'):
+        raise ValueError('mode 只能是 driving / walking / transit，收到「%s」' % mode)
+    default_city = spec.get('city')
+
+    legs_out, errors = [], []
+    for raw in spec.get('legs') or []:
+        if not isinstance(raw, dict):
+            errors.append({'leg': str(raw), 'error': '该段不是对象，跳过'})
+            continue
+        label = '%s→%s' % (raw.get('from_id') or '?', raw.get('to_id') or '?')
+        city = raw.get('city') or default_city
+        try:
+            origin = _resolve_endpoint(
+                client, raw.get('origin'), raw.get('name'),
+                raw.get('origin_city') or city)
+            destination = _resolve_endpoint(
+                client, raw.get('destination'), raw.get('to_name'),
+                raw.get('destination_city') or city)
+            route = client.route(origin, destination, mode=mode, city=city)
+        except (AmapError, ValueError) as exc:
+            errors.append({'leg': label,
+                           'error': '%s: %s' % (type(exc).__name__, exc)})
+            continue
+        row = to_dict(route)
+        row.update({'from_id': raw.get('from_id'), 'to_id': raw.get('to_id')})
+        legs_out.append(row)
+
+    _emit({
+        '_说明': ('本文件是**采集结果**，不是路书声明——进路书的数字须另写，'
+                  '且不得超过此处实采范围。单段失败在 errors 里，不是静默跳过。'),
+        'provider': 'amap',
+        'mode': mode,
+        'checked_at': datetime.now(timezone.utc).astimezone().strftime('%Y-%m-%dT%H:%M%z'),
+        'legs': legs_out,
+        'errors': errors,
+    }, args.output)
+    _write_trace(client, args.trace)
+
+
 def command_amap_snapshot(args: argparse.Namespace) -> None:
     request = _read_json(args.input)
     client = _amap_client()
@@ -529,6 +630,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument('--trace',
                    help='把本次全部成功调用的原始返回体写到该文件（来源留痕）')
     p.set_defaults(func=command_nearby_spots)
+
+    p = sub.add_parser('route',
+                       help='点对点路线：距离 / 时长 / 过路费·票价（需 key；逐段留痕）')
+    p.add_argument('--input', required=True,
+                   help='{"mode":"driving","city":"东莞","legs":[{"from_id":"a",'
+                        '"to_id":"b","origin":"113.66,22.82",'
+                        '"destination":"113.75,22.90"}]}')
+    p.add_argument('--output')
+    p.add_argument('--trace',
+                   help='把本次全部成功调用的原始返回体写到该文件（来源留痕）')
+    p.set_defaults(func=command_route)
 
     p = sub.add_parser('amap-snapshot', help='一次采集坐标 + 路线 + 周边（需 key）')
     p.add_argument('--input', required=True)

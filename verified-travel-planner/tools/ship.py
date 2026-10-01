@@ -288,18 +288,29 @@ def main(argv=None) -> int:
             emit('  [ -- ] %-28s 无 itinerary' % 'evaluate 可行性')
 
         # 声明↔留痕比对（P1 v2）：有留痕就比对，没有就明说跳过——不静默。
+        # 证据文件按**命名约定**发现，四种来源各自成形：
+        #   itinerary_<城市>.json  行程层（段时长/段成本自声明实采）
+        #   nearby_<城市>*.json    周边采集（provider=amap）
+        #   快照_<城市>*.json      amap-snapshot（快照形）
+        #   留痕_<城市>*.json      route / search-places --trace 落盘（trace 形）
+        # 后两种是 WORKSPACE「随附快照后即可回查」那句承诺的落点——
+        # 此前只 glob 了 nearby，快照从不传，那句话是空的。
+        # 两种形状由 claim_audit 自己嗅探：传错也不会被静默丢掉。
         ca = ['tools/claim_audit.py', '--facts', str(ex['facts'])]
         has_evidence = ex['itinerary'].exists()
         if has_evidence:
             ca += ['--itinerary', str(ex['itinerary'])]
-        nearby = sorted(ex['facts'].parent.glob('nearby_%s*.json' % ex['city']))
-        for n in nearby:
-            ca += ['--nearby', str(n)]
-            has_evidence = True
+        for pattern, flag in (('nearby_%s*.json', '--nearby'),
+                              ('快照_%s*.json', '--snapshot'),
+                              ('留痕_%s*.json', '--snapshot')):
+            found = sorted(ex['facts'].parent.glob(pattern % ex['city']))
+            for path in found:
+                ca += [flag, str(path)]
+                has_evidence = True
         if has_evidence:
             r.run('claim_audit 声明比对', ca)
         else:
-            emit('  [ -- ] %-28s 无留痕文件（itinerary/nearby 均缺）'
+            emit('  [ -- ] %-28s 无留痕文件（itinerary/nearby/快照/留痕 均缺）'
                  % 'claim_audit 声明比对')
 
         # 内容真实第 2/3 层：来源回声 + 独立源核查。两道闸门共享同一份
