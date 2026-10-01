@@ -187,8 +187,8 @@ class TestEchoAuditGate(unittest.TestCase):
 
     def test_ci_env_downgrades_fail_to_warn(self):
         # CI 环境（GITHUB_ACTIONS）：外部网络不可控 → 不许假红（退出码 0）。
-        # 有浏览器时渲染确认的 FAIL 会降 WARN 并带明示；无浏览器时本来就是
-        # 普通 WARN——两种形态的退出码都必须是 0。
+        # 有渲染能力时输出带「CI 环境降级」明示；渲染不可用时只有普通 WARN——
+        # 两种形态的退出码都必须是 0，这就是本测试的全部契约。
         with tempfile.TemporaryDirectory() as td:
             url = _page(Path(td), 'p1.html', '本馆实行预约参观制，请提前预约。')
             import os
@@ -202,6 +202,8 @@ class TestEchoAuditGate(unittest.TestCase):
             out = proc.stdout.decode('utf-8')
             self.assertEqual(proc.returncode, 0, out)
             if HAS_BROWSER:
+                # 渲染能力在（本机）：降级明示必须出现；无渲染能力（CI）时
+                # 该行本来就是普通 WARN——这正是「CI 不假红」的两种形态。
                 self.assertIn('CI 环境降级', out)
 
     def test_final_plan_claims_checked_and_amap_skipped(self):
