@@ -311,17 +311,21 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
   已修（门票降 `[D]` 并补官方渠道出路、送礼段补时戳、孤儿来源挂到日落活动）。  
   **注意：这 5 处都不是数字错，是把单源信息标成了够不着的等级**——正是「标注纪律」与  
   「事实正确」的区别。负向样本 6 类违规全部命中；退出码 0/2 三态验证正确。
-- [x] **C 级 · 工程保障（2026-09-28 落地）**——自动化测试套件 `tests/`（88 条测试，标准库  
+- [x] **C 级 · 工程保障（2026-09-28 落地）**——自动化测试套件 `tests/`（102 条测试，标准库  
   unittest）、`tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、  
   CI `.github/workflows/gates.yml`（gates 跑 `ship.py` + `gitleaks` 密钥扫描）。  
   命令：`python verified-travel-planner/tools/ship.py`
 - [ ] **C 级 · `examples/` 更多样例**——现有两个示例已分别覆盖「完整交付链路」（东莞）与  
   「渲染基线」（成都）两类用途；缺的是第三个用途（如**多城串联**或**纯过境**），需要时再补
-- [ ] **P4 · 公告变更扫描 `bulletin.py`**（规划）——官方渠道临行 sweep（闭馆/调价/管制/
-  新开关键词类），渲染走 #overview 注入模式；推荐联动：闭馆公告 POI 提示调序备选
-- [ ] **P5 · 口碑体检 `review_trust.py`**（规划）——评论区水军/推广**信号**（近重复/
-  复读/话术词表/同日爆发/星级错配），只出信号不结论；配套 `references/review-connectors.md`
-  写 MediaCrawler 式本地爬虫接入规范（stdlib 不内置爬虫）
+- [x] **P4 · 行前公告扫描 `bulletin.py`（2026-10-01 落地）**——`--plan` 按 POI × 五类
+  事件（闭馆/调价/管制/新开/活动）出 sweep 计划；`--check` 校验采集条目（时戳必填、
+  **公告类死线只认 [A]**，[C] 传闻 error 退回）并产出渲染摘要；渲染走 #overview 注入
+  （meta.bulletin，data-bulletin 可 grep），闭馆条目带「核对备选」提示——提示不改行程。
+- [x] **P5 · 口碑体检 `review_trust.py`（2026-10-01 落地）**——跨批水军/推广**信号**：
+  复读指纹（4-gram ≥3 条）/推广标记/立场-文本错配/同日爆发，并复用 social_notes
+  单批信号；红线：只出信号不结论、不删评论、不产「调整后评分」；LLM 变体好评
+  如实声明为盲区。渲染经 meta.social_intel.review_trust 进 #overview 条。
+  配套 `references/review-connectors.md`（本地爬虫接入规范，stdlib 不内置爬虫）。
 - [x] **P1 · 来源留痕与内容级复核（2026-09-30 v1 落地）**：采集侧——高德客户端每次成功调用
   都进 `call_log`（key 脱敏），`amap-snapshot` 默认内嵌 `raw_calls`（`--no-keep-raw` 可弃），
   `search-places`/`nearby-spots` 可 `--trace` 落盘；比对侧——新闸门 `claim_audit.py`

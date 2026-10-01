@@ -332,6 +332,22 @@ python "<SKILL_ROOT>/tools/social_source.py" --plan 中山 --days 3 --month 9月
 并标 `carried_over`，超期再加 `stale` 等下次重核。**旧条目不会因为「这次没搜到」就消失，
 也绝不会冒充新鲜情报。**
 
+#### 行前公告与口碑体检（阶段 3.5 的两个旁路工具）
+
+```bash
+# 公告 sweep：按路书 POI × 五类事件出查询清单（闭馆/调价/管制/新开/活动），
+# 官方渠道执行后，把带 URL + 时戳 + 等级的条目写成 公告_<目的地>.json，
+# 交给 --check 校验分级（公告类死线只认 [A]；[C] 传闻 error 退回）——
+# 渲染摘要手填 meta.bulletin，闭馆条目自动带「核对备选」提示（提示不改行程）。
+python "<SKILL_ROOT>/tools/bulletin.py" --plan --facts 路书_XX.json
+python "<SKILL_ROOT>/tools/bulletin.py" --check 公告_XX.json --facts 路书_XX.json
+
+# 口碑体检：评论区水军/推广**信号**（复读指纹/推广标记/立场错配/同日爆发）——
+# 只出信号不结论：命中项「排后面看」，不删评论、不裁真假、不产调整后评分；
+# LLM 生成的变体好评是如实声明的盲区。摘要可手填 meta.social_intel.review_trust。
+python "<SKILL_ROOT>/tools/review_trust.py" --clues 社媒线索卡_XX.json
+```
+
 #### 死线不变（三条，机器判定）
 
 票价 / 营业时间 / 车次余票 / 距离车程——**任何情况下都不从社媒取**。
@@ -890,6 +906,8 @@ verified-travel-planner/
 │   ├── claim_audit.py          ← 声明↔留痕比对（内容真实第 1 层：实采值必须如实进路书）
 │   ├── echo_audit.py           ← 来源回声核查（内容真实第 2 层：引用页里真有那个值）
 │   ├── cross_check.py          ← 独立源核查（内容真实第 3 层：拆穿转引充双源）
+│   ├── bulletin.py             ← 行前公告扫描（事件 sweep 计划 + 死线分级 + 渲染摘要）
+│   ├── review_trust.py         ← 口碑体检（水军/推广信号：只出信号不结论）
 │   ├── validate_skill.py       ← 文档计数断言校验（防「N 项 / N 模块」漂移；可进 CI）
 │   ├── shoot.py                ← 无头浏览器溢出探针 + 截图（第 18/20/21 项实证）
 │   ├── social_notes.py         ← 社会情报线索归一化 + 死线校验 + 增量合并（阶段 3.5）

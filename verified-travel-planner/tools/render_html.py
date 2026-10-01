@@ -592,9 +592,57 @@ def build_intel_strip(si):
                 voice_note += ('<b>本趟未采到真人评价与评论</b>——'
                                '文中不得表述为「游客普遍反映」。')
 
+    # 口碑体检摘要（可选）：meta.social_intel.review_trust —— review_trust.py 的
+    # 产出手填进来。纪律同口碑层：信号不是结论，只报数量与用法，不做好评率、
+    # 不产「调整后评分」。缺字段时一行不加，老事实源逐字节不变。
+    rt = si.get('review_trust')
+    if isinstance(rt, dict) and rt.get('reviews_total'):
+        rt_bits = ['评论 %s 条' % esc(str(rt['reviews_total']))]
+        if rt.get('water_suspects'):
+            rt_bits.append('可疑 %s' % esc(str(rt['water_suspects'])))
+        if rt.get('promo_hits'):
+            rt_bits.append('含推广标记 %s' % len(rt['promo_hits']))
+        if rt.get('repeat_phrases'):
+            rt_bits.append('复读指纹 %s' % len(rt['repeat_phrases']))
+        voice_note += ('<br>口碑体检：%s——<b>信号不是结论</b>，'
+                       '命中项按「排后面看」处理。' % '；'.join(rt_bits))
+
     return ("<p class='lead'><b>情报来源</b>：%s。%s死线不变：票价 / 营业时间 / "
             "车次余票 / 距离车程从不取自社媒，这部分始终回官方渠道与地图核。</p>"
             % (head, voice_note))
+
+
+def build_bulletin_strip(mb):
+    """把 `meta.bulletin` 渲染成「行前公告」条，注入 #overview 顶部。
+
+    与情报来源条同款纪律：塞进既有区块、不新开 section（动骨架会炸逐字节
+    基线）。bulletin.py --check 的 render_summary 手填进来；没有实质条目时
+    返回空串——老事实源的渲染结果逐字节不变。
+
+    推荐联动只提示不改行程：「XX 闭馆——当日行程建议核对备选」是给读者的
+    提醒，行程怎么调由人决定。
+    """
+    if not isinstance(mb, dict):
+        return ''
+    items = [it for it in (mb.get('items') or []) if isinstance(it, dict)]
+    if not items:
+        return ''
+    marks = {'CLOSURE': '闭馆', 'PRICE': '调价', 'CONTROL': '管制',
+             'OPENING': '新开', 'EVENT': '活动'}
+    checked = str(mb.get('checked_at') or '').strip()
+    lines = []
+    for it in items:
+        label = marks.get(str(it.get('type') or ''), str(it.get('type') or ''))
+        line = '· <b>%s</b>（%s）：%s' % (
+            esc(str(it.get('poi') or '—')), esc(label),
+            esc(str(it.get('text') or ''))[:60])
+        hint = str(it.get('hint') or '').strip()
+        if hint:
+            line += '——%s' % esc(hint)
+        lines.append(line)
+    head = "<p class='lead' data-bulletin='1'><b>行前公告</b>%s：" % (
+        '（官方渠道核实于 %s）' % esc(checked) if checked else '')
+    return head + '<br>' + '<br>'.join(lines) + '</p>'
 
 
 # ============================ 结构钩子 ============================
@@ -854,6 +902,13 @@ def render(base, data, quiet=False, compact=False):
     if _strip:
         secs['overview'] = _strip + '\n' + (secs.get('overview') or '')
         log.append('情报来源声明已注入 #overview（交付自查第 ㉗ 项的判据）')
+
+    # ---- ⑤.5a 行前公告：meta.bulletin → #overview（bulletin.py --check 的产出）
+    # 同款注入纪律：不新开 section；无条目返回空串，老事实源逐字节不变。
+    _bull = build_bulletin_strip(meta.get('bulletin'))
+    if _bull:
+        secs['overview'] = _bull + '\n' + (secs.get('overview') or '')
+        log.append('行前公告已注入 #overview（meta.bulletin，data-bulletin 可 grep）')
 
     # ---- ⑤.5b 路线结构：顶层 routes → 注入既有区块（不新开 section，理由同上）
     # 主路线进 #drive（讲怎么走），备选路线进 #boost（讲还能怎么走）。

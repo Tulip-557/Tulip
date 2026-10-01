@@ -55,7 +55,7 @@ D:\旅游\                          ← 唯一真身（各客户端经目录联�
 加 `--compact` 出精简执行版）、`consistency.py`（版式校验）、`ludbook_check.py`（30 项交付自查）、
 `freshness.py`（时效体检：动态数字到出发日还新不新）、`source_audit.py`（源核验：徽章标注纪律闸门，源核验 8 条规则）、`claim_audit.py`（声明↔留痕比对闸门：实采段时长与车费必须如实进路书，v2）、`echo_audit.py`（来源回声核查闸门：抓引用页验证声称值在页面上，内容真实第 2 层）、`cross_check.py`（独立源核查闸门：正文重合拆穿转引充双源，第 3 层）、`compact_draft.py`（compact 半自动草稿：只出草案副产物永不写事实源，约束段不进删除通道）、`social_notes.py`（社会情报归一化 + 增量合并 + 交叉印证）、
 `social_source.py`（社媒采集渠道能力矩阵 + 采集计划）、`social_login.py`（AUTH 档登录态探针）、
-`cdp_read.py`（CDP 只读读取器，穿透 Shadow DOM 读评论）、
+`cdp_read.py`（CDP 只读读取器，穿透 Shadow DOM 读评论）、`bulletin.py`（行前公告扫描：事件 sweep 计划 + 死线分级 + 渲染摘要）、`review_trust.py`（口碑体检：水军/推广信号，只出信号不结论）、
 `validate_skill.py`、`shoot.py`、`set_amap_key.py`、`doctor.py`、`desource.py`、
 `ship.py`（★一键回归：九道闸门 + 渲染基线跑一遍，FAIL 退出码 2）。
 
@@ -190,16 +190,19 @@ base64 都逐字节一致。骨架每次 CSS 变更都会换基线——改骨�
   `references/browser-use.md`（浏览器核验能力与两个陷阱）、
   `references/social-sources.md`（社媒渠道五档矩阵 + 五条扩展路径 + 合规/反爬/解析）、
   `references/social-login.md`（用户授权登录：三种强度 / 实测 / 账号风险）。
-- **工程保障已落地（2026-09-28）**：`tests/`（88 条测试，标准库 unittest）、
+- **工程保障已落地（2026-09-28）**：`tests/`（102 条测试，标准库 unittest）、
   `tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、
   CI `.github/workflows/gates.yml`（gates + gitleaks）。
 - **内容真实三层链（2026-10-01 全部落地）**：第 1 层 `claim_audit`（v2：实采段
   时长+车费硬查）；第 2 层 `echo_audit`（抓引用页验证声称值在页面上，死线类
   对不上即 FAIL，UNREACHABLE 只 WARN）；第 3 层 `cross_check`（来源页正文重合
   比对，拆穿转引充双源）。三层全过仍 ≠「数字一定对」，见 README〈已知边界〉1。
+- **内容真实旁路（2026-10-01）**：`bulletin.py`（官方渠道变更公告：sweep 计划
+  + 死线分级〔公告类只认 [A]〕+ meta.bulletin 首屏渲染，提示不改行程）；
+  `review_trust.py`（评论区水军/推广信号：复读指纹/推广标记/立场错配/同日爆发，
+  只出信号不结论、不产调整后评分；LLM 变体好评是如实声明的盲区）。
 - **待办**：`examples/` 更多样例（现三个已覆盖「完整交付链路」「渲染基线」
-  「路线/备选/顺道点」三类用途，缺如**多城串联 / 纯过境**）；公告变更扫描
-  `bulletin.py` 与口碑体检 `review_trust.py`（见 WORKSPACE.md 待办）。
+  「路线/备选/顺道点」三类用途，缺如**多城串联 / 纯过境**）。
 
 ---
 
