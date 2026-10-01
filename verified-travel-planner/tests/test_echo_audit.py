@@ -25,16 +25,37 @@ from pathlib import Path
 SKILL = Path(__file__).resolve().parents[1]
 ECHO = SKILL / 'tools' / 'echo_audit.py'
 
-# FAIL 判定需要渲染确认（无浏览器时降 WARN 是设计）——两条「牙齿」用例
-# 只在机器有浏览器时跑，CI（ubuntu 无 Edge/Chrome 配置差异）不误报。
+# FAIL 判定需要渲染确认——「装了浏览器」不等于「渲染能用」（CI 上 chrome
+# 冷启动/沙箱差异实测抖动过）。用一次性 file:// 渲染探针实测：探针通过
+# 才跑牙齿用例；渲染不可用的环境诚实跳过（牙齿在能渲染的机器上维护）。
 import importlib.util as _ilu
-try:
-    _spec = _ilu.spec_from_file_location('cdp_read_t', SKILL / 'tools' / 'cdp_read.py')
-    _cdp_mod = _ilu.module_from_spec(_spec)
-    _spec.loader.exec_module(_cdp_mod)
-    HAS_BROWSER = _cdp_mod.find_browser(None) is not None
-except Exception:
-    HAS_BROWSER = False
+import tempfile as _tmpmod
+
+
+def _browser_probe() -> bool:
+    try:
+        _spec = _ilu.spec_from_file_location('cdp_read_t',
+                                             SKILL / 'tools' / 'cdp_read.py')
+        _cdp_mod = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_cdp_mod)
+        if _cdp_mod.find_browser(None) is None:
+            return False
+        with _tmpmod.TemporaryDirectory() as td:
+            page = Path(td) / 'probe.html'
+            page.write_text('<html><body>渲染探针 probe-ok 123</body></html>',
+                            encoding='utf-8')
+            out = Path(td) / 'probe.json'
+            env = {**os.environ, 'PYTHONIOENCODING': 'utf-8'}
+            proc = subprocess.run(
+                [sys.executable, str(SKILL / 'tools' / 'cdp_read.py'),
+                 page.as_uri(), '--out', str(out), '--wait', '800'],
+                capture_output=True, timeout=150, env=env)
+            return proc.returncode == 0 and out.is_file()
+    except Exception:
+        return False
+
+
+HAS_BROWSER = _browser_probe()
 
 _FILLER = ('本页为景区公开信息页面，用于说明开放安排与预约方式。' * 20)
 

@@ -373,13 +373,20 @@ class Fetcher:
             env = {**os.environ, 'PYTHONIOENCODING': 'utf-8'}
             # ⚠️ 不能同时给 --json 和 --out：cdp_read 的 --json 分支先返回，
             # --out 文件根本不会写（v2 首日实测踩到，兜底全数假失败）
-            proc = subprocess.run(
-                [sys.executable, str(_TOOLS / 'cdp_read.py'), url,
-                 '--out', str(out), '--wait', '4000'],
-                capture_output=True, timeout=90, env=env)
-            if proc.returncode != 0 or not out.is_file():
-                return {'status': 'UNREACHABLE', 'text': '',
-                        'note': '浏览器兜底读取失败'}
+            res = None
+            for attempt in (1, 2):        # 冷启动抖动重试一次（CI 实测踩到）
+                proc = subprocess.run(
+                    [sys.executable, str(_TOOLS / 'cdp_read.py'), url,
+                     '--out', str(out), '--wait', '4000'],
+                    capture_output=True, timeout=90, env=env)
+                if proc.returncode == 0 and out.is_file():
+                    res = None
+                    break
+                res = {'status': 'UNREACHABLE', 'text': '',
+                       'note': '浏览器兜底读取失败%s'
+                               % ('（重试仍败）' if attempt == 2 else '，重试一次')}
+            if res:
+                return res
             data = json.loads(out.read_text(encoding='utf-8'))
             text = (str(data.get('lightDomText') or '') + ' ' +
                     ' '.join(str(t) for t in (data.get('shadowTexts') or [])))
