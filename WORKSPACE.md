@@ -10,7 +10,7 @@
 > | `verified-travel-planner/`                                           | ✅ 公开      | **产品本体**：可独立分发的 skill，自带 `LICENSE` + `THIRD_PARTY_NOTICES.md` |
 > | `产出示例/`                                                              | ✅ 公开      | 示例产出（东莞完整交付链路 / 成都渲染基线）                                       |
 > | `skill-doc-code-audit/`                                              | ✅ 公开      | 配套的文档↔代码审计小工具（另一个自建技能）                                        |
-> | `README.md` / `AGENTS.md` / `LICENSE` / `LICENSE.guide.md` / `PUBLISHING.md` / `.github/` | ✅ 公开      | 说明、许可、发布指南与 CI                                        |
+> | `README.md` / `AGENTS.md` / `CONTRIBUTING.md` / `LICENSE` / `LICENSE.guide.md` / `PUBLISHING.md` / `.github/` / `assets/`（README 主图）/ `docs/`（Pages 落地页） | ✅ 公开      | 说明、许可、贡献指南、发布指南、在线示例入口与 CI/Pages        |
 > | `.workbuddy/`                                                        | 🔒 **私有** | 会话记忆与发布登记：含本机路径、内网地址、一条已上线的路书链接                               |
 > | `验收记录/`                                                              | 🔒 **私有** | 过程留痕：迁移 / 多端联接的一次性脚本，路径写死本机                                   |
 > | `项目介绍*.html / 项目说明*.md`（根目录 4 个文件）                         | 🔒 **私有** | 用户自用参赛/介绍材料，2026-09-30 起入 `.gitignore`，勿提交                |

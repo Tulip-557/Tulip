@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>可核验旅行规划器 · verified-travel-planner — 在线示例</title>
+<style>
+  :root{
+    --bg:#f5f1e8; --card:#fdfbf6; --ink:#26251f; --muted:#7a766a;
+    --green:#2f5d50; --green-deep:#24463c; --line:#e4ddcf;
+    --a:#2f7d4f; --b:#4a7fa5; --c:#b8862d; --d:#b3473d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Source Han Serif SC","Noto Serif SC",Georgia,"Microsoft YaHei",serif;
+    line-height:1.75; padding:48px 20px 80px;
+  }
+  .wrap{max-width:820px;margin:0 auto}
+  .kicker{font-size:13px;letter-spacing:.35em;color:var(--muted);margin-bottom:10px}
+  h1{font-size:34px;line-height:1.3;margin-bottom:6px}
+  .sub{font-size:17px;color:var(--muted);margin-bottom:26px}
+  .pitch{font-size:17px;margin-bottom:8px}
+  .pitch b{color:var(--green-deep)}
+  .demo{background:var(--card);border:1px solid var(--line);border-radius:14px;
+        padding:28px 30px;margin:26px 0}
+  .demo h2{font-size:19px;margin-bottom:4px}
+  .demo p.note{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:11px 22px;border-radius:10px;text-decoration:none;
+       font-size:15px;border:1px solid var(--green)}
+  .btn.primary{background:var(--green);color:#fff}
+  .btn.primary:hover{background:var(--green-deep)}
+  .btn.ghost{color:var(--green);background:transparent}
+  .btn.ghost:hover{background:#eef2ec}
+  .legend{margin:26px 0 0;font-size:15px}
+  .legend h3{font-size:16px;margin-bottom:8px}
+  .badge{display:inline-block;min-width:22px;text-align:center;border-radius:6px;
+         color:#fff;font-size:12.5px;padding:1px 7px;margin:0 2px;
+         font-family:Georgia,serif;font-weight:bold}
+  .b-a{background:var(--a)} .b-b{background:var(--b)}
+  .b-c{background:var(--c)} .b-d{background:var(--d)}
+  .legend li{margin:5px 0 5px 4px;list-style:none}
+  .foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+        font-size:13.5px;color:var(--muted)}
+  .foot a{color:var(--green)}
+  code{background:#ece6d8;border-radius:5px;padding:1px 7px;font-size:13.5px;
+       font-family:Consolas,Menlo,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">VERIFIED TRAVEL PLANNER</div>
+  <h1>可核验旅行规划器</h1>
+  <div class="sub">一本「每个数字都有来源、每处结论都能被机器校验」的旅行路书 · Agent Skill</div>
+
+  <p class="pitch">它不替你「编一份好看的攻略」，而是<b>先查实、再写作、然后自己把自己查一遍</b>——
+  查不到的数字如实标「未核实」并给出你自查的出路，<b>不拿一个估算冒充查实结果</b>。</p>
+  <p class="pitch">下面是一本真实产出的示例路书（单文件 HTML，配图内联，<b>断网可开</b>，
+  微信传文件即可分享）。示例数据核实于 2026-09-28。</p>
+
+  <div class="demo">
+    <h2>示例：《东莞·三天两晚》——从销烟旧址到湖山古村</h2>
+    <p class="note">3 人 · 珠海出发 · 高铁往返 · 2026-10-17 ~ 10-19；六道闸门全绿的完整交付链路样例</p>
+    <div class="btns">
+      <a class="btn primary" href="demo-dongguan.html">打开完整版路书 →</a>
+      <a class="btn ghost" href="demo-dongguan-compact.html">精简执行版（首屏逐日速览）</a>
+    </div>
+  </div>
+
+  <div class="legend">
+    <h3>正文里那些彩色小徽章是什么</h3>
+    <ul>
+      <li><span class="badge b-a">A</span> 工具实证：高德 API、官方页面，必须带查询时戳</li>
+      <li><span class="badge b-b">B</span> 双源印证：两个独立来源相互对上</li>
+      <li><span class="badge b-c">C</span> 单源线索：只有一个来源，或来自社区内容</li>
+      <li><span class="badge b-d">D</span> 未核实：如实标注，必须给出用户可自查的出路</li>
+    </ul>
+    <p style="margin-top:10px">票价、营业时间、车次余票、距离车程这四类是<b>死线</b>：
+    写进正文就不允许拿 <span class="badge b-c">C</span>/<span class="badge b-d">D</span>
+    冒充确定信息——查不到就写「未核实 + 出路」，不许用「大约」糊过去。</p>
+  </div>
+
+  <div class="foot">
+    这是 <a href="https://github.com/Tulip-557/Tulip">verified-travel-planner</a>
+    （MIT License）的静态示例页，由 GitHub Pages 托管；路书为只读演示，不含实时数据。
+    机器可校验的部分（六道闸门、渲染逐字节复现、文档一致性审计）在
+    <a href="https://github.com/Tulip-557/Tulip">仓库</a>里。
+  </div>
+</div>
+</body>
+</html>

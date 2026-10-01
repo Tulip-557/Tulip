@@ -1,0 +1,51 @@
+name: 部署在线示例
+
+# README 首屏「在线打开这本路书」的落点：把 docs/index.html 落地页与
+# 东莞示例路书（单文件 HTML）发到 GitHub Pages。
+# 纪律：示例 HTML 一律从 产出示例/ 现拷贝，不在仓库里留第二份副本——
+# 防止「示例改了、演示页还是旧的」两处漂移；站点里没有任何独立内容。
+#
+# 首次部署如果 configure-pages 报「site creation failed」，
+# 去 Settings → Pages 把 Source 设为 GitHub Actions 再跑一次即可。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Pages 部署
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 组装站点（落地页 + 示例路书，文件名用 ASCII 避免 URL 转义）
+        run: |
+          mkdir -p site
+          cp docs/index.html site/
+          cp 产出示例/东莞/路书_东莞.html site/demo-dongguan.html
+          cp 产出示例/东莞/路书_东莞_精简版.html site/demo-dongguan-compact.html
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

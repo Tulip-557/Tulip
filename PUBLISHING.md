@@ -16,12 +16,16 @@
 ```
 <仓库根>/
 ├── WORKSPACE.md                   ← 工作区说明（含公开范围表与待办）
-├── README.md                      ← ★ 面向外部读者的项目说明（GitHub 首页）
+├── README.md                      ← ★ 面向外部读者的项目说明（GitHub 首页，首屏带主图与 30 秒上手）
 ├── AGENTS.md                      ← AI 助手上下文入口
+├── CONTRIBUTING.md                ← 贡献指南（分支/Fork + PR、闸门纪律、红线）
 ├── LICENSE                        ← 标准 MIT（GitHub 徽章识别）；指路牌在 LICENSE.guide.md
 ├── PUBLISHING.md                  ← 本文件
+├── assets/                        ← README 主图（示例路书截图，2026-10-01 增）
+├── docs/                          ← GitHub Pages 落地页（在线示例的入口，仅此一页）
 ├── .gitignore / .gitattributes    ← 忽略规则 / 禁换行转换（后者不能少，见下）
 ├── .github/workflows/gates.yml    ← CI：一键回归 + 凭据泄漏扫描
+├── .github/workflows/pages.yml    ← Pages：部署在线示例（2026-10-01 增）
 ├── verified-travel-planner/       ← ★ 产品本体（可独立分发的 skill）
 │   ├── SKILL.md / LICENSE / THIRD_PARTY_NOTICES.md
 │   ├── engine/  tools/  references/  assets/  tests/
