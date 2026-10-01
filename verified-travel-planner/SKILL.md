@@ -724,9 +724,13 @@ python "<SKILL_ROOT>/tools/compact_check.py" --facts 路书_XX_事实源.json \
 > `[D]` 有没有给出路），**不审内容真实**（标了 `[A]` 的那句话是否真在所引来源里）。
 > 换句话说：**「过了源核验」= 「你说得出这个数字是哪来的」，≠「这个数字一定对」。**
 > 内容真实由**三层链**接力（2026-10-01 全部落地，见上表后三行）：
-> ① `claim_audit`（v2）：高德采集默认留痕（快照内嵌 `raw_calls`），实采段时长与
-> 段车费必须如实进路书，被改/被丢即 FAIL——留痕证明「声明与采集一致」，
-> 不证明「采集与世界一致」；② `echo_audit`：抓取线索卡引用页正文，验证声称的
+> ① `claim_audit`（v2）：高德采集默认留痕（快照内嵌 `raw_calls`；`search-places`/
+> `nearby-spots`/`route` 可 `--trace` 落盘），实采段时长与
+> 段车费必须如实进路书，被改/被丢即 FAIL；C2 回查**含 ¥/￥ 前缀的票价**
+> （此前只认「17 元」，而事实源写 `过路费 ¥17`——票价整类隐形），并把**方向留痕**
+> 的秒/米蒸馏成分钟/公里进比对池（`route` 是唯一能产出这类留痕的命令）。
+> 留痕证明「声明与采集一致」，不证明「采集与世界一致」；**官网门票价属本层够不着
+> 的那部分**，归 ② ③ 两层；② `echo_audit`：抓取线索卡引用页正文，验证声称的
 > 数字/时刻/关键短语真的在页面上——但「页面里有」≠「页面说的对」，且 JS 渲染页
 > 抓不到、页面合法改版会造成时戳错位，这两类如实列 UNREACHABLE/WARN 不判死；
 > ③ `cross_check`：把各来源页面正文做重合比对，拆穿「互相转载充双源」——但
@@ -898,7 +902,7 @@ verified-travel-planner/
 │       ├── credentials.py      ← 凭据读取（环境变量 → 凭据文件 → macOS 钥匙串）
 │       └── timeutil.py / models.py
 ├── tools/
-│   ├── travel_planner.py       ← ★ 统一命令行入口（14 个命令，先看它的 --help）
+│   ├── travel_planner.py       ← ★ 统一命令行入口（15 个命令，先看它的 --help）
 │   ├── set_amap_key.py         ← 高德 key 配置（跨平台；上游脚本仅支持 macOS）
 │   ├── doctor.py               ← 能力体检（能力先测后报；等价于 `travel_planner.py doctor`）
 │   ├── render_html.py          ← 渲染器（事实源 JSON → 路书 HTML；--compact 出精简版）
@@ -928,7 +932,7 @@ verified-travel-planner/
 
 **渐进加载**：只读当前任务需要的 reference，不要一次全读。
 
-**先看命令入口**：`python "<SKILL_ROOT>/tools/travel_planner.py" --help` 列出全部 14 个命令。
+**先看命令入口**：`python "<SKILL_ROOT>/tools/travel_planner.py" --help` 列出全部 15 个命令。
 开工前先跑 `doctor`——能力先测后报，先弄清这台机器能验到什么程度，
 再决定哪些项取 `[A]`、哪些必须降级 `[D]`。
 
@@ -982,10 +986,14 @@ verified-travel-planner/
   ⚠️ **采集即留痕（P1 来源留痕，2026-09-30 起默认行为）**：快照默认内嵌
   `raw_calls`（每次成功调用的原始返回体，key 已脱敏）——**别用 `--no-keep-raw`
   放弃它**，声明比对闸门靠这份留痕才能复核「实采值有没有如实进路书」。
-  `search-places` / `nearby-spots` 用 `--trace <文件>` 把本次调用同样落盘。
-  交付前 `ship.py` 会跑 `claim_audit`：itinerary 留痕里的段时长必须在事实源
-  全文中可寻——采集 16 分钟写成 15 分钟会在这里 FAIL。留痕证明
-  「声明与采集一致」，不证明「采集与世界一致」，边界别读成保证。
+  `search-places` / `nearby-spots` / `route` 用 `--trace <文件>` 把本次调用同样落盘；
+  其中 **`route` 是唯一能产出方向类留痕的命令**（点对点距离/过路费/公交票价）——
+  没有它，城内的距离与票价永远只能挂 UNVERIFIED（快照只覆盖城市级起终点）。
+  交付前 `ship.py` 会跑 `claim_audit`：它按命名约定发现 `快照_<城市>*.json` 与
+  `留痕_<城市>*.json` 并逐个传入（`--snapshot` 按**形状**识别，给哪种都不会被静默丢掉）。
+  itinerary 留痕里的段时长与段车费必须在事实源全文中可寻——采集 16 分钟写成 15 分钟
+  会在这里 FAIL。留痕证明「声明与采集一致」，不证明「采集与世界一致」；
+  **官网门票价不在本层能力内**，边界别读成保证。
 
   **无 key 时**：POI 与路线相关项一律降级 `[D]`，不得用模型推断的坐标或车程冒充已核实。
   也可用 `travel_planner.py doctor --live` 实测（同样真查一次「北京 天安门」）。

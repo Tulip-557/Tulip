@@ -110,7 +110,7 @@ python verified-travel-planner/tools/ship.py     # 全绿才算可交付；有�
 
 > 这套闸门是**给自己用的**：开发过程中它抓出过「门票标了够不着的等级」
 > 「精简版把末班车时间压没了」「evaluate 喂错文件层级拿到假的满分」等真问题，
-> 每一条都固化成了断言（`tests/` 102 条）。
+> 每一条都固化成了断言（`tests/` 115 条）。
 
 ### 3️⃣ 双版本交付 + 单文件可开
 
@@ -273,13 +273,14 @@ python verified-travel-planner/tools/doctor.py
 8 项检查：Python 解释器 / 时区数据库 / 检查引擎符号 / 高德 key / 随包资产 / 第三方依赖 /
 平台绑定项 / 机器级私有状态。核心项全 `READY` 才算环境可用。
 
-### 统一 CLI（14 个命令，先看 `--help`）
+### 统一 CLI（15 个命令，先看 `--help`）
 
 ```bash
 CLI="python verified-travel-planner/tools/travel_planner.py"
 $CLI --help                 # 全部命令
 $CLI validate-request  ...  # 需求采集校验（缺项 -> 追问）
 $CLI search-places     ...  # 查高德 POI（需 key）
+$CLI route             ...  # 点对点距离/时长/过路费·票价（需 key；逐段留痕）
 $CLI amap-snapshot     ...  # 一次采集坐标 + 路线 + 周边（需 key）
 $CLI weather           ...  # 实况 + 4 天预报（需 key）
 $CLI evaluate          ...  # 确定性可行性检查（排不通就不给，退出码 2）
@@ -369,7 +370,7 @@ verified-travel-planner/
 ├── tools/                      ← 23 个命令行工具（统一 CLI + 九道闸门 + ship.py 一键回归）
 ├── references/                 ← 渐进加载的参考文档（用到才读）
 ├── assets/                     ← 基准骨架 + 事实源模板
-└── tests/                      ← 102 条断言（标准库 unittest）
+└── tests/                      ← 115 条断言（标准库 unittest）
 ```
 
 ---

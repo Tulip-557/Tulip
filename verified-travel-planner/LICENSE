@@ -37,10 +37,11 @@ Copyright (c) 2026 verified-travel-planner（本 skill 的融合与改写部分�
       engine/travel_planner/diagnostics.py   —— 已改动（扩展自检分支、区分配置空与损坏）
       engine/travel_planner/credentials.py   —— 已改动（增加 Windows 支持：
                                                 环境变量 → 本地凭据文件 → macOS 钥匙串）
-      tools/travel_planner.py                —— 已改动（派生文件，六处适配：
+      tools/travel_planner.py                —— 已改动（派生文件，七处适配：
                                                 引擎路径 src/→engine/、跨平台凭据、
                                                 doctor 合并本机检查、evaluate 非零退出码、
-                                                nearby-spots 命令、来源留痕出口）
+                                                nearby-spots 命令、来源留痕出口、
+                                                route 命令〔点对点距离/时长/票价留痕〕）
 
 ================================================================================
 上游项目一：awangwang123/jianhao-travel-planner

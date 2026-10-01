@@ -77,7 +77,7 @@ D:\旅游\
 │   │   ├── credentials.py          ← 凭证三级回退（跨平台改写）
 │   │   └── ...
 │   ├── tools\                      ← 命令行工具
-│   │   ├── travel_planner.py       ← ★ 统一 CLI（14 个命令）
+│   │   ├── travel_planner.py       ← ★ 统一 CLI（15 个命令）
 │   │   │                             含 weather：实况 + 4 天预报 + 「哪天超出窗口」
 │   │   ├── render_html.py          ← 渲染器（事实源 JSON → 路书 HTML，数据模板分离）
 │   │   │                             同一命令加 --compact 出「精简执行版」
@@ -142,7 +142,7 @@ pip install tzdata -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mir
 **常用命令**（在 `verified-travel-planner\` 下执行）：
 
 ```bash
-# 看全部 14 个命令
+# 看全部 15 个命令
 python tools\travel_planner.py --help
 
 # 环境体检（自带客户端要显式指定，否则会猜错）
@@ -153,6 +153,10 @@ python tools\travel_planner.py search-places --keywords "宽窄巷子" --city �
 
 # 采集坐标+路线+周边（需 key；起终点必须是【城市级】，POI 会被门禁拒绝）
 python tools\travel_planner.py amap-snapshot --input 输入.json --output 快照.json
+
+# 点对点距离/时长/过路费·票价（需 key；【POI 级】，与上条城市级通道别混用）
+# 唯一能产出方向类留痕的命令——不跑它，距离/票价就永远无留痕可对
+python tools\travel_planner.py route --input 路段.json --output 结果.json --trace 留痕.json
 
 # 可行性检查（排不通则退出码 2）
 python tools\travel_planner.py evaluate --input 行程.json
@@ -191,7 +195,7 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
 **已完成（A 级全落地）**
 
 - 融合双核机制（见好交付质量 + 实证派数据纪律）
-- 检查引擎 14 模块迁移 + 统一 CLI 14 命令
+- 检查引擎 14 模块迁移 + 统一 CLI 15 命令
 - 渲染管线：事实源 JSON → 单文件 HTML（配图 base64 内联，断网可开）
 - 合规：LICENSE + THIRD_PARTY_NOTICES（保留两个上游版权声明）
 - 文档 9 章契约（`references/data-contracts.md`）
@@ -311,7 +315,7 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
   已修（门票降 `[D]` 并补官方渠道出路、送礼段补时戳、孤儿来源挂到日落活动）。  
   **注意：这 5 处都不是数字错，是把单源信息标成了够不着的等级**——正是「标注纪律」与  
   「事实正确」的区别。负向样本 6 类违规全部命中；退出码 0/2 三态验证正确。
-- [x] **C 级 · 工程保障（2026-09-28 落地）**——自动化测试套件 `tests/`（102 条测试，标准库  
+- [x] **C 级 · 工程保障（2026-09-28 落地）**——自动化测试套件 `tests/`（115 条测试，标准库  
   unittest）、`tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、  
   CI `.github/workflows/gates.yml`（gates 跑 `ship.py` + `gitleaks` 密钥扫描）。  
   命令：`python verified-travel-planner/tools/ship.py`
@@ -334,6 +338,17 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
   **v2（2026-10-01）**：C1 硬面扩到实采段车费（estimated_cost），C2 池补单位换算
   容忍（米↔公里、分钟↔小时），东莞 UNVERIFIED 从 103 降到 96；快照未随附的
   距离/票价类仍如实列 UNVERIFIED——随附快照后即可回查（ship 会传 --snapshot）。
+  **同日补正（本次 PR）**：那句话原先只是**声明**——`ship.py` 的 claim_audit 调用
+  只 glob 了 `nearby_*.json`，**从不传 `--snapshot`**，`--snapshot` 又只认快照形，
+  于是「随附快照后即可回查」在代码里落不了地。现已补齐三处：① ship 按命名约定
+  发现 `快照_<城市>*.json` 与 `留痕_<城市>*.json` 并逐个传入；② `--snapshot`
+  改为可重复，且**按形状**识别（快照形 / `--trace` 落的 trace 形），传错形状不会
+  再被静默丢掉；③ 新增 `route` 子命令——**唯一能产出方向类留痕的命令**（点对点
+  距离/过路费/公交票价），没有它，城内的距离/票价仍产不出可比对的留痕。
+  另：C2 此前**看不到票价**——事实源写 `过路费 ¥17`，而正则只认「17 元」，
+  实测东莞 103 处里 `元` 是 **0** 条；现已纳入 `¥/￥` 前缀，东莞 96→107、
+  上海 →38（纯增量、0 处消失；其中**官网门票价属本链路够不着的那部分**，
+  归 echo_audit / cross_check 两层）。
   **「采集与世界一致」由同日新增的第 2/3 层接力**（见下条）。
 - [x] **P3 · 内容真实三层链（2026-10-01 落地）**：第 2 层 `echo_audit.py`——抓取
   线索卡引用页正文，验证声称的数字/时刻/关键短语在页面上（中文数字双向变体都认），
