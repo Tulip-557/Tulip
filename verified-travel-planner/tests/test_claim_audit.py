@@ -124,10 +124,12 @@ class TestClaimAuditGate(unittest.TestCase):
             return proc.returncode, proc.stdout.decode('utf-8')
 
     @staticmethod
-    def _itinerary(minutes):
+    def _itinerary(minutes, cost=None):
+        seg = {"from_id": "a", "to_id": "b", "duration_minutes": minutes}
+        if cost is not None:
+            seg["estimated_cost"] = cost
         return {"_说明": "duration_minutes 全部来自高德驾车路线实采，不是估算。",
-                "segments": [{"from_id": "a", "to_id": "b",
-                              "duration_minutes": minutes}]}
+                "segments": [seg]}
 
     def test_faithful_claim_passes(self):
         facts = {"days": [{"slots": [
@@ -171,6 +173,24 @@ class TestClaimAuditGate(unittest.TestCase):
                                          "distance_meters": 350}]}]}
         code, out = self._run(facts, self._itinerary(52), nearby=nearby)
         self.assertEqual(code, 0, out)
+
+    def test_declared_cost_faithful_passes(self):
+        # v2：实采段成本（estimated_cost）如实进路书 → PASS 计入 C1
+        facts = {"days": [{"slots": [
+            {"time": "08:00",
+             "body": {"full": "打车约 52 分钟、车费 25 元（高德，2026-09-30 查）[A]"}}]}]}
+        code, out = self._run(facts, self._itinerary(52, cost=25))
+        self.assertEqual(code, 0, out)
+        self.assertIn('段成本 25 元', out)
+
+    def test_declared_cost_tampered_fails(self):
+        # v2：实采 25 写成 20——与段时长同罪，数字幻觉必须 FAIL
+        facts = {"days": [{"slots": [
+            {"time": "08:00",
+             "body": {"full": "打车约 52 分钟、车费 20 元（高德，2026-09-30 查）[A]"}}]}]}
+        code, out = self._run(facts, self._itinerary(52, cost=25))
+        self.assertEqual(code, 2, '实采成本被改数必须FAIL——闸门不是摆设')
+        self.assertIn('25 元', out)
 
 
 if __name__ == '__main__':

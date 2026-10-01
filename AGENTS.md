@@ -53,11 +53,11 @@ D:\旅游\                          ← 唯一真身（各客户端经目录联�
 
 `tools/` 关键文件：`travel_planner.py`（★统一 CLI，14 命令）、`render_html.py`（事实源 JSON → 单文件 HTML，
 加 `--compact` 出精简执行版）、`consistency.py`（版式校验）、`ludbook_check.py`（30 项交付自查）、
-`freshness.py`（时效体检：动态数字到出发日还新不新）、`source_audit.py`（源核验：徽章标注纪律闸门，源核验 8 条规则）、`claim_audit.py`（声明↔留痕比对闸门：实采值必须如实进路书，P1 v1）、`compact_draft.py`（compact 半自动草稿：只出草案副产物永不写事实源，约束段不进删除通道）、`social_notes.py`（社会情报归一化 + 增量合并 + 交叉印证）、
+`freshness.py`（时效体检：动态数字到出发日还新不新）、`source_audit.py`（源核验：徽章标注纪律闸门，源核验 8 条规则）、`claim_audit.py`（声明↔留痕比对闸门：实采段时长与车费必须如实进路书，v2）、`echo_audit.py`（来源回声核查闸门：抓引用页验证声称值在页面上，内容真实第 2 层）、`cross_check.py`（独立源核查闸门：正文重合拆穿转引充双源，第 3 层）、`compact_draft.py`（compact 半自动草稿：只出草案副产物永不写事实源，约束段不进删除通道）、`social_notes.py`（社会情报归一化 + 增量合并 + 交叉印证）、
 `social_source.py`（社媒采集渠道能力矩阵 + 采集计划）、`social_login.py`（AUTH 档登录态探针）、
 `cdp_read.py`（CDP 只读读取器，穿透 Shadow DOM 读评论）、
 `validate_skill.py`、`shoot.py`、`set_amap_key.py`、`doctor.py`、`desource.py`、
-`ship.py`（★一键回归：七道闸门 + 渲染基线跑一遍，FAIL 退出码 2）。
+`ship.py`（★一键回归：九道闸门 + 渲染基线跑一遍，FAIL 退出码 2）。
 
 **发布前 / 大改后跑这一条就够**（不用再手敲七条命令）：
 `python verified-travel-planner/tools/ship.py`（加 `--quick` 跳过渲染复现与体检，
@@ -182,7 +182,7 @@ base64 都逐字节一致。骨架每次 CSS 变更都会换基线——改骨�
   只有第三方 OTA／差旅聚合，且本包从未搬入上游的安装脚本），属**非缺陷**，不是待办；
   它也不在 `doctor` 的检查项里（旧文档里的 `overall: PARTIAL` 口径已随 `doctor.py`
   改版取消，见 `WORKSPACE.md` 同期更正）。
-- **已建工具**：`tools/validate_skill.py`（文档计数断言自动校验，17 条规则覆盖 55 处断言）、
+- **已建工具**：`tools/validate_skill.py`（文档计数断言自动校验，19 条规则覆盖 79 处断言）、
   `tools/source_audit.py`（源核验闸门：E1-E8 标注纪律，有 FAIL 退出码 2）、
   `tools/shoot.py`（无头浏览器溢出探针 + 截图）、
   `tools/social_source.py`（社媒采集渠道能力矩阵 21 条 + 采集计划生成）、
@@ -190,16 +190,16 @@ base64 都逐字节一致。骨架每次 CSS 变更都会换基线——改骨�
   `references/browser-use.md`（浏览器核验能力与两个陷阱）、
   `references/social-sources.md`（社媒渠道五档矩阵 + 五条扩展路径 + 合规/反爬/解析）、
   `references/social-login.md`（用户授权登录：三种强度 / 实测 / 账号风险）。
-- **工程保障已落地（2026-09-28）**：`tests/`（72 条测试，标准库 unittest）、
-  `tools/ship.py` 一键回归（七道闸门 + 渲染基线，FAIL 退出码 2）、
+- **工程保障已落地（2026-09-28）**：`tests/`（88 条测试，标准库 unittest）、
+  `tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、
   CI `.github/workflows/gates.yml`（gates + gitleaks）。
-- **P1 来源留痕 v1（2026-09-30）**：高德采集默认留痕（`call_log` → 快照内嵌
-  `raw_calls`；`search-places`/`nearby-spots` 可 `--trace`）；新闸门
-  `tools/claim_audit.py` 把实采值拿回事实源全文里找，实采 16 写成 15 即 FAIL。
-  边界：证明「声明与采集一致」，不证明「采集与世界一致」；距离/票价类留痕未覆盖。
+- **内容真实三层链（2026-10-01 全部落地）**：第 1 层 `claim_audit`（v2：实采段
+  时长+车费硬查）；第 2 层 `echo_audit`（抓引用页验证声称值在页面上，死线类
+  对不上即 FAIL，UNREACHABLE 只 WARN）；第 3 层 `cross_check`（来源页正文重合
+  比对，拆穿转引充双源）。三层全过仍 ≠「数字一定对」，见 README〈已知边界〉1。
 - **待办**：`examples/` 更多样例（现三个已覆盖「完整交付链路」「渲染基线」
-  「路线/备选/顺道点」三类用途，缺如**多城串联 / 纯过境**）；P1 的 v2
-  （留痕面扩到驾车距离/票价，见 WORKSPACE.md 待办）。
+  「路线/备选/顺道点」三类用途，缺如**多城串联 / 纯过境**）；公告变更扫描
+  `bulletin.py` 与口碑体检 `review_trust.py`（见 WORKSPACE.md 待办）。
 
 ---
 

@@ -163,7 +163,7 @@ GitHub 首页渲染的是根 `README.md`，现在访客第一眼读到的是对�
 发布（或每次大改后）按顺序跑：
 
 ```bash
-# 1 一键回归：七道闸门 + 渲染基线，FAIL 退出码 2
+# 1 一键回归：九道闸门 + 渲染基线，FAIL 退出码 2
 python verified-travel-planner/tools/ship.py
 
 # 2 文档引用可达性（公开仓里不应有断链）

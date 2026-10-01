@@ -9,26 +9,30 @@ source_audit.py 审的是**标注纪律**（徽章在册、时戳在场、等级
 它管不了「标了 [A] 的那句是否真在所引来源里」——README 待办 P1，本 skill
 已知的最大缺口。成因：事实源只存结论、不存原始返回，没有可比对的东西。
 
-本工具是补这个缺口的第一层（v1），配两半：
+本工具是补这个缺口的**第 1 层**，配两半：
   采集侧：每次成功调用都进 client.call_log（amap.py）；amap-snapshot 内嵌
     raw_calls；search-places / nearby-spots 可 --trace 落盘。
   比对侧（本文件）：把留痕里的实采值拿到事实源全文里找。
 
-查什么（v1 范围，宁缺毋滥——每条 FAIL 都必须钉得住）
+查什么（v2 范围）
 --------------------------
-  C1 实采值覆盖   itinerary.segments 的 duration_minutes（文件 _说明 自声明
-                  「全部来自高德驾车路线实采」）必须逐个出现在事实源全文中
-                  （按数值规范比对）。找不到 = 采集到的数没如实进路书
-                  ——采集 16 写成 15 这类数字幻觉，在这里现形。FAIL。
-  C2 声明回查     事实源里含「高德/amap」字样的字符串中的数值（分钟/公里/
-                  米/元），逐个回查留痕池；查不到的列 UNVERIFIED——v1 的
-                  留痕面不含驾车距离、公交票价等，如实列出，不判死。
+  C1 实采值覆盖   itinerary.segments 的 duration_minutes **与 estimated_cost**
+                  （文件 _说明 自声明「全部来自高德实采」）必须逐个出现在
+                  事实源全文中（按数值规范比对）。找不到 = 采集到的数没如实
+                  进路书——采集 16 写成 15、实采 25 写成 20 这类数字幻觉，
+                  在这里现形。FAIL。
+  C2 声明回查     事实源里含「高德/amap」字样的字符串中的数值（分钟/小时/
+                  公里/米/元），逐个回查留痕池；v2 的池补了**单位换算容忍**
+                  （米↔公里、分钟↔小时、快照距离的两种舍入形），查不到的仍列
+                  UNVERIFIED——留痕没跟上的（示例未随附快照、正文摘录未纳）
+                  如实列出，不判死。
   C3 留痕健康     itinerary 无「实采」声明、快照无 raw_calls、周边采集缺
                   provider 字段 → WARN（留痕缺位，声明只能停在「说得出来源」）。
 
 不查（边界，写在这里是为了不被读成保证）
 --------------------------------------
-· 非高德来源的声明（官网门票价等）——归 source_audit 的 E 规则
+· 非高德来源的声明（官网门票价等）——网页那半归 echo_audit（来源回声核查），
+  独立性归 cross_check；三个闸门合起来才是「内容真实」的三层链
 · 快照/留痕与世界是否一致——留痕只证明「声明与采集一致」，不证明「采集对」
 · nearby 的候选点名/评分/距离、快照的城级路线值——采集了但没进路书是正常
   事（顺道候选只列不判断），只报告不计 FAIL
@@ -91,9 +95,10 @@ class Evidence:
     """留痕池：从各证据文件里取出的「机器实采值」。"""
 
     def __init__(self):
-        self.durations = set()          # 分钟（itinerary.segments 实采）
+        self.durations = set()          # 分钟（itinerary.segments / 快照路线 实采）
         self.distances_m = set()        # 米（快照路线 / 周边采集）
-        self.costs = set()              # 元（快照路线）
+        self.costs_declared = set()     # 元（itinerary.segments 实采，C1 硬面）
+        self.costs = set()              # 元（快照路线，蒸馏值池）
         self.names = []                 # POI 名（周边采集）
         self.raw_texts = []             # 原始返回体文本（快照 raw_calls）
         self.itinerary_declared = None  # itinerary 是否自声明「实采」
@@ -103,7 +108,7 @@ class Evidence:
     @property
     def empty(self) -> bool:
         return not (self.durations or self.distances_m or self.costs
-                    or self.names or self.raw_texts)
+                    or self.costs_declared or self.names or self.raw_texts)
 
 
 def load_itinerary(path: Path, ev: Evidence) -> None:
@@ -119,6 +124,10 @@ def load_itinerary(path: Path, ev: Evidence) -> None:
     for seg in segments:
         if isinstance(seg, dict) and seg.get('duration_minutes') is not None:
             ev.durations.add(seg['duration_minutes'])
+        # v2：打车费/过路费同样自声明「实采」——声明了却不硬查，等于没查。
+        cost = seg.get('estimated_cost')
+        if isinstance(cost, (int, float)) and cost >= 0:
+            ev.costs_declared.add(cost)
 
 
 def load_nearby(path: Path, ev: Evidence) -> None:
@@ -165,7 +174,10 @@ def load_snapshot(path: Path, ev: Evidence) -> None:
 
 
 def check_c1_coverage(facts_text: str, tokens: set, ev: Evidence):
-    """C1：实采段时长必须逐个出现在事实源全文。返回 (pass, fail) 列表。"""
+    """C1：实采值（段时长 + 段成本）必须逐个出现在事实源全文。
+
+    返回 (pass, fail) 列表。
+    """
     ok, bad = [], []
     for v in sorted(ev.durations):
         if _fmt(v) in tokens or str(v) in tokens:
@@ -173,17 +185,36 @@ def check_c1_coverage(facts_text: str, tokens: set, ev: Evidence):
         else:
             bad.append('实采段时长 %s 分钟在事实源全文中找不到——'
                        '被改数、被丢段，或该段已不进路书（修数据或删留痕）' % _fmt(v))
+    for v in sorted(ev.costs_declared):
+        if _fmt(v) in tokens or str(v) in tokens:
+            ok.append('段成本 %s 元' % _fmt(v))
+        else:
+            bad.append('实采段成本 %s 元在事实源全文中找不到——'
+                       '被改数或被丢（修数据或删留痕）' % _fmt(v))
     return ok, bad
 
 
 def check_c2_claims(facts_strings, ev: Evidence):
-    """C2：高德句中的数值回查留痕池。返回 UNVERIFIED 列表（不判死）。"""
+    """C2：高德句中的数值回查留痕池。返回 UNVERIFIED 列表（不判死）。
+
+    v2 的池补了单位换算容忍：距离的 米↔公里（含两种舍入形）、
+    时长的 分钟↔小时（含 1.5 小时这类小数形）。换算仍对不上的才算
+    「无留痕可对」——这能把 UNVERIFIED 清单从「换算噪声」缩到真缺口。
+    """
     pool_numbers = set()
     for v in ev.durations:
         pool_numbers.add(_fmt(v))
+        pool_numbers.add(_fmt(round(float(v) / 60.0, 1)))       # 分钟 → 小时
+        pool_numbers.add(_fmt(round(float(v) / 60.0, 2)))
     for m in ev.distances_m:
         pool_numbers.add(_fmt(m))
-        pool_numbers.add(_fmt(round(m / 1000.0, 1)))
+        km1 = _fmt(round(m / 1000.0, 1))
+        km2 = _fmt(round(m / 1000.0))
+        pool_numbers.update((km1, km2))
+        try:                                                     # 公里小数不动点
+            pool_numbers.add(_fmt(float(m) / 1000.0))
+        except (ValueError, OverflowError):
+            pass
     for c in ev.costs:
         pool_numbers.add(_fmt(c))
     for text in ev.raw_texts:
@@ -195,9 +226,15 @@ def check_c2_claims(facts_strings, ev: Evidence):
             continue
         for m in UNIT_NUM.finditer(s):
             val = _fmt(float(m.group(1)))
-            if val not in pool_numbers:
+            unit = m.group(2)
+            cands = {val}
+            if unit in ('公里', '千米'):
+                cands.update((_fmt(float(val) * 1000),))          # 公里 → 米
+            if unit == '小时':
+                cands.update((_fmt(float(val) * 60),))            # 小时 → 分钟
+            if not (cands & pool_numbers):
                 unverified.append('%s%s ｜ %s'
-                                  % (m.group(1), m.group(2), s.strip()[:60]))
+                                  % (m.group(1), unit, s.strip()[:60]))
     return unverified
 
 
@@ -246,9 +283,10 @@ def main():
         'c2_unverified': c2_unverified,
         'warnings': ev.warnings,
         'ok': not c1_bad,
-        'scope': ('v1：C1 只钉「实采段时长未如实进路书」；C2 的 UNVERIFIED 是'
-                  '诚实缺口不是 FAIL；快照/留痕证明「声明与采集一致」，'
-                  '不证明「采集与世界一致」。'),
+        'scope': ('v2：C1 硬查「实采段时长与段成本未如实进路书」；C2 的 '
+                  'UNVERIFIED 是诚实缺口不是 FAIL（快照未随附/正文摘录未纳）；'
+                  '快照/留痕证明「声明与采集一致」，不证明「采集与世界一致」'
+                  '——后者由 echo_audit（来源回声）与 cross_check（独立源）接力。'),
     }
 
     if a.json:
@@ -256,7 +294,7 @@ def main():
         return 0 if result['ok'] else 2
 
     print('=' * 74)
-    print('声明↔留痕比对（claim_audit v1）｜ 事实源：%s' % facts_path.name)
+    print('声明↔留痕比对（claim_audit v2）｜ 事实源：%s' % facts_path.name)
     print('=' * 74)
     print('  C1 实采值覆盖：PASS %d ｜ FAIL %d' % (len(c1_ok), len(c1_bad)))
     for row in c1_ok:

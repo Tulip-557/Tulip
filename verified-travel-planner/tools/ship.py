@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""一键回归 —— 发布前 / 大改后跑一遍，把「六道闸门 + 基线」从人肉清单变成一条命令。
+"""一键回归 —— 发布前 / 大改后跑一遍，把「九道闸门 + 基线」从人肉清单变成一条命令。
 
 为什么要有它：东莞那一轮，这套检查是我**手敲**的七条命令，敲漏一条就带着问题
 交付。闸门再多，没人一条不落地跑也是白搭——所以把清单固化成脚本，并且
@@ -13,10 +13,13 @@
   4  source_audit        每份事实源的证据标注纪律
   5  compact_check       每份事实源的双版本质量
   6  evaluate            每份 itinerary 的确定性可行性
-  7  claim_audit         声明↔留痕比对：实采值必须如实进路书
-                         （P1 来源留痕 v1；无留痕文件时如实跳过，不静默）
-  8  渲染复现            由事实源重渲染，**与既有 HTML 逐字节比对**
-                         （渲染器偷偷改了样式，这一条会先炸——比指纹更狠）
+  7  claim_audit         声明↔留痕比对：实采值必须如实进路书（内容真实第 1 层）
+  8  echo_audit          来源回声核查：引用页里真有那个值（内容真实第 2 层；
+                         无网络/风控页如实 SKIP/WARN，不假装查过）
+  9  cross_check         独立源核查：双源不是互相抄的一家（内容真实第 3 层）
+  10 渲染复现            由事实源重渲染，**与既有 HTML 逐字节比对**
+                         （渲染器偷偷改了样式，这一条会先炸——比指纹更狠；
+                         它是基线不算闸门，但同样 FAIL 即 2）
 
 不阻断（只报出来）：
   ·  freshness          时效体检（按出发日判，本来就不阻断）
@@ -33,6 +36,7 @@
 from __future__ import annotations
 
 import argparse
+import atexit
 import json
 import re
 import shutil
@@ -48,6 +52,13 @@ _EXAMPLES = _REPO_ROOT / '产出示例'
 # 事实源文件名形态：路书_东莞.json / 路书_成都_事实源.json
 _FACTS_RE = re.compile(r'^路书_(?P<city>.+?)(?:_事实源)?\.json$')
 _BADGE_RE = re.compile(r'\[[ABCD]\]')
+
+# 硬闸门名册（validate_skill 的「硬闸门数」以本表长度为事实源）。
+# 加闸门两处一起改：这里 + main() 的注册行 + 文件头清单。
+# 渲染复现是基线不算闸门，不入册；freshness/doctor 本来就不阻断。
+GATES = ('unittest', 'validate_skill', 'consistency', 'source_audit',
+         'compact_check', 'evaluate', 'claim_audit', 'echo_audit',
+         'cross_check')
 
 
 def emit(line: str = '') -> None:
@@ -196,7 +207,7 @@ def render_reproducible(ex: dict, scratch: Path) -> tuple:
 # ============================================================
 
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(description='一键回归：六道闸门 + 基线，FAIL 退出码 2')
+    ap = argparse.ArgumentParser(description='一键回归：九道闸门 + 基线，FAIL 退出码 2')
     ap.add_argument('--quick', action='store_true',
                     help='跳过渲染复现与体检（只改文档时够用）')
     ap.add_argument('--only', help='只跑指定城市的示例闸门')
@@ -238,6 +249,11 @@ def main(argv=None) -> int:
         emit('  [ -- ] %-28s 无渲染产物' % 'consistency 版式指纹')
 
     fixtures = []
+    # 内容真实第 2/3 层的共享抓取缓存：echo_audit 抓一次页面正文落盘，
+    # cross_check 拿同一份去比转引——分两次抓既慢又对站点不礼貌。
+    # 一次性数据，进程退出即清（这里不用 try/finally 缠住主流程，注册即忘）。
+    echo_cache = Path(tempfile.mkdtemp(prefix='ship-echo-'))
+    atexit.register(shutil.rmtree, echo_cache, True)
     for ex in examples:
         emit('[%s]' % ex['city'])
         fx = fixture_info(ex)
@@ -271,7 +287,7 @@ def main(argv=None) -> int:
         else:
             emit('  [ -- ] %-28s 无 itinerary' % 'evaluate 可行性')
 
-        # 声明↔留痕比对（P1 v1）：有留痕就比对，没有就明说跳过——不静默。
+        # 声明↔留痕比对（P1 v2）：有留痕就比对，没有就明说跳过——不静默。
         ca = ['tools/claim_audit.py', '--facts', str(ex['facts'])]
         has_evidence = ex['itinerary'].exists()
         if has_evidence:
@@ -285,6 +301,22 @@ def main(argv=None) -> int:
         else:
             emit('  [ -- ] %-28s 无留痕文件（itinerary/nearby 均缺）'
                  % 'claim_audit 声明比对')
+
+        # 内容真实第 2/3 层：来源回声 + 独立源核查。两道闸门共享同一份
+        # 抓取缓存（echo 抓回来的页面正文，cross 拿去比转引）——分两次
+        # 抓既慢又不礼貌。没有线索卡的示例明说跳过，不静默。
+        clues = sorted(ex['facts'].parent.glob('社媒线索卡_%s*.json' % ex['city']))
+        if clues:
+            ec = ['tools/echo_audit.py', '--clues', str(clues[0]),
+                  '--facts', str(ex['facts']), '--cache', str(echo_cache)]
+            r.run('echo_audit 来源回声', ec)
+            xc = ['tools/cross_check.py', '--clues', str(clues[0]),
+                  '--facts', str(ex['facts']), '--cache', str(echo_cache)]
+            r.run('cross_check 独立源', xc)
+        else:
+            emit('  [ -- ] %-28s 无线索卡（社媒线索卡_<城市>.json 缺）'
+                 % 'echo_audit 来源回声')
+            emit('  [ -- ] %-28s 同上' % 'cross_check 独立源')
 
         if not args.quick:
             r.run('freshness 时效',

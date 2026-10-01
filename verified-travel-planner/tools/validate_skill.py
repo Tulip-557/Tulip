@@ -121,6 +121,24 @@ def fact_cli_commands(root):
     return n
 
 
+def fact_tool_scripts(root):
+    d = os.path.join(_skill_dir(root), 'tools')
+    if not os.path.isdir(d):
+        return None
+    return len([f for f in os.listdir(d) if f.endswith('.py')])
+
+
+def fact_hard_gates(root):
+    """ship.py 的 GATES 名册长度 —— 硬闸门数的唯一事实源。"""
+    src = _read(os.path.join(_skill_dir(root), 'tools', 'ship.py'))
+    if not src:
+        return None
+    m = re.search(r'^GATES\s*=\s*\(([^)]*)\)', src, re.M | re.S)
+    if not m:
+        return None
+    return len(re.findall(r"['\"][^'\"]+['\"]", m.group(1)))
+
+
 def fact_contract_chapters(root):
     p = os.path.join(_skill_dir(root), 'references', 'data-contracts.md')
     src = _read(p)
@@ -527,6 +545,26 @@ RULES = [
         'skip_if': _UPSTREAM,
     },
     {
+        'name': '工具脚本数',
+        # tools/ 下 .py 文件数：README 目录树写「N 个命令行工具」。
+        # 2026-10-01 前它是无守卫数字——echo/cross 上线时特意补上这条规则。
+        'files': ['AGENTS.md', 'README.md'],
+        'pattern': re.compile(r'(\d+)\s*个(?:命令行)?工具'),
+        'facts': {'tools/*.py 文件数': fact_tool_scripts},
+        'skip_if': _UPSTREAM,
+    },
+    {
+        # 「N 道闸门」曾在「六道→七道」之间漂了 11 处没被发现，就因为这个数
+        # 没有机器守卫。事实源是 ship.py 的 GATES 名册；中文数字（九道）与
+        # 阿拉伯（9 道）都认。历史叙事（「成为第六道闸门」）走 skip_if 豁免。
+        'name': '硬闸门数',
+        'files': ['AGENTS.md', 'README.md', 'verified-travel-planner/SKILL.md',
+                  'WORKSPACE.md', '.github/workflows/gates.yml'],
+        'pattern': re.compile(r'([一二两三四五六七八九十\d]+)\s*道(?:硬)?闸门'),
+        'facts': {'ship.py 的 GATES 名册长度': fact_hard_gates},
+        'skip_if': _UPSTREAM + ('第六道', '第五道', '实战教训', '当时'),
+    },
+    {
         'name': '人工维持经验数',
         # 2026-09-28 复盘协议（references/retro-protocol.md）设立时同步加：
         # 「人工维持 N 条」是复盘出口的健康度基线——只升不降说明规则化通道堵塞。
@@ -629,8 +667,28 @@ def self_check(root, n_rules, n_checked):
 def _first_group(match):
     for g in match.groups():
         if g:
-            return int(g)
+            try:
+                return int(g)
+            except ValueError:
+                v = _cn_to_int(g)
+                if v is not None:
+                    return v
     return None
+
+
+#: 中文数字：文档里「九道闸门」写的是汉字，事实值是阿拉伯——两种都得认。
+_CN_DIG = {'一': 1, '二': 2, '两': 2, '三': 3, '四': 4, '五': 5,
+           '六': 6, '七': 7, '八': 8, '九': 9}
+
+
+def _cn_to_int(s):
+    if s.isdigit():
+        return int(s)
+    if '十' in s:
+        head, _, tail = s.partition('十')
+        t = _CN_DIG.get(head, 1) if head else 1
+        return t * 10 + (_CN_DIG.get(tail, 0) if tail else 0)
+    return _CN_DIG.get(s)
 
 
 def validate(root):

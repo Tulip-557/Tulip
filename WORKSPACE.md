@@ -47,9 +47,9 @@
 
 |              | 本包                                                    | 同类项目常见做法                                                       |
 | ------------ | ----------------------------------------------------- | -------------------------------------------------------------- |
-| **数字可信度**    | 证据四级 `[A]/[B]/[C]/[D]` + 四条死线 + **七道闸门**，**机器可判**      | 票价与玩法混着写，无分级——6 个对标项目里 **0 个**有等价机制                            |
+| **数字可信度**    | 证据四级 `[A]/[B]/[C]/[D]` + 四条死线 + **九道闸门**，**机器可判**      | 票价与玩法混着写，无分级——6 个对标项目里 **0 个**有等价机制                            |
 | **没数据时怎么办**  | 标 `[D]`，**绝不猜**                                       | 常见做法是「API 失败就回退 LLM 知识库」——`travel-guidebook`(89⭐) 把它写进 FAQ 当卖点 |
-| **文档与代码一致性** | `validate_skill.py` 机器校验，连它自己声明的「17 条规则 / 55 处断言」也一起查 | 无                                                              |
+| **文档与代码一致性** | `validate_skill.py` 机器校验，连它自己声明的「19 条规则 / 79 处断言」也一起查 | 无                                                              |
 | **离线可用性**    | 单文件 HTML，配图 base64 内联，**0 个外部依赖**，可整文件 MD5 复现         | 多依赖 Google Fonts / CDN 图标，断网即降级                                |
 
 本质差别在第二行：**同类项目把「可用性」放在「可信度」之前，本包相反。**
@@ -93,7 +93,7 @@ D:\旅游\
 │   │   ├── social_login.py         ← 用户授权登录态采集探针（AUTH 档：--check/--launch/--grab）
 │   │   ├── cdp_read.py             ← CDP 只读读取器：滚动触发懒加载 + 穿透 Shadow DOM
 │   │   │                             内置最小 WebSocket 客户端，零第三方依赖
-│   │   ├── validate_skill.py       ← 文档计数断言校验（17 条规则 / 55 处断言，可进 CI）
+│   │   ├── validate_skill.py       ← 文档计数断言校验（19 条规则 / 79 处断言，可进 CI）
 │   │   ├── shoot.py                ← 无头浏览器四档溢出探针 + 截图
 │   │   ├── set_amap_key.py         ← 高德 key 配置（跨平台）
 │   │   ├── doctor.py / desource.py
@@ -107,7 +107,7 @@ D:\旅游\
 │   └── assets\                     ← 基准骨架与事实源模板
 ├── skill-doc-code-audit\            ← 配套工具：核查「文档声称的」与「代码实现的」是否一致
 ├── 产出示例\
-│   ├── 东莞\                        ← **完整交付链路示例**（首个六道闸门全流程跑通）
+│   ├── 东莞\                        ← **完整交付链路示例**（首个九道闸门全流程跑通）
 │   │   ├── 路书_东莞.json / .html / _精简版.html
 │   │   ├── itinerary_东莞.json / final_plan_东莞.json / trip_request.json
 │   │   └── imgs\ 3 张本地 SVG 示意图
@@ -285,7 +285,7 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
   按「只数 section 正文」的探针口径是 7782 字 / 55.3%——两个口径别混用）。  
   新增精简版专用闸门 `compact_check.py`  
   （C1 双档覆盖 / C2 逐段精简度 / C3 约束不丢 / C4 证据不降级 / C5 产物精简率）。  
-  规范见 `references/dual-version.md`。完整版**逐字节零副作用**，两版**六道闸门全绿**。
+  规范见 `references/dual-version.md`。完整版**逐字节零副作用**，两版**九道闸门全绿**。
 - [x] **2026-09-27 22:00 · 时效体检（补规范与数据的断层）**——新增 `tools/freshness.py`。  
   `evidence-rules.md` 定义了 6 类时效阈值（机票 2h / 火车票 24h / 酒店 12h / 门票当天 /  
   营业时间 30天 / 路线当日），但**事实源里只有 1 处时戳，且没有任何命令能查**——规范写了、数据没落。  
@@ -311,22 +311,33 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
   已修（门票降 `[D]` 并补官方渠道出路、送礼段补时戳、孤儿来源挂到日落活动）。  
   **注意：这 5 处都不是数字错，是把单源信息标成了够不着的等级**——正是「标注纪律」与  
   「事实正确」的区别。负向样本 6 类违规全部命中；退出码 0/2 三态验证正确。
-- [x] **C 级 · 工程保障（2026-09-28 落地）**——自动化测试套件 `tests/`（72 条测试，标准库  
-  unittest）、`tools/ship.py` 一键回归（七道闸门 + 渲染基线，FAIL 退出码 2）、  
+- [x] **C 级 · 工程保障（2026-09-28 落地）**——自动化测试套件 `tests/`（88 条测试，标准库  
+  unittest）、`tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、  
   CI `.github/workflows/gates.yml`（gates 跑 `ship.py` + `gitleaks` 密钥扫描）。  
   命令：`python verified-travel-planner/tools/ship.py`
 - [ ] **C 级 · `examples/` 更多样例**——现有两个示例已分别覆盖「完整交付链路」（东莞）与  
   「渲染基线」（成都）两类用途；缺的是第三个用途（如**多城串联**或**纯过境**），需要时再补
+- [ ] **P4 · 公告变更扫描 `bulletin.py`**（规划）——官方渠道临行 sweep（闭馆/调价/管制/
+  新开关键词类），渲染走 #overview 注入模式；推荐联动：闭馆公告 POI 提示调序备选
+- [ ] **P5 · 口碑体检 `review_trust.py`**（规划）——评论区水军/推广**信号**（近重复/
+  复读/话术词表/同日爆发/星级错配），只出信号不结论；配套 `references/review-connectors.md`
+  写 MediaCrawler 式本地爬虫接入规范（stdlib 不内置爬虫）
 - [x] **P1 · 来源留痕与内容级复核（2026-09-30 v1 落地）**：采集侧——高德客户端每次成功调用
   都进 `call_log`（key 脱敏），`amap-snapshot` 默认内嵌 `raw_calls`（`--no-keep-raw` 可弃），
   `search-places`/`nearby-spots` 可 `--trace` 落盘；比对侧——新闸门 `claim_audit.py`
   把实采值（itinerary 段时长）拿回事实源全文里找，**实采 16 写成 15 这类数字幻觉 FAIL**。
   真实数据实测：东莞 6/6、上海 4/4 段时长全部可寻，零误伤；负向样本（改数）必红。
-  **v1 边界（如实声明，别读成保证）**：留痕证明「声明与采集一致」，不证明「采集与世界一致」；
-  留痕面暂不含驾车距离、公交票价——东莞真实路书上还有 **103 处**高德句数值无留痕可对
-  （工具列 UNVERIFIED 不判死），这是 v2 的路线图（留痕面扩到方向类接口全量 + 正文摘录）。
-  原「过了闸门=说得出来源」的边界注记保留在四处（SKILL.md 闸门表下注 /
-  source-audit.md 局限章 / source_audit.py 运行提醒 / README.md），已更新为 v1 口径。
+  **v2（2026-10-01）**：C1 硬面扩到实采段车费（estimated_cost），C2 池补单位换算
+  容忍（米↔公里、分钟↔小时），东莞 UNVERIFIED 从 103 降到 96；快照未随附的
+  距离/票价类仍如实列 UNVERIFIED——随附快照后即可回查（ship 会传 --snapshot）。
+  **「采集与世界一致」由同日新增的第 2/3 层接力**（见下条）。
+- [x] **P3 · 内容真实三层链（2026-10-01 落地）**：第 2 层 `echo_audit.py`——抓取
+  线索卡引用页正文，验证声称的数字/时刻/关键短语在页面上（中文数字双向变体都认），
+  死线类对不上即 FAIL，UNREACHABLE/断网只 WARN 不判死；第 3 层 `cross_check.py`——
+  把各来源页面正文做 4-gram shingle 重合比对（阈值 0.7），「互相转载充双源」FAIL，
+  同地不同数 DISPUTED 并列不裁决。echo/cross 两道新闸门已入 ship.py 名册（GATES 共 9）与 CI。
+  设计依据与外部调研（ReviewMeta/Yelp 水军信号、SAFE/FActScore 事实核查管线、
+  MinHash 转引检测）见 `references/echo-cross.md`。
 - [x] **P2 · 上游归属声明的机器核验（2026-09-28 已落地）**：`THIRD_PARTY_NOTICES.md` 的
   「归属核对表」现列 **17 个**上游衍生文件（**8 个原样 / 9 个已改动**，2026-09-30 起
   `workflow.py` 因来源留痕从原样升为已改动）的 md5 与字节数，
@@ -466,7 +477,7 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
 > 平台绑定项（无头浏览器探针）在 Windows 已实测，非 Windows 标「未实测」而非「不可用」。  
 > 完整条件与打包要求见 `verified-travel-planner/references/portability.md`；  
 > 发布前跑**一条**就够：`python verified-travel-planner/tools/ship.py`  
-> （七道闸门 + 渲染基线一键回归，FAIL 退出码 2；`doctor.py` 与 `validate_skill.py`  
+> （九道闸门 + 渲染基线一键回归，FAIL 退出码 2；`doctor.py` 与 `validate_skill.py`  
 > 都在它里面）。
 
 > ⚠️ **`.gitattributes` 不能少**（`* -text`）：Windows 默认把 LF 转 CRLF，  
@@ -494,7 +505,7 @@ python tools\travel_planner.py weather --city 中山市 --start 2026-09-28 --end
 发布前自检（每次改动后都跑，不要跳）：
 
 ```bash
-python verified-travel-planner/tools/ship.py          # 全量：七道闸门 + 渲染基线
+python verified-travel-planner/tools/ship.py          # 全量：九道闸门 + 渲染基线
 python verified-travel-planner/tools/ship.py --quick  # 只改文档时用
 ```
 
