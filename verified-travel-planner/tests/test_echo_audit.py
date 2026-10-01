@@ -15,6 +15,7 @@
 负样本注入 FAIL 必红——退出码是闸门契约的一部分。
 """
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -71,7 +72,13 @@ class TestEchoAuditGate(unittest.TestCase):
                 cp = _clue(Path(td), claims or [])
             args = [sys.executable, str(ECHO), '--clues', str(cp),
                     '--timeout', '5'] + list(extra)
-            proc = subprocess.run(args, capture_output=True, timeout=180)
+            # 默认剥离 GITHUB_ACTIONS——闸门测试模拟的是「本机」语义
+            # （FAIL=2）；CI 降级行为由 test_ci_env_downgrades 单独验证。
+            env = {k: v for k, v in os.environ.items()
+                   if k != 'GITHUB_ACTIONS'}
+            env.setdefault('PYTHONIOENCODING', 'utf-8')
+            proc = subprocess.run(args, capture_output=True, timeout=180,
+                                  env=env)
             return proc.returncode, proc.stdout.decode('utf-8')
 
     def test_official_claim_supported_passes(self):
