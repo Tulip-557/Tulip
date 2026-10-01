@@ -9,7 +9,7 @@
           "id": "d1-yapian",
           "type": "ATTRACTION",
           "name": "鸦片战争博物馆（含林则徐销烟池旧址）",
-          "description": "虎门的核心历史现场：销烟池旧址与陈列楼。免费但必须提前预约，17:00 停止预约与入场。",
+          "description": "虎门的核心历史现场：销烟池旧址与陈列楼。免费但必须提前预约；开放时间 8:30–17:30，17:00 后停止进入。",
           "features": ["林则徐销烟池旧址", "鸦片战争文物史料陈列", "免费预约制"],
           "why_visit": ["东莞唯一一条不能挪到周一的历史线——馆方周一全天闭馆", "免费，预算友好", "室内为主，午后雷阵雨不受影响"],
           "suggested_duration_minutes": 150,
@@ -121,7 +121,7 @@
     {"from_id": "d2-jianyu", "to_id": "d3-songshanhu", "duration_minutes": 41, "buffer_minutes": 20, "estimated_cost": 75}
   ],
   "sources": [
-    {"id": "src-ypzz", "url": "https://www.ypzz.cn/", "checked_at": "2026-09-28T00:00:00+08:00"},
+    {"id": "src-ypzz", "url": "https://www.ypzz.cn/f/detail?aid=f63bd3b1955c40768b2f8b5f7486c087&pid=ceb44709ddf34f5e82621f4b1a887007&categoryId=ceb44709ddf34f5e82621f4b1a887007", "checked_at": "2026-10-02T00:00:00+08:00"},
     {"id": "src-bendibao", "url": "https://m.dg.bendibao.com/news/jingdianbao", "checked_at": "2026-09-28T00:00:00+08:00"},
     {"id": "src-keyuan", "url": "https://dgkeyuan.org/article/1762.html", "checked_at": "2026-09-28T00:00:00+08:00"},
     {"id": "src-amap-poi", "url": "amap://poi-search/东莞", "checked_at": "2026-09-28T00:00:00+08:00"},

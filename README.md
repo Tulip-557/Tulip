@@ -1,5 +1,7 @@
 # 可核验旅行规划器 · verified-travel-planner
 
+[English](README.en.md) | 简体中文
+
 > **产出一本「每个数字都有来源、每处结论都能被机器校验」的旅行路书。**
 > *An Agent Skill that makes AI travel plans verifiable: every number carries an
 > evidence grade, and gates check the deliverable before it ships.*
@@ -110,7 +112,7 @@ python verified-travel-planner/tools/ship.py     # 全绿才算可交付；有�
 
 > 这套闸门是**给自己用的**：开发过程中它抓出过「门票标了够不着的等级」
 > 「精简版把末班车时间压没了」「evaluate 喂错文件层级拿到假的满分」等真问题，
-> 每一条都固化成了断言（`tests/` 102 条）。
+> 每一条都固化成了断言（`tests/` 106 条）。
 
 ### 3️⃣ 双版本交付 + 单文件可开
 
@@ -369,7 +371,7 @@ verified-travel-planner/
 ├── tools/                      ← 23 个命令行工具（统一 CLI + 九道闸门 + ship.py 一键回归）
 ├── references/                 ← 渐进加载的参考文档（用到才读）
 ├── assets/                     ← 基准骨架 + 事实源模板
-└── tests/                      ← 102 条断言（标准库 unittest）
+└── tests/                      ← 106 条断言（标准库 unittest）
 ```
 
 ---
