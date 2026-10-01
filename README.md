@@ -7,7 +7,7 @@
 一个给 AI 助手用的 Skill（技能包）：它不替你「编一份好看的攻略」，
 而是**先查实、再写作、然后自己把自己查一遍**——查不过就不交付。
 
-[![闸门回归](https://github.com/Tulip-557/Tulip/actions/workflows/gates.yml/badge.svg)](https://github.com/Tulip-557/Tulip/actions/workflows/gates.yml)
+[![闸门回归](https://github.com/Tulip-557/verified-travel-planner/actions/workflows/gates.yml/badge.svg)](https://github.com/Tulip-557/verified-travel-planner/actions/workflows/gates.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![依赖](https://img.shields.io/badge/第三方依赖-0-success)
@@ -17,14 +17,14 @@
 ▲ 示例路书《东莞·三天两晚》第 1 天的**实际渲染效果**：车程「16 分钟 / 9.5 公里」
 跟着 `[A]`（高德实测）、火车票价跟着 `[C]`（单源，须复核）、闭馆时间 `[A]`——
 查不到的如实写 `[D]` 未核实并给出自查出路，**不编一个好看的数**。
-**[在线打开这本路书 →](https://tulip-557.github.io/Tulip/demo-dongguan.html)**
+**[在线打开这本路书 →](https://tulip-557.github.io/verified-travel-planner/demo-dongguan.html)**
 （GitHub Pages 托管，单文件 HTML，断网可开；示例数据核实于 2026-09-28）
 
 ## 30 秒上手
 
 ```bash
 # 1) 装进你的 AI 客户端（Claude Code / Codex / Cursor 等均可）
-npx skills add Tulip-557/Tulip
+npx skills add Tulip-557/verified-travel-planner
 
 # 2) 配高德 key（可选；但没有它就没有实况数据，只能产出全 [D] 的路书）
 python verified-travel-planner/tools/set_amap_key.py
