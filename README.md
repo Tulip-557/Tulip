@@ -112,7 +112,7 @@ python verified-travel-planner/tools/ship.py     # 全绿才算可交付；有�
 
 > 这套闸门是**给自己用的**：开发过程中它抓出过「门票标了够不着的等级」
 > 「精简版把末班车时间压没了」「evaluate 喂错文件层级拿到假的满分」等真问题，
-> 每一条都固化成了断言（`tests/` 107 条）。
+> 每一条都固化成了断言（`tests/` 109 条）。
 
 ### 3️⃣ 双版本交付 + 单文件可开
 
@@ -371,7 +371,7 @@ verified-travel-planner/
 ├── tools/                      ← 23 个命令行工具（统一 CLI + 九道闸门 + ship.py 一键回归）
 ├── references/                 ← 渐进加载的参考文档（用到才读）
 ├── assets/                     ← 基准骨架 + 事实源模板
-└── tests/                      ← 107 条断言（标准库 unittest）
+└── tests/                      ← 109 条断言（标准库 unittest）
 ```
 
 ---

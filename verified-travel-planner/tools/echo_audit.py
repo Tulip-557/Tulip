@@ -96,8 +96,18 @@ RISK_MARKS = ('验证码', '访问验证', '访问异常', 'captcha', 'Captcha',
 
 #: 死线信号——与 source_audit.py E4 的口径保持同步（改动两头改）。
 PRICE_SIG = re.compile(r'[¥￥]\s*\d|\d+\s*元|免费|免票')
-HOURS_SIG = re.compile(r'\d{1,2}[:：]\d{2}\s*[-–~—至]\s*\d{1,2}[:：]\d{2}'
-                       r'|\d{1,2}[:：]\d{2}')
+ORAL_TIME_PATTERN = (
+    r'(?<![零〇一二两三四五六七八九十\d])'
+    r'(?P<period>凌晨|早上|上午|中午|下午|晚上)?\s*'
+    r'(?P<hour>[零〇一二两三四五六七八九十\d]{1,3})\s*点\s*'
+    r'(?P<minute>半|[零〇一二两三四五六七八九十\d]{1,3})\s*(?:分)?'
+    r'(?![零〇一二两三四五六七八九十\d])'
+)
+ORAL_TIME_RE = re.compile(ORAL_TIME_PATTERN)
+HOURS_SIG = re.compile(
+    r'\d{1,2}[:：]\d{2}\s*[-–~—至]\s*\d{1,2}[:：]\d{2}'
+    r'|\d{1,2}[:：]\d{2}'
+    r'|' + ORAL_TIME_PATTERN)
 ROUTE_RE = re.compile(
     r'\d+(?:\.\d+)?\s*公里'
     r'|\d+\s*分钟\s*/\s*\d'
@@ -113,47 +123,80 @@ TIME_RE = re.compile(r'\d{1,2}[:：]\d{2}')
 # 只抓阿拉伯数字会让这一半的关键值漏出核查面。
 CN_NUM_UNIT_RE = re.compile(
     r'([零〇一二两三四五六七八九十百千]+)(?:余|多)?\s*(万元|元|公里|千米|米|分钟|小时)')
+YI_NUM_RE = re.compile(
+    r'(?<![零〇一二两三四五六七八九十百千万亿\d.])'
+    r'((?:\d+(?:\.\d+)?|[零〇一二两三四五六七八九十百千万]+)\s*亿'
+    r'(?:\s*[零〇一二两三四五六七八九十百千万]+)?)'
+    r'\s*(人次|人|元|公里|千米|米|分钟|小时)?')
 #: 「900 万人次」「1.5 万」：万级乘法单独抽，抽到后 Arab/中文两种写法都要备变体。
 WAN_NUM_RE = re.compile(
-    r'((?:\d+(?:\.\d+)?|[零〇一二两三四五六七八九十百千]+))\s*万\s*(人次|人|元|公里|千米|米|分钟|小时)?')
+    r'(?<![零〇一二两三四五六七八九十百千万亿\d.])'
+    r'((?:\d+(?:\.\d+)?|[零〇一二两三四五六七八九十百千]+))\s*万\s*'
+    r'(人次|人|元|公里|千米|米|分钟|小时)?')
 CN_DIGITS = {'零': 0, '〇': 0, '一': 1, '二': 2, '两': 2, '三': 3, '四': 4,
              '五': 5, '六': 6, '七': 7, '八': 8, '九': 9}
 
 
 def cn_to_int(s: str):
-    """中文数字 → int（支持到千万：四十二 / 两百零五 / 九百万）。不合法返回 None。"""
+    """中文数字 → int（支持到亿：四十二 / 两百零五 / 九百万 / 一亿二千万）。不合法返回 None。"""
     if not s:
         return None
+    s = s.strip()
+    while len(s) > 1 and s.startswith('零'):
+        s = s[1:]
+    if '亿' in s:
+        head, _, tail = s.partition('亿')
+        h = cn_to_int(head)
+        if h is None:
+            return None
+        rest = cn_to_int(tail) if tail else 0
+        return h * 100000000 + (rest or 0)
     if '万' in s:
         head, _, tail = s.partition('万')
         h = cn_to_int(head)
         if h is None:
             return None
-        return h * 10000 + (cn_to_int(tail) or 0)
+        rest = cn_to_int(tail) if tail else 0
+        return h * 10000 + (rest or 0)
     if '千' in s:
         head, _, tail = s.partition('千')
         h = CN_DIGITS.get(head, 1) if head else 1
         if h is None:
             return None
-        return h * 1000 + (cn_to_int(tail) or 0)
+        rest = cn_to_int(tail) if tail else 0
+        return h * 1000 + (rest or 0)
     if '百' in s:
         head, _, tail = s.partition('百')
         h = CN_DIGITS.get(head, 1) if head else 1
         if h is None:
             return None
-        return h * 100 + (cn_to_int(tail) or 0)
+        rest = cn_to_int(tail) if tail else 0
+        return h * 100 + (rest or 0)
     if '十' in s:
         head, _, tail = s.partition('十')
         t = CN_DIGITS.get(head, 1) if head else 1
         if t is None:
             return None
         return t * 10 + (CN_DIGITS.get(tail, 0) if tail else 0)
+    if len(s) > 1 and all(ch in CN_DIGITS for ch in s):
+        value = 0
+        for ch in s:
+            value = value * 10 + CN_DIGITS[ch]
+        return value
     return CN_DIGITS.get(s)
 
 
 def int_to_cn(n: int) -> str:
-    """int → 中文数字（支持到千万），供页面侧变体匹配：claim 写 42、页面写四十二。"""
+    """int → 中文数字（支持到亿及以上），供页面侧变体匹配。"""
     digits = '零一二三四五六七八九'
+    if n >= 100000000:
+        yi, rest = divmod(n, 100000000)
+        out = int_to_cn(yi) + '亿'
+        if not rest:
+            return out
+        if rest < 10000000:
+            return out + '零' + int_to_cn(rest)
+        return out + int_to_cn(rest)
     if n >= 10000:
         w, rest = divmod(n, 10000)
         return int_to_cn(w) + '万' + (int_to_cn(rest) if rest else '')
@@ -177,7 +220,6 @@ def int_to_cn(n: int) -> str:
         t, o = divmod(n, 10)
         return (digits[t] if t > 1 else '') + '十' + (digits[o] if o else '')
     return digits[n]
-
 
 #: 数字无单位的关键句兜底：短语回声所需的最长公共片段长度。
 ECHO_STRONG = 6     # ≥6 字连续相同 → SUPPORTED（官方页面几乎总会原句收录）
@@ -243,31 +285,91 @@ def _variants_for(head: str, scale: int = 1) -> set:
     「60 元」的页面可能写「六十元」；「900 万」的页面可能写「900万 /
     九百万 / 9000000」——只认一种写法会把「写法差异」误判成「不回声」。
     """
-    head = unicodedata.normalize('NFKC', head)
+    head = unicodedata.normalize('NFKC', head).strip()
     if re.match(r'^\d+(?:\.\d+)?$', head):
         n = float(head)
         variants = {norm_num(head)}
-        if n == int(n) and 1 <= n <= 99999999:
+        if n.is_integer() and n >= 1:
             variants.add(int_to_cn(int(n)))
     else:
         n = cn_to_int(head)
         if n is None:
             return {head}
-        variants = {head, str(n), int_to_cn(n)}
-    if scale != 1 and n is not None:
-        full = n * scale
+        variants = {head.replace(' ', ''), str(n), int_to_cn(n)}
+    if scale != 1:
+        full = float(n) * scale
         variants.add(norm_num(str(full)))
-        if full == int(full) and 1 <= full <= 99999999:
+        if full.is_integer() and full >= 1:
             variants.add(int_to_cn(int(full)))
     return {v for v in variants if v}
+
+
+def _yi_number_value(head: str):
+    head = re.sub(r'\s+', '', unicodedata.normalize('NFKC', head))
+    coefficient, _, tail = head.partition('亿')
+    if re.fullmatch(r'\d+(?:\.\d+)?', coefficient):
+        value = float(coefficient) * 100000000
+    else:
+        coefficient_value = cn_to_int(coefficient)
+        if coefficient_value is None:
+            return None
+        value = coefficient_value * 100000000
+    tail_value = cn_to_int(tail) if tail else 0
+    if tail and tail_value is None:
+        return None
+    value += tail_value or 0
+    return int(value) if float(value).is_integer() else value
+
+
+def _yi_variants(head: str) -> set:
+    normalized = re.sub(r'\s+', '', unicodedata.normalize('NFKC', head))
+    value = _yi_number_value(normalized)
+    if value is None:
+        return {normalized}
+    variants = {normalized, norm_num(str(value))}
+    compact_yi = norm_num(str(float(value) / 100000000))
+    variants.update((compact_yi + '亿', compact_yi + ' 亿'))
+    if float(value).is_integer() and value >= 1:
+        variants.add(int_to_cn(int(value)))
+    return {v for v in variants if v}
+
+
+def _time_number(value: str):
+    value = unicodedata.normalize('NFKC', value)
+    if value.isdigit():
+        return int(value)
+    return cn_to_int(value)
+
+
+def _time_variants(hour: int, minute: int) -> set:
+    return {f'{hour:02d}:{minute:02d}', f'{hour}:{minute:02d}'}
+
+
+def _oral_time_value(match):
+    hour = _time_number(match.group('hour'))
+    minute_token = match.group('minute')
+    minute = 30 if minute_token == '半' else _time_number(minute_token)
+    if hour is None or minute is None or not (0 <= hour <= 23 and 0 <= minute <= 59):
+        return None
+    period = match.group('period')
+    if period in ('下午', '晚上', '中午') and 1 <= hour <= 11:
+        hour += 12
+    elif period in ('凌晨', '早上', '上午') and hour == 12:
+        hour = 0
+    return hour, minute
 
 
 def claim_values(text: str) -> list:
     """claim 里的可核查值：[(variants 集合, 展示形, 单位), …]。
 
-    万级（「900 万人次」「九百万」）与时刻（HH:MM）、中文数字都抽。
+    亿 / 万级（「1.2 亿」「900 万人次」）与时刻（HH:MM、口语时刻）、
+    中文数字都抽。
     """
     vals = []
+    for m in YI_NUM_RE.finditer(text):
+        head = m.group(1)
+        unit = m.group(2) or ''
+        vals.append((_yi_variants(head), head.replace(' ', '') + unit, unit or '亿'))
     for m in NUM_UNIT_RE.finditer(text):
         vals.append((_variants_for(m.group(1)), m.group(1) + m.group(2),
                      m.group(2)))
@@ -281,28 +383,41 @@ def claim_values(text: str) -> list:
                      m.group(2)))
     for m in TIME_RE.finditer(text):
         t = unicodedata.normalize('NFKC', m.group(0)).replace('：', ':')
-        vals.append(({t}, t, '时刻'))
+        try:
+            hour, minute = (int(part) for part in t.split(':'))
+        except ValueError:
+            vals.append(({t}, t, '时刻'))
+            continue
+        if 0 <= hour <= 23 and 0 <= minute <= 59:
+            variants = _time_variants(hour, minute)
+        else:
+            variants = {t}
+        vals.append((variants, t, '时刻'))
+    for m in ORAL_TIME_RE.finditer(text):
+        parsed = _oral_time_value(m)
+        if parsed is None:
+            continue
+        hour, minute = parsed
+        variants = _time_variants(hour, minute)
+        spoken = re.sub(r'\s+', '', unicodedata.normalize('NFKC', m.group(0)))
+        variants.add(spoken)
+        vals.append((variants, spoken, '时刻'))
     return vals
 
 
 def is_deadline(text: str) -> bool:
-    """死线类判定——口径对齐 source_audit E4：票价/时刻/车程/余票。
-
-    时刻与价格须带语境（开放/闭馆/门票/余票…），裸数字时间与普通
-    消费金额不算——「07:40 珠海站集合」「人均 60」不该被当死线。
-    """
+    """死线类判定——口径对齐 source_audit E4：票价/时刻/车程/余票。"""
     if RAIL_RE.search(text) and ('余票' in text or '席别' in text
                                  or '车次' in text):
         return True
-    cn_price = (CN_NUM_UNIT_RE.search(text) or WAN_NUM_RE.search(text)) \
-        and '元' in text
+    cn_price = (CN_NUM_UNIT_RE.search(text) or WAN_NUM_RE.search(text)
+                or YI_NUM_RE.search(text)) and '元' in text
     if DEADLINE_HINT.search(text) and (PRICE_SIG.search(text)
                                        or HOURS_SIG.search(text) or cn_price):
         return True
     if ROUTE_RE.search(text):
         return True
     return False
-
 
 # ------------------------------------------------------------ 抓取
 

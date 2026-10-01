@@ -190,7 +190,7 @@ base64 都逐字节一致。骨架每次 CSS 变更都会换基线——改骨�
   `references/browser-use.md`（浏览器核验能力与两个陷阱）、
   `references/social-sources.md`（社媒渠道五档矩阵 + 五条扩展路径 + 合规/反爬/解析）、
   `references/social-login.md`（用户授权登录：三种强度 / 实测 / 账号风险）。
-- **工程保障已落地（2026-09-28）**：`tests/`（107 条测试，标准库 unittest）、
+- **工程保障已落地（2026-09-28）**：`tests/`（109 条测试，标准库 unittest）、
   `tools/ship.py` 一键回归（九道闸门 + 渲染基线，FAIL 退出码 2）、
   CI `.github/workflows/gates.yml`（gates + gitleaks）。
 - **内容真实三层链（2026-10-01 全部落地）**：第 1 层 `claim_audit`（v2：实采段
