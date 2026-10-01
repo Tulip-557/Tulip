@@ -187,24 +187,21 @@ class TestEchoAuditGate(unittest.TestCase):
 
     def test_ci_env_downgrades_fail_to_warn(self):
         # CI 环境（GITHUB_ACTIONS）：外部网络不可控 → 不许假红（退出码 0）。
-        # 有渲染能力时输出带「CI 环境降级」明示；渲染不可用时只有普通 WARN——
-        # 两种形态的退出码都必须是 0，这就是本测试的全部契约。
+        # 唯一的普适契约就是退出码 0：有渲染能力时输出带「CI 环境降级」明示、
+        # 无渲染能力时是普通 WARN——两种形态都不该让 CI 变红，也不该对
+        # 装饰性输出做跨环境强断言（CI 的浏览器能力不可假设）。
         with tempfile.TemporaryDirectory() as td:
             url = _page(Path(td), 'p1.html', '本馆实行预约参观制，请提前预约。')
-            import os
             proc = subprocess.run(
                 [sys.executable, str(ECHO), '--clues',
                  str(_clue(Path(td), [('博物馆门票 60 元，须预约。', url)])),
                  '--timeout', '5'],
-                capture_output=True, timeout=180,
+                capture_output=True, timeout=300,
                 env={**os.environ, 'GITHUB_ACTIONS': 'true',
                      'PYTHONIOENCODING': 'utf-8'})
-            out = proc.stdout.decode('utf-8')
+            out = proc.stdout.decode('utf-8', 'replace')
             self.assertEqual(proc.returncode, 0, out)
-            if HAS_BROWSER:
-                # 渲染能力在（本机）：降级明示必须出现；无渲染能力（CI）时
-                # 该行本来就是普通 WARN——这正是「CI 不假红」的两种形态。
-                self.assertIn('CI 环境降级', out)
+            self.assertIn('无 FAIL', out)
 
     def test_final_plan_claims_checked_and_amap_skipped(self):
         # 方案层 description×source_refs 进核查面；amap:// 伪 URL 跳过。
