@@ -186,8 +186,9 @@ class TestEchoAuditGate(unittest.TestCase):
             self.assertIn('未回声', out)      # 另一源落空要被点名，只是不判死
 
     def test_ci_env_downgrades_fail_to_warn(self):
-        # CI 环境（GITHUB_ACTIONS）：外部网络不可控 → 渲染确认的 FAIL 降 WARN，
-        # 退出码 0——CI 不因外部站点抖动而假红，本机复核为准
+        # CI 环境（GITHUB_ACTIONS）：外部网络不可控 → 不许假红（退出码 0）。
+        # 有浏览器时渲染确认的 FAIL 会降 WARN 并带明示；无浏览器时本来就是
+        # 普通 WARN——两种形态的退出码都必须是 0。
         with tempfile.TemporaryDirectory() as td:
             url = _page(Path(td), 'p1.html', '本馆实行预约参观制，请提前预约。')
             import os
@@ -198,8 +199,10 @@ class TestEchoAuditGate(unittest.TestCase):
                 capture_output=True, timeout=180,
                 env={**os.environ, 'GITHUB_ACTIONS': 'true',
                      'PYTHONIOENCODING': 'utf-8'})
-            self.assertEqual(proc.returncode, 0, proc.stdout.decode('utf-8'))
-            self.assertIn('CI 环境降级', proc.stdout.decode('utf-8'))
+            out = proc.stdout.decode('utf-8')
+            self.assertEqual(proc.returncode, 0, out)
+            if HAS_BROWSER:
+                self.assertIn('CI 环境降级', out)
 
     def test_final_plan_claims_checked_and_amap_skipped(self):
         # 方案层 description×source_refs 进核查面；amap:// 伪 URL 跳过。
