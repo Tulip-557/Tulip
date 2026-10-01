@@ -808,6 +808,10 @@ python "<SKILL_ROOT>/tools/freshness.py" 路书_XX_事实源.json --strict
 
 # ② 天气：这时才查得到真预报（高德窗口只有 4 天，早查无意义）
 python "<SKILL_ROOT>/tools/travel_planner.py" weather --city 中山市 --start 2026-09-28 --end 2026-09-30
+
+# ③ 公告复扫：闭馆/调价/管制类事件按同一节奏重查一遍（预算不够就砍 EVENT 类）
+#    命中的变更走 --check 分级后更新 meta.bulletin，首屏公告条随之刷新
+python "<SKILL_ROOT>/tools/bulletin.py" --plan --facts 路书_XX.json
 ```
 
 - **路书里不写未来天气**——写下的多半会变。要写就写「出发前 3 天查一次」。
