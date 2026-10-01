@@ -24,6 +24,17 @@ from pathlib import Path
 SKILL = Path(__file__).resolve().parents[1]
 ECHO = SKILL / 'tools' / 'echo_audit.py'
 
+# FAIL 判定需要渲染确认（无浏览器时降 WARN 是设计）——两条「牙齿」用例
+# 只在机器有浏览器时跑，CI（ubuntu 无 Edge/Chrome 配置差异）不误报。
+import importlib.util as _ilu
+try:
+    _spec = _ilu.spec_from_file_location('cdp_read_t', SKILL / 'tools' / 'cdp_read.py')
+    _cdp_mod = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_cdp_mod)
+    HAS_BROWSER = _cdp_mod.find_browser(None) is not None
+except Exception:
+    HAS_BROWSER = False
+
 _FILLER = ('本页为景区公开信息页面，用于说明开放安排与预约方式。' * 20)
 
 
@@ -71,8 +82,9 @@ class TestEchoAuditGate(unittest.TestCase):
             self.assertEqual(code, 0, out)
             self.assertIn('SUPPORTED', out)
 
+    @unittest.skipUnless(HAS_BROWSER, 'FAIL 判定需渲染确认；无浏览器时降 WARN 是设计')
     def test_deadline_value_missing_fails_hard(self):
-        # 页面只说预约制、没说票价 → 「门票 60 元」不回声 → 死线类必须 FAIL
+        # 页面只说预约制、没说票价 → 「门票 60 元」不回声 → 渲染确认后死线 FAIL
         with tempfile.TemporaryDirectory() as td:
             url = _page(Path(td), 'p1.html', '本馆实行预约参观制，请提前预约。')
             code, out = self._run([('博物馆门票 60 元，须预约。', url)])
@@ -86,6 +98,7 @@ class TestEchoAuditGate(unittest.TestCase):
             code, out = self._run([('古建区门票 60 元，散客免预约。', url)])
             self.assertEqual(code, 0, out)
 
+    @unittest.skipUnless(HAS_BROWSER, 'FAIL 判定需渲染确认；无浏览器时降 WARN 是设计')
     def test_cn_numeral_claim_missing_fails(self):
         # claim 写中文数字（门票四十元）、页面根本没有这个价 → 死线 FAIL
         with tempfile.TemporaryDirectory() as td:

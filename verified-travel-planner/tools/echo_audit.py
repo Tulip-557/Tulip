@@ -35,8 +35,12 @@ v2 相对 v1 的三处升级（2026-10-02）
 
 力度（与 E4 死线哲学对齐，宁可WARN不可错杀）
 --------------------------
-  · 死线类 claim（票价 / 时刻 / 车程距离信号）且 UNSUPPORTED → **FAIL**
-    ——这几个字段写进路书就要求 [A] 级实证，来源页里却找不到，没有第二条路。
+  · 死线类 claim（票价 / 时刻 / 车程距离信号）且 UNSUPPORTED 且**渲染确认**
+    （无头浏览器抓到正文后值仍不在）→ **FAIL**——写进路书就要求 [A] 级实证，
+    渲染后的来源页里却找不到，没有第二条路。
+  · 无渲染能力（机器无浏览器 / CI 环境）时 JS 壳与真缺失不可区分 → 降 WARN：
+    「看不到」不判死，这是设计而不是缺陷（东莞实测：官网详情页是 JS 壳，
+    本地渲染后值其实在——CI 上若判 FAIL 就是冤案）。
   · 官方/媒体来源的 UNSUPPORTED / PARTIAL → WARN；创作者类 → INFO。
   · UNREACHABLE → WARN + 重查出路，不阻断。
     误报源是真实的：页面在核实日期之后合法改版、动态价格浮动、反爬拦截。
@@ -635,6 +639,7 @@ def main(argv=None) -> int:
             else:
                 res = check_claim(c['text'], page['text'])
                 note = page.get('note') or ''
+                render_confirmed = False
                 # —— 官方来源落空 → 浏览器渲染重查一次：静态壳页（JS 渲染站）
                 # 的典型形态是「HTML 在、正文是壳」，值只活在渲染后 DOM 里。
                 # 只对官方/媒体来源重查（创作者体验句本就不回声，别烧预算）。
@@ -642,11 +647,13 @@ def main(argv=None) -> int:
                         and c['voice'] in OFFICIAL_VOICES):
                     page2 = fetcher._browser_fetch(c['url'])
                     if page2['status'] == 'OK':
+                        render_confirmed = True
                         res2 = check_claim(c['text'], page2['text'])
                         if ECHO_RANK[res2['verdict']] > ECHO_RANK[res['verdict']]:
                             res, note = res2, page2.get('note') or ''
                         fetcher.save(c['url'], page2)
                 row.update(verdict=res['verdict'],
+                           render_confirmed=render_confirmed,
                            detail=res['detail'] + ('｜' + note if note else ''))
         rows.append(row)
 
@@ -680,7 +687,11 @@ def main(argv=None) -> int:
                 if miss:
                     detail += '（另 %d 个被引源未回声——引用仍成立，但值得知道）' % miss
         text = rs[0]['text']
-        if effective == 'UNSUPPORTED' and is_deadline(text):
+        # FAIL 必须渲染确认：浏览器抓到正文后值仍不在，才判「编造引用」。
+        # 无渲染能力（无浏览器 / CI）时 JS 壳与真缺失不可区分 → 降 WARN，
+        # 不冤枉（东莞实测：官网详情页是 JS 壳，本地渲染后值其实在）。
+        if effective == 'UNSUPPORTED' and is_deadline(text) \
+                and any(r.get('render_confirmed') for r in rs):
             n_fail += 1
         elif effective in ('UNSUPPORTED', 'PARTIAL') \
                 and rs[0]['voice'] not in OFFICIAL_VOICES:
