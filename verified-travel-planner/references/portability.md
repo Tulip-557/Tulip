@@ -130,7 +130,7 @@ path 顺序，且报错极其难懂（`ModuleNotFoundError: No module named 'tra
 | 看示例路书（`产出示例/路书_成都_渲染示例.html`） | ✅ 直接双击 | 无（单文件自包含、断网可开） |
 | 跑回归（重渲染应与示例逐字节一致） | ✅ 直接跑 | 无（零依赖） |
 | 体检自己的环境 | ✅ `python tools/doctor.py` | 无 |
-| 校验包完整性（19 条规则 / 79 处断言） | ✅ `python tools/validate_skill.py` | 无 |
+| 校验包完整性（19 条规则 / 81 处断言） | ✅ `python tools/validate_skill.py` | 无 |
 | 生成一份**新目的地**的路书 | ⚠ 骨架与闸门都能跑 | **自己的高德 key**（否则 POI 全 `[D]`） |
 | 采社媒情报（OPEN 档三条路径） | ⚠ 视网络 | 网络可达性，站点风控与出口 IP 有关 |
 | 用登录态读小红书/抖音（AUTH 档） | ⚠ 技术上可以 | **自己扫码**，且账号风险自负 |
@@ -173,7 +173,7 @@ path 顺序，且报错极其难懂（`ModuleNotFoundError: No module named 'tra
 
 ```bash
 python tools/doctor.py          # 8 项：应全 ✅ / ℹ，无 ❌
-python tools/validate_skill.py  # 19 条规则 / 79 处断言：应全绿
+python tools/validate_skill.py  # 19 条规则 / 81 处断言：应全绿
 ```
 
 > **建议把这两条写进 CI**（`P3` 待办里已有「CI + gitleaks」）。
