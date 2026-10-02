@@ -256,5 +256,67 @@ class TestEchoAuditGate(unittest.TestCase):
             self.assertIn('SUPPORTED', out)
 
 
+class TestYiAndOralTime(unittest.TestCase):
+    @staticmethod
+    def _load(name, path):
+        spec = _ilu.spec_from_file_location(name, path)
+        module = _ilu.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_echo_normalizes_yi_and_oral_time_against_page(self):
+        echo = self._load('echo_audit_yi_test', SKILL / 'tools' / 'echo_audit.py')
+        arabic = echo.claim_values('游客量 1.2 亿人次。')
+        chinese = echo.claim_values('游客量一亿二千万 人次。')
+        self.assertEqual(len(arabic), 1)
+        self.assertEqual(len(chinese), 1)
+        self.assertIn('一亿二千万', arabic[0][0])
+        self.assertIn('120000000', arabic[0][0])
+        self.assertIn('120000000', chinese[0][0])
+        self.assertIn('1.2亿', chinese[0][0])
+        self.assertEqual(echo.cn_to_int('一亿二千万'), 120000000)
+        self.assertEqual(echo.int_to_cn(120000000), '一亿二千万')
+
+        with tempfile.TemporaryDirectory() as td:
+            url = _page(Path(td), 'p1.html',
+                        '年接待量一亿二千万人次；14:30停止入场。')
+            code, out = TestEchoAuditGate()._run([
+                ('年接待量1.2亿人次。', url),
+                ('下午两点半停止入场。', url),
+            ])
+            self.assertEqual(code, 0, out)
+            self.assertEqual(out.count('[OK] SUPPORTED'), 2, out)
+
+    def test_spoken_time_range_and_source_audit_context(self):
+        echo = self._load('echo_audit_time_test', SKILL / 'tools' / 'echo_audit.py')
+        claim = echo.claim_values('下午两点半停止入场。')
+        self.assertEqual(len(claim), 1)
+        self.assertIn('14:30', claim[0][0])
+        self.assertTrue(echo.is_deadline('下午两点半停止入场。'))
+        for spoken in ('两点三十', '两点三十分', '两点半'):
+            values = echo.claim_values(spoken)
+            self.assertEqual(len(values), 1, spoken)
+            self.assertIn('02:30', values[0][0])
+        latest = echo.claim_values('二十三点五十九分停止入场。')
+        self.assertIn('23:59', latest[0][0])
+        self.assertFalse(echo.claim_values('24点半停止入场。'))
+        self.assertFalse(echo.is_deadline('两点半集合。'))
+
+        audit = self._load('source_audit_time_test',
+                            SKILL / 'tools' / 'source_audit.py')
+        sent = '下午两点半停止入场 [C]'
+        badge = {'level': 'C', 'sent': sent, 'sents': [sent], 'si': 0,
+                 'extra': ''}
+        _warnings, failures = audit.rule_e4([badge])
+        self.assertTrue(any('开放时段' in reason for _badge, reason in failures))
+
+        plain = '两点半集合 [C]'
+        badge['sent'] = plain
+        badge['sents'] = [plain]
+        _warnings, failures = audit.rule_e4([badge])
+        self.assertFalse(failures)
+
+
+
 if __name__ == '__main__':
     unittest.main()
