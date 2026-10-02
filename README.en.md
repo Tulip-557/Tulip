@@ -49,6 +49,13 @@ last trains, doubled ticket prices.
 | 2 | `echo_audit` | Does the cited web page actually contain the claimed value? | A deadline-class claim's value is nowhere on the fetched page |
 | 3 | `cross_check` | Are the "two independent sources" actually one family? | The two cited pages' texts overlap past the re-post threshold |
 
+Layer 2 works on the fetched page text itself: value extraction accepts
+Chinese numerals ("四十二分钟" ↔ 42), picks the best match across several
+sources, and falls back to a JS shell; a page it cannot fetch is a WARN,
+never a FAIL ("cannot see" ≠ "is not there"). Layer 3 catches re-posts by
+4-gram overlap between the two cited pages' texts. All three still prove only
+**claim = capture = page + independence** — never "the page is right".
+
 Plus: four evidence grades (`[A]` tool-measured / `[B]` two-source / `[C]`
 single-source / `[D]` unverified, rendered as colored badges), deterministic
 feasibility checking (closing-time conflicts, transfer margins, budget
@@ -60,6 +67,13 @@ a self-referential validator that even checks the counts claimed in the docs.
 ```bash
 python verified-travel-planner/tools/ship.py     # all green or exit code 2
 ```
+
+**Two sidecar tools** cover what gates can't see: `bulletin.py` sweeps
+pre-departure announcements (closures / price changes / traffic controls /
+openings / events) and validates their evidence grade — announcement-class
+deadlines accept `[A]` only; `review_trust.py` flags shill/promo **signals**
+in review sections (template repetition, promo markers, stance-text mismatch,
+same-day bursts) — signals, never verdicts, no "adjusted rating".
 
 ## 30-second start
 
